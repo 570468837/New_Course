@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GB2312"?>
+
+<students>
+  <student>
+    <Sno>000000001</Sno>
+    <Snm>abcd</Snm>
+    <Sex>F</Sex>
+    <Sde>SE</Sde>
+    <Pwd>1234</Pwd>
+  </student>
+  <student>
+    <Sno>001</Sno>
+    <Snm>abcd</Snm>
+    <Sex>F</Sex>
+    <Sde>SE</Sde>
+    <Pwd>1234</Pwd>
+  </student>
+</students>
