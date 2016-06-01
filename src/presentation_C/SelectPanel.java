@@ -16,6 +16,7 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+import config.WarningDialog;
 import C.businesslogic.CourseBL;
 import C.businesslogic.CourseSelectionBL;
 import C.businesslogic.CourseSelectionController;
@@ -76,9 +77,16 @@ public class SelectPanel extends JPanel {
 				//如果是本院系的课
 				if(coursePO != null){
 					boolean ifSuccess = selectCourse(((CourseFrame)theFrame).getStudentPO(), coursePO);
+					if(ifSuccess)
+						new WarningDialog("选课成功！");
+					else
+						new WarningDialog("选课失败，可能已选该课！");
+				}
+				//不是本院的课要掉服务器接口!!!
+				else{
 					
 				}
-				
+
 			}
 		});
 	}
