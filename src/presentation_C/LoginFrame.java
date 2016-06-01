@@ -1,4 +1,4 @@
-package presentation_software;
+package presentation_C;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
