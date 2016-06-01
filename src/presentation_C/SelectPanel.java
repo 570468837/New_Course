@@ -1,6 +1,8 @@
 package presentation_C;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,9 +14,19 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+import C.businesslogic.CourseBL;
+import C.businesslogic.CourseSelectionBL;
+import C.businesslogic.CourseSelectionController;
+import C.businesslogicservice.CourseBLService;
+import C.businesslogicservice.CourseSelectionBLService;
+import C.po.CoursePO;
+
 
 public class SelectPanel extends JPanel {
-
+	Vector allCoursesData = new Vector<>();
+	
+	CourseBLService courseBL = new CourseBL();
+	
 	/**
 	 * Create the panel.
 	 */
@@ -29,6 +41,13 @@ public class SelectPanel extends JPanel {
 		table.setFont(new Font("宋体", Font.PLAIN, 13));
 		table.setRowSorter(new TableRowSorter<TableModel>(model));
 		table.setFillsViewportHeight(true);
+		//数据
+		String[] titles = {"课程编号","课程名称","学分","授课老师","授课地点"};
+		Vector<String> v_title = new Vector();
+		for(int i=0;i<titles.length;i++)
+			v_title.add(titles[i]);
+		getData();
+		model.setDataVector(allCoursesData, v_title);
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(22, 80, 558, 402);
@@ -43,6 +62,24 @@ public class SelectPanel extends JPanel {
 		confirmButton.setFont(new Font("宋体", Font.BOLD, 12));
 		confirmButton.setBounds(489, 492, 89, 38);
 		add(confirmButton);
+	}
+	
+	public void getData(){
+		CoursePO[] courses = courseBL.showAllCourse();
+		for(int i=0;i<courses.length;i++){
+			CoursePO oneCourse = courses[i];
+			Vector oneVector = new Vector<>();
+			oneVector.add(oneCourse.getCno());
+			oneVector.add(oneCourse.getCnm());
+			oneVector.add(oneCourse.getCpt());
+			oneVector.add(oneCourse.getTec());
+			oneVector.add(oneCourse.getPla());
+			allCoursesData.add(oneVector);
+		}
+	}
+	
+	public boolean selectCourse(){
 		
+		return false;
 	}
 }
