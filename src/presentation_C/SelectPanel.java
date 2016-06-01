@@ -1,6 +1,8 @@
 package presentation_C;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -20,12 +22,16 @@ import C.businesslogic.CourseSelectionController;
 import C.businesslogicservice.CourseBLService;
 import C.businesslogicservice.CourseSelectionBLService;
 import C.po.CoursePO;
+import C.po.StudentPO;
+import C.vo.AccountVO;
+import C.vo.CourseVO;
 
 
 public class SelectPanel extends JPanel {
 	Vector allCoursesData = new Vector<>();
 	
 	CourseBLService courseBL = new CourseBL();
+	CourseSelectionBLService selectBL = new CourseSelectionBL();
 	
 	/**
 	 * Create the panel.
@@ -62,6 +68,19 @@ public class SelectPanel extends JPanel {
 		confirmButton.setFont(new Font("宋体", Font.BOLD, 12));
 		confirmButton.setBounds(489, 492, 89, 38);
 		add(confirmButton);
+		
+		confirmButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				int rowIndex = table.getSelectedRow();
+				CoursePO coursePO = courseBL.showCourseById((String)table.getValueAt(rowIndex, 0));
+				//如果是本院系的课
+				if(coursePO != null){
+					boolean ifSuccess = selectCourse(((CourseFrame)theFrame).getStudentPO(), coursePO);
+					
+				}
+				
+			}
+		});
 	}
 	
 	public void getData(){
@@ -78,8 +97,7 @@ public class SelectPanel extends JPanel {
 		}
 	}
 	
-	public boolean selectCourse(){
-		
+	public boolean selectCourse(StudentPO studentPO, CoursePO coursePO){
 		return false;
 	}
 }
