@@ -1,4 +1,4 @@
-package Config;
+package config;
 
 public enum Faculty {
 	Software, 
