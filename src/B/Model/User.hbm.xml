@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC   
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">  
+    <!-- hibernate-mapping是映射文件的根元素 --> 
+<hibernate-mapping package="B.Model">
+	<!--每个class元素对应一个持久化对象 -->
+	<class name="User" table="users_table">
+		<id name = "userName" type="java.lang.String" column="userName" length="12" >
+		</id>
+		
+		<property name="rank" type="java.lang.Integer" length="2" />
+ 	    <property name="password" type="java.lang.String" length="12" not-null="true"/>
+    
+  		<many-to-one name="object" class="B.Model.Student" column="object" not-null="true"
+ 	 	  unique="true"></many-to-one>
+    </class>
+</hibernate-mapping>
