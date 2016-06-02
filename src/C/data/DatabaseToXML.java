@@ -39,6 +39,11 @@ public class DatabaseToXML {
 	    	tableName = "courseSelection";
 	    	toXML(sql,tableName);	
 	    }
+	    public void courseShareXML() throws IOException {
+	    	sql = "select * from course where Share=1";
+	    	tableName = "courseShare";
+	    	toXML(sql,tableName);	
+	    }
 	    
 	    public void toXML(String sql,String tableName) throws IOException{
 	    	db1 = new DBHelper(sql);
@@ -67,7 +72,7 @@ public class DatabaseToXML {
 	            	
 	            }
 	            
-	            Writer w = new FileWriter(tableName+".xml");	
+	            Writer w = new FileWriter("C."+tableName+".xml");	
 	            System.out.println("success");
 	            OutputFormat opf = OutputFormat.createPrettyPrint();
 	            opf.setEncoding("GB2312");
@@ -90,6 +95,7 @@ public class DatabaseToXML {
 			dtx.accountXML();
 			dtx.courseXML();
 			dtx.courseSelectionXML();
+			dtx.courseShareXML();
 		}
 }
 

@@ -15,5 +15,5 @@ public interface CourseBLService {
 	 * 
 	 * @return list of shared courses
 	 */
-	public ArrayList<Course> getCourseShared() ;
+	public ArrayList<Course> getLocalCourseShared() ;
 }

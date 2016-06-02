@@ -28,9 +28,9 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
     static ResultSet ret = null; 
     static String insql = null;
     static String sql2 = null;
-    public boolean selectOrnot(AccountPO a,CoursePO c){
+    public boolean selectOrnot(StudentPO s,CoursePO c){
     	CourseSelectionPO cs = new CourseSelectionPO(null, null, 0);
-    	String acc = a.getAcc();
+    	String sno = s.getSno();
     	String cno = c.getCno();
     	sql2 = "select * from courseSelection ";
     	 db1 = new DBHelper(sql2);
@@ -40,7 +40,7 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
 //				System.out.println(acc);
 //				System.out.println(rs.getString(1));
 //				System.out.println(acc.equals(rs.getString(1)));
-				if(acc.equals(rs.getString(2))){
+				if(sno.equals(rs.getString(2))){
 //					System.out.println("ww");
 					if(cno.equals(rs.getString(1))){
 						
@@ -57,13 +57,13 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
 		}
     	return false;
     }
-	public boolean selectCourse(AccountPO a,CoursePO c){
-		boolean selectOrnot = selectOrnot(a,c);
+	public boolean selectCourse(StudentPO s,CoursePO c){
+		boolean selectOrnot = selectOrnot(s,c);
 		if(selectOrnot == true){
 			System.out.println("已选过这门课");
 		}else{
 		CourseSelectionPO cs = new CourseSelectionPO(null, null, 0);
-    	String acc = a.getAcc();
+    	String sno = s.getSno();
     	String cno = c.getCno();
     	
     	sql = "insert into courseSelection(Cno,Sno,Grd) values (?,?,?)";
@@ -71,7 +71,7 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
     	 
      	 try {
  			db1.pst.setString(1, cno);
- 			db1.pst.setString(2,acc);
+ 			db1.pst.setString(2,sno);
  			db1.pst.setInt(3,0);
  			
  	  
@@ -79,6 +79,7 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
  	    	 if(result>0){
  	    		 return true;
  	    	 }
+ 	    	 System.out.println("result"+result);
  		} catch (SQLException e) {
  			// TODO Auto-generated catch block
  			e.printStackTrace();
@@ -87,17 +88,17 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
      	 return false;
     	
 	}
-	public boolean quitCourse(AccountPO a,CoursePO c){
-		boolean selectOrnot = selectOrnot(a,c);
+	public boolean quitCourse(StudentPO s,CoursePO c){
+		boolean selectOrnot = selectOrnot(s,c);
 		CourseSelectionPO cs = new CourseSelectionPO(null, null, 0);
-    	String acc = a.getAcc();
+    	String sno = s.getSno();
     	String cno = c.getCno();
     	
     	sql = "delete from courseSelection where Cno=? and Sno=?";
     	 db1 = new DBHelper(sql);
     	 try {
 			db1.pst.setString(1, cno);
-			db1.pst.setString(2, acc);
+			db1.pst.setString(2, sno);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -169,7 +170,7 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
 	public static void main(String[] args) {
 		try {
 			CourseSelectionData cs = new CourseSelectionData();
-			AccountPO a = new AccountPO("3","2333",20160708);
+			StudentPO s = new StudentPO("6", "sss", "sss", "ww", "m");
 //	    	System.out.println(demo.insertAccount(a));
 	    	CoursePO c = new CoursePO("1","adf",20,3,"ella","203","1");
 // 	    	cs.selectAllCourse();
@@ -177,7 +178,7 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
 //			StudentPO spo = new StudentPO("2",null,null,null,null);
 //			cs.selectMyCourse(spo);
 //	    	System.out.println(cs.quitCourse(a, c));
-	    	cs.selectCourse(a, c);
+	    	cs.selectCourse(s, c);
 	    	
 			
 		} catch (RemoteException e) {

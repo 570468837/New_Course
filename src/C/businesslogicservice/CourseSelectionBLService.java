@@ -13,7 +13,7 @@ public interface CourseSelectionBLService{
 	//
 
 	public CoursePO[] showSelectedCourse(StudentPO spo) throws RemoteException ;
-	public boolean courseQuit(AccountVO a,CourseVO c) throws RemoteException;
+	public boolean courseQuit(StudentPO s,CoursePO c) throws RemoteException;
 	public boolean courseSelect(StudentPO s, CoursePO c);
 	
 }
