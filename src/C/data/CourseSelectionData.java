@@ -41,13 +41,13 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
 //				System.out.println(rs.getString(1));
 //				System.out.println(acc.equals(rs.getString(1)));
 				if(acc.equals(rs.getString(2))){
-					System.out.println("ww");
+//					System.out.println("ww");
 					if(cno.equals(rs.getString(1))){
 						
 						return true;
 					}
 				}
-				System.out.println("lalala");
+//				System.out.println("lalala");
 //				System.out.println(rs.getString(1));
 //				System.out.println(rs.getString(2));
 			}

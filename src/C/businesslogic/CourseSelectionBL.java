@@ -34,7 +34,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 			AccountPO apo = new AccountPO(null, null, 0);
 			
 			apo.setAcc(s.getSno());
-			
+			cs.selectCourse(apo, c);
 			result = cs.selectCourse(apo, c);
 			
 		} catch (MalformedURLException e) {
@@ -120,8 +120,8 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 		CourseSelectionBL csbl = new CourseSelectionBL();
 		AccountVO avo = new AccountVO("3","2333",20190908);
 		CoursePO cpo = new CoursePO("1", null, 0, 0, null, null, null);
-		StudentPO spo = new StudentPO("3",null,null,null,null);
-
+		StudentPO spo = new StudentPO("4",null,null,null,null);
+		csbl.courseSelect(spo, cpo);
 		System.out.println(csbl.courseSelect(spo, cpo));
 //		for(int i = 0;i<csbl.showSelectedCourse(spo).length;i++){
 //			
