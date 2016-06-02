@@ -20,7 +20,6 @@ import common.WarningDialog;
 
 import C.businesslogic.CourseBL;
 import C.businesslogic.CourseSelectionBL;
-import C.businesslogic.CourseSelectionController;
 import C.businesslogicservice.CourseBLService;
 import C.businesslogicservice.CourseSelectionBLService;
 import C.po.CoursePO;
@@ -47,7 +46,6 @@ public class SelectPanel extends JPanel {
 		DefaultTableModel model = new DefaultTableModel();
 		table.setModel(model);
 		table.setFont(new Font("宋体", Font.PLAIN, 13));
-		table.setRowSorter(new TableRowSorter<TableModel>(model));
 		table.setFillsViewportHeight(true);
 		//数据
 		String[] titles = {"课程编号","课程名称","学分","授课老师","授课地点"};
@@ -74,6 +72,8 @@ public class SelectPanel extends JPanel {
 		confirmButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				int rowIndex = table.getSelectedRow();
+				if(rowIndex >= allCoursesData.size())
+					return;
 				CoursePO coursePO = courseBL.showCourseById((String)table.getValueAt(rowIndex, 0));
 				//如果是本院系的课
 				if(coursePO != null){

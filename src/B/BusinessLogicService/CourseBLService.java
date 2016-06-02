@@ -7,6 +7,11 @@ import B.Model.Course;
 public interface CourseBLService {
 	/**
 	 * 
+	 * @return all local courses 
+	 */
+	public ArrayList<Course> getAllLocalCourse();
+	/**
+	 * 
 	 * @param id
 	 * @return null if failed
 	 */

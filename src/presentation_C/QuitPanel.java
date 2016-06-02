@@ -46,7 +46,6 @@ public class QuitPanel extends JPanel {
 		DefaultTableModel model = new DefaultTableModel();
 		table.setModel(model);
 		table.setFont(new Font("宋体", Font.PLAIN, 13));
-		table.setRowSorter(new TableRowSorter<TableModel>(model));
 		table.setFillsViewportHeight(true);
 		
 		String[] titles = {"课程编号","课程名称","学分","授课老师","授课地点"};
@@ -78,6 +77,8 @@ public class QuitPanel extends JPanel {
 		confirmButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				int rowIndex = table.getSelectedRow();
+				if(rowIndex >= allSelectedCoursesData.size())
+					return;
 				CoursePO coursePO = courseBL.showCourseById((String)table.getValueAt(rowIndex, 0));
 				try{
 				if(coursePO != null){
@@ -117,8 +118,7 @@ public class QuitPanel extends JPanel {
 	
 //之后根据Muyu的接口要改
 	private boolean quitCourse(StudentPO studentPO, CoursePO coursePO) throws RemoteException {
-		return selectBL.courseQuit(new AccountVO(studentPO.getSno(), studentPO.getSnm(), 
-					0), null);
+		return selectBL.courseQuit(studentPO, coursePO);
 	}
 
 }

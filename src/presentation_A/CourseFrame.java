@@ -22,8 +22,8 @@ import java.awt.event.MouseEvent;
 
 
 public class CourseFrame extends JFrame {
-	private SelectPanel selectPanel = new SelectPanel(this);
-	private QuitPanel quitPanel = new QuitPanel(this);
+	private SelectPanel selectPanel ;
+	private QuitPanel quitPanel ;
 	/**
 	 * Launch the application.
 	 */
@@ -44,6 +44,8 @@ public class CourseFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public CourseFrame(String name) {
+		selectPanel = new SelectPanel(this);
+		quitPanel = new QuitPanel(this);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(760, 589);

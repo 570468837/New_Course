@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import B.BusinessLogicService.UserBLService;
+import B.BusinessLogicService.UserBLServiceImpl;
 import B.Model.Student;
 
 import java.awt.Font;
@@ -24,8 +26,8 @@ import java.awt.event.MouseEvent;
 
 
 public class CourseFrame extends JFrame {
-	private SelectPanel selectPanel = new SelectPanel(this);
-	private QuitPanel quitPanel = new QuitPanel(this);
+	private SelectPanel selectPanel;
+	private QuitPanel quitPanel;
 	
 	Student studentPO;
 	/**
@@ -41,7 +43,8 @@ public class CourseFrame extends JFrame {
 		} catch(Exception e){
 			System.out.println("包有问题");
 			}
-		CourseFrame frame = new CourseFrame(new Student("0201","盛宇", "女", "专业", "2333"));
+		UserBLService u = new UserBLServiceImpl() ;
+		CourseFrame frame = new CourseFrame(u.loginValidity("SY", "123"));
 	}
 
 	/**
@@ -49,6 +52,8 @@ public class CourseFrame extends JFrame {
 	 */
 	public CourseFrame(Student student) {
 		this.studentPO = student;
+		selectPanel = new SelectPanel(this);
+		quitPanel = new QuitPanel(this);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(760, 589);
