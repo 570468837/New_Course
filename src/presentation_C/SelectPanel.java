@@ -46,7 +46,6 @@ public class SelectPanel extends JPanel {
 		DefaultTableModel model = new DefaultTableModel();
 		table.setModel(model);
 		table.setFont(new Font("宋体", Font.PLAIN, 13));
-		table.setRowSorter(new TableRowSorter<TableModel>(model));
 		table.setFillsViewportHeight(true);
 		//数据
 		String[] titles = {"课程编号","课程名称","学分","授课老师","授课地点"};
