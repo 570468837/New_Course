@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -92,7 +93,17 @@ public class SelectPanel extends JPanel {
 
 	private void getData() {
 		// TODO Auto-generated method stub
-		//需要补充！！
+		ArrayList<Course> courses= courseBL.getCourseShared();
+		for(int i=0;i<courses.size();i++){
+			Course oneCourse = courses.get(i);
+			Vector oneVector = new Vector<>();
+			oneVector.add(oneCourse.getId());
+			oneVector.add(oneCourse.getName());
+			oneVector.add(oneCourse.getCredit());
+			oneVector.add(oneCourse.getTeacher());
+			oneVector.add(oneCourse.getClassRoom());
+			allCoursesData.add(oneVector);
 		}
+	}
 		
 }
