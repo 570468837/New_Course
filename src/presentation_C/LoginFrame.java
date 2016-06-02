@@ -17,7 +17,8 @@ import java.rmi.RemoteException;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import config.WarningDialog;
+import common.WarningDialog;
+
 import C.businesslogic.StudentBL;
 import C.businesslogic.StudentController;
 import C.businesslogic.UserBL;
@@ -84,6 +85,7 @@ public class LoginFrame extends JFrame {
 				if(userController.login(userField.getText().trim(), 
 						new String(passwordField.getPassword()))){
 					StudentPO student = studentController.showStudentById(userField.getText().trim());
+					new CourseFrame(student);
 					thisFrame.dispose();
 				}
 				else{
