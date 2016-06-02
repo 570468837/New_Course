@@ -117,8 +117,7 @@ public class QuitPanel extends JPanel {
 	
 //之后根据Muyu的接口要改
 	private boolean quitCourse(StudentPO studentPO, CoursePO coursePO) throws RemoteException {
-		return selectBL.courseQuit(new AccountVO(studentPO.getSno(), studentPO.getSnm(), 
-					0), null);
+		return selectBL.courseQuit(studentPO, coursePO);
 	}
 
 }

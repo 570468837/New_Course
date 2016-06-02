@@ -20,7 +20,6 @@ import common.WarningDialog;
 
 import C.businesslogic.CourseBL;
 import C.businesslogic.CourseSelectionBL;
-import C.businesslogic.CourseSelectionController;
 import C.businesslogicservice.CourseBLService;
 import C.businesslogicservice.CourseSelectionBLService;
 import C.po.CoursePO;

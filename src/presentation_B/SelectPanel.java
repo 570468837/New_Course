@@ -93,7 +93,8 @@ public class SelectPanel extends JPanel {
 
 	private void getData() {
 		// TODO Auto-generated method stub
-		ArrayList<Course> courses= courseBL.getCourseShared();
+		//要改！！！
+		ArrayList<Course> courses= courseBL.getLocalCourseShared();
 		for(int i=0;i<courses.size();i++){
 			Course oneCourse = courses.get(i);
 			Vector oneVector = new Vector<>();
