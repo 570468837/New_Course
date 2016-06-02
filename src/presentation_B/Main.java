@@ -3,6 +3,7 @@ import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import B.Model.Student;
 import presentation_server.StatisticsFrame;
 
 
@@ -26,7 +27,7 @@ public class Main {
 	public static void main(String[] args){
 		Main m = new Main();
 		LoginFrame lf = new LoginFrame();
-		CourseFrame cf = new CourseFrame("盛宇");
+		CourseFrame cf = new CourseFrame(new Student("0201","盛宇", "女", "专业", "2333"));
 		StatisticsFrame sf = new StatisticsFrame();
 		
 	}

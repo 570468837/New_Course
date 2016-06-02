@@ -85,6 +85,7 @@ public class LoginFrame extends JFrame {
 				if(userController.login(userField.getText().trim(), 
 						new String(passwordField.getPassword()))){
 					StudentPO student = studentController.showStudentById(userField.getText().trim());
+					new CourseFrame(student);
 					thisFrame.dispose();
 				}
 				else{
