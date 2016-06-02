@@ -81,6 +81,7 @@ public class LoginFrame extends JFrame {
 				Student student = userBL.loginValidity(userField.getText().trim(), 
 						new String(passwordField.getPassword()));
 				if( student != null){
+					System.out.println(student.getName());
 					new CourseFrame(student);
 					thisFrame.dispose();
 				}

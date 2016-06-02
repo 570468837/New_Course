@@ -17,7 +17,6 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import common.WarningDialog;
-
 import B.BusinessLogicService.CourseBLService;
 import B.BusinessLogicService.CourseBLServiceImpl;
 import B.BusinessLogicService.StudentBLService;
@@ -25,6 +24,7 @@ import B.BusinessLogicService.StudentBLServiceImpl;
 import B.BusinessLogicService.StudentCourseBLService;
 import B.BusinessLogicService.StudentCourseBLServiceImpl;
 import B.Model.Course;
+import B.Model.Student;
 
 public class QuitPanel extends JPanel {
 	JFrame theFrame ;
@@ -37,6 +37,7 @@ public class QuitPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public QuitPanel(JFrame theFrame) {
+		this.theFrame = theFrame ;
 		theFrame.add(this);
 		this.setBounds(127, 0, 607, 535);
 		this.setLayout(null);
@@ -46,7 +47,6 @@ public class QuitPanel extends JPanel {
 		DefaultTableModel model = new DefaultTableModel();
 		table.setModel(model);
 		table.setFont(new Font("宋体", Font.PLAIN, 13));
-		table.setRowSorter(new TableRowSorter<TableModel>(model));
 		table.setFillsViewportHeight(true);
 		
 		String[] titles = {"课程编号","课程名称","学分","授课老师","授课地点"};
@@ -73,6 +73,8 @@ public class QuitPanel extends JPanel {
 		confirmButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				int rowIndex = table.getSelectedRow();
+				if(rowIndex>=allSelectedCoursesData.size())
+					return;
 				Course coursePO = courseBL.getCourseById(((String)table.getValueAt(rowIndex, 0)));
 				if(coursePO != null){
 					boolean ifSuccess=false;
@@ -85,13 +87,16 @@ public class QuitPanel extends JPanel {
 				else
 					new WarningDialog("没有这门课！");
 					//刷新表格
-					getData();
+				getData();
 				}
 			});
 	}
 	private void getData() {
 		// TODO Auto-generated method stub
-		ArrayList<Course> courses= selectBL.getSelectedCourses(((CourseFrame)theFrame).getStudentPO());
+		allSelectedCoursesData.clear();
+		Student s = ((CourseFrame)theFrame).getStudentPO() ;
+		
+		ArrayList<Course> courses= selectBL.getSelectedCourses(s);
 		for(int i=0;i<courses.size();i++){
 			Course oneCourse = courses.get(i);
 			Vector oneVector = new Vector<>();
