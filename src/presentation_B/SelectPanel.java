@@ -71,6 +71,8 @@ public class SelectPanel extends JPanel {
 		confirmButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				int rowIndex = table.getSelectedRow();
+				if(rowIndex >= allCoursesData.size())
+					return;
 				Course coursePO = courseBL.getCourseById(((String)table.getValueAt(rowIndex, 0)));
 				//如果是本院系的课
 				if(coursePO != null){

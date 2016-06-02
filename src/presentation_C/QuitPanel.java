@@ -78,6 +78,8 @@ public class QuitPanel extends JPanel {
 		confirmButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				int rowIndex = table.getSelectedRow();
+				if(rowIndex >= allSelectedCoursesData.size())
+					return;
 				CoursePO coursePO = courseBL.showCourseById((String)table.getValueAt(rowIndex, 0));
 				try{
 				if(coursePO != null){
