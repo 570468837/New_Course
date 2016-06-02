@@ -13,10 +13,10 @@ import C.po.StudentPO;
 public interface CourseSelectionDataService extends Remote {
 
 	
-	public boolean selectCourse(AccountPO a,CoursePO c)throws RemoteException;
+	public boolean selectCourse(StudentPO s,CoursePO c)throws RemoteException;
 	public CoursePO[] selectAllCourse() throws RemoteException;
 	public AccountPO[] selectAllAccount() throws RemoteException;
 	
 	public CoursePO[] selectMyCourse(StudentPO spo)throws RemoteException;	
-	public boolean quitCourse(AccountPO a,CoursePO c)throws RemoteException;
+	public boolean quitCourse(StudentPO s,CoursePO c)throws RemoteException;
 }

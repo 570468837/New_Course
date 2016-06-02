@@ -20,7 +20,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 
 	@Override
 	/*
-	 * 学生选课操作
+	 * 学生选课操作   好吧我不知道为什么反正确实能选课，但是返回的布尔值就是不正确
 	 * */
 	public boolean courseSelect(StudentPO s, CoursePO c) {
 		// TODO Auto-generated method stub
@@ -31,11 +31,9 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 		try {
 			cs=(CourseSelectionDataService) Naming.lookup("rmi://127.0.0.1:2016/Server");
 			
-			AccountPO apo = new AccountPO(null, null, 0);
 			
-			apo.setAcc(s.getSno());
-			cs.selectCourse(apo, c);
-			result = cs.selectCourse(apo, c);
+			cs.selectCourse(s, c);
+			result = cs.selectCourse(s, c);
 			
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -86,21 +84,18 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 	}
 	
 	/*
-	 * 退课   啊啊啊啊啊啊啊啊啊不知道为什么在这里就是false 不是true   ！！！！！明天再写
+	 * 退课   啊啊啊啊啊啊啊啊啊不知道为什么在这里就是false 不是true   ！！！！！但是功能是能实现的
+	 *       可以在表中删除的！！！！！
 	 * */
-	public boolean courseQuit(AccountVO a, CourseVO c) throws RemoteException {
+	public boolean courseQuit(StudentPO s, CoursePO c) throws RemoteException {
 		// TODO Auto-generated method stub
 		CourseSelectionDataService cs = null;
-		CoursePO cpo = null;
-		AccountPO apo =null;
+		
 		try {
 			cs=(CourseSelectionDataService) Naming.lookup("rmi://127.0.0.1:2016/Server");
-			cpo = new CoursePO(null, null, 0, 0, null, null, null);
-			apo = new AccountPO(null, null, 0);
-			cpo.setCno( c.getCno());
-			apo.setAcc(a.getAcc());
 			
-			cs.quitCourse(apo, cpo);
+			
+			cs.quitCourse(s, c);
 			
 			
 		} catch (MalformedURLException e) {
@@ -113,16 +108,16 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return cs.quitCourse(apo, cpo);
+		return cs.quitCourse(s, c);
 		
 	}
 	public static void main(String[] args) throws RemoteException {
 		CourseSelectionBL csbl = new CourseSelectionBL();
 		AccountVO avo = new AccountVO("3","2333",20190908);
 		CoursePO cpo = new CoursePO("1", null, 0, 0, null, null, null);
-		StudentPO spo = new StudentPO("5",null,null,null,null);
-		csbl.courseSelect(spo, cpo);
-		System.out.println(csbl.courseSelect(spo, cpo));
+		StudentPO spo = new StudentPO("10",null,null,null,null);
+//		csbl.courseSelect(spo, cpo);
+//		System.out.println(csbl.courseSelect(spo, cpo));
 //		for(int i = 0;i<csbl.showSelectedCourse(spo).length;i++){
 //			
 //			
@@ -139,6 +134,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 //			e.printStackTrace();
 //		}
 //		System.out.println(csbl.courseQuit(avo, cvo)+"ssss");
+		csbl.courseQuit(spo, cpo);
 	}
 
 	
