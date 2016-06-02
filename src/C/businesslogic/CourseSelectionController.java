@@ -8,12 +8,12 @@ import C.po.StudentPO;
 import C.vo.AccountVO;
 import C.vo.CourseSelectionVO;
 import C.vo.CourseVO;
-import C.vo.LoginVO;
+
 
 public class CourseSelectionController {
 	CourseSelectionBLService courseSelectionBLService =new CourseSelectionBL();
-	public CourseSelectionVO courseSelect(AccountVO avo,CourseVO cvo){
-		return courseSelectionBLService.courseSelect(avo, cvo);
+	public boolean courseSelect(StudentPO spo,CoursePO cpo){
+		return courseSelectionBLService.courseSelect(spo, cpo);
 	}
 	public CoursePO[] showSelectedCourse(StudentPO spo)  throws RemoteException{
 		return courseSelectionBLService.showSelectedCourse(spo);

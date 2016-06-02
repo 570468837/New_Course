@@ -10,7 +10,7 @@ import C.businesslogicservice.UserBLService;
 import C.dataservice.UserDataService;
 import C.po.AccountPO;
 import C.vo.AccountVO;
-import C.vo.LoginVO;
+
 
 public class UserBL  implements UserBLService{
 	
@@ -22,7 +22,7 @@ public class UserBL  implements UserBLService{
 	//登录
 	public boolean login(String username,String password) {
 		UserDataService ud;
-		LoginVO loginvo = null;
+		
 		String result = "该用户名不存在";
 		boolean res = false;
 	
@@ -57,7 +57,7 @@ public class UserBL  implements UserBLService{
 	    		result = "该用户名不存在";
 	    		System.out.println(result);
 	    	}
-			loginvo = new LoginVO(result);
+			
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

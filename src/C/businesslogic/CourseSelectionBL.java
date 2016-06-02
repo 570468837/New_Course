@@ -15,27 +15,27 @@ import C.po.StudentPO;
 import C.vo.AccountVO;
 import C.vo.CourseSelectionVO;
 import C.vo.CourseVO;
-import C.vo.LoginVO;
+
 public class CourseSelectionBL implements CourseSelectionBLService{
 
 	@Override
 	/*
 	 * 学生选课操作
 	 * */
-	public CourseSelectionVO courseSelect(AccountVO a, CourseVO c) {
+	public boolean courseSelect(StudentPO s, CoursePO c) {
 		// TODO Auto-generated method stub
 		CourseSelectionDataService cs;
 		CourseSelectionVO courseSelectionVO = null;
-		
+		boolean result = false;
 		
 		try {
 			cs=(CourseSelectionDataService) Naming.lookup("rmi://127.0.0.1:2016/Server");
-			CoursePO cpo = new CoursePO(null, null, 0, 0, null, null, null);
-			AccountPO apo = new AccountPO(null, null, 0);
-			cpo.setCno( c.getCno());
-			apo.setAcc(a.getAcc());
 			
-			cs.selectCourse(apo, cpo);
+			AccountPO apo = new AccountPO(null, null, 0);
+			
+			apo.setAcc(s.getSno());
+			
+			result = cs.selectCourse(apo, c);
 			
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -47,7 +47,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return courseSelectionVO;
+		return result;
 	}
 	
 	/*
@@ -119,10 +119,10 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 	public static void main(String[] args) throws RemoteException {
 		CourseSelectionBL csbl = new CourseSelectionBL();
 		AccountVO avo = new AccountVO("3","2333",20190908);
-		CourseVO cvo = new CourseVO("1", null, 0, 0, null, null, null);
+		CoursePO cpo = new CoursePO("1", null, 0, 0, null, null, null);
 		StudentPO spo = new StudentPO("3",null,null,null,null);
 
-//		csbl.courseSelect(avo, cvo);
+		System.out.println(csbl.courseSelect(spo, cpo));
 //		for(int i = 0;i<csbl.showSelectedCourse(spo).length;i++){
 //			
 //			
@@ -138,7 +138,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		System.out.println(csbl.courseQuit(avo, cvo)+"ssss");
+//		System.out.println(csbl.courseQuit(avo, cvo)+"ssss");
 	}
 
 	

@@ -172,12 +172,13 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
 			AccountPO a = new AccountPO("3","2333",20160708);
 //	    	System.out.println(demo.insertAccount(a));
 	    	CoursePO c = new CoursePO("1","adf",20,3,"ella","203","1");
-//			cs.selectCourse(a, c);
-//	    	cs.selectAllCourse();
+// 	    	cs.selectAllCourse();
 //			cs.selectAllAccount();
 //			StudentPO spo = new StudentPO("2",null,null,null,null);
 //			cs.selectMyCourse(spo);
-	    	System.out.println(cs.quitCourse(a, c));
+//	    	System.out.println(cs.quitCourse(a, c));
+	    	cs.selectCourse(a, c);
+	    	
 			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

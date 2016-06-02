@@ -5,7 +5,7 @@ package C.businesslogicservice;
 import java.rmi.Remote;
 
 import C.vo.AccountVO;
-import C.vo.LoginVO;
+
 
 public interface UserBLService {
 

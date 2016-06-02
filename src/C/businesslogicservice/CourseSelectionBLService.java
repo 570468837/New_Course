@@ -11,7 +11,9 @@ import C.vo.CourseVO;
 
 public interface CourseSelectionBLService{
 	//
-	public CourseSelectionVO courseSelect(AccountVO a,CourseVO c);
+
 	public CoursePO[] showSelectedCourse(StudentPO spo) throws RemoteException ;
 	public boolean courseQuit(AccountVO a,CourseVO c) throws RemoteException;
+	public boolean courseSelect(StudentPO s, CoursePO c);
+	
 }
