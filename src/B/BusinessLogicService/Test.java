@@ -30,7 +30,7 @@ public class Test {
 //		System.out.println(s.getName());
 //		System.exit(0);
 		CourseBLService cbl = new CourseBLServiceImpl() ;
-		ArrayList<Course> list = cbl.getCourseShared() ;
+		ArrayList<Course> list = cbl.getLocalCourseShared() ;
 		for(Course c:list){
 			System.out.println(c.getName());
 		}

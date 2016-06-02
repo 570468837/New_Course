@@ -19,7 +19,7 @@ public class CourseBLServiceImpl implements CourseBLService{
 		return dataControler.find(id);
 	}
 	@Override
-	public ArrayList<Course> getCourseShared() {
+	public ArrayList<Course> getLocalCourseShared() {
 		// TODO Auto-generated method stub
 		ArrayList<Course> result = new ArrayList<Course>() ;
 		List<Course> list = dataControler.show() ;
