@@ -45,7 +45,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return result;
+		return true;
 	}
 	
 	/*
@@ -115,9 +115,9 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 		CourseSelectionBL csbl = new CourseSelectionBL();
 		AccountVO avo = new AccountVO("3","2333",20190908);
 		CoursePO cpo = new CoursePO("1", null, 0, 0, null, null, null);
-		StudentPO spo = new StudentPO("10",null,null,null,null);
+		StudentPO spo = new StudentPO("20",null,null,null,null);
 //		csbl.courseSelect(spo, cpo);
-//		System.out.println(csbl.courseSelect(spo, cpo));
+		System.out.println(csbl.courseSelect(spo, cpo));
 //		for(int i = 0;i<csbl.showSelectedCourse(spo).length;i++){
 //			
 //			
@@ -134,7 +134,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 //			e.printStackTrace();
 //		}
 //		System.out.println(csbl.courseQuit(avo, cvo)+"ssss");
-		csbl.courseQuit(spo, cpo);
+//		csbl.courseQuit(spo, cpo);
 	}
 
 	

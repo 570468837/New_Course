@@ -76,16 +76,19 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
  			
  	  
  	    	 int result = db1.pst.executeUpdate();
- 	    	 if(result>0){
- 	    		 return true;
+ 	    	 System.out.println(result);
+ 	    	 if(result<0){
+ 	    		 System.out.println("result"+result);
+ 	    		 return false;
  	    	 }
- 	    	 System.out.println("result"+result);
+ 	    	
  		} catch (SQLException e) {
  			// TODO Auto-generated catch block
  			e.printStackTrace();
  		}
+     	
      	 }
-     	 return false;
+     	 return true;
     	
 	}
 	public boolean quitCourse(StudentPO s,CoursePO c){
@@ -93,6 +96,7 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
 		CourseSelectionPO cs = new CourseSelectionPO(null, null, 0);
     	String sno = s.getSno();
     	String cno = c.getCno();
+    	int result = 0;
     	
     	sql = "delete from courseSelection where Cno=? and Sno=?";
     	 db1 = new DBHelper(sql);
@@ -104,18 +108,21 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
 			e1.printStackTrace();
 		}
     	 
-     	 try {
+     	
  			
  			
  	  
- 	    	 int result = db1.pst.executeUpdate();
+ 	    	 try {
+				result = db1.pst.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
  	    	 if(result>0){
  	    		 return true;
  	    	 }
- 		} catch (SQLException e) {
- 			// TODO Auto-generated catch block
- 			e.printStackTrace();
- 		}
+ 	    	 System.out.println(result+"result");
+ 		
      	 
      	 return false;
     	
@@ -170,7 +177,7 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
 	public static void main(String[] args) {
 		try {
 			CourseSelectionData cs = new CourseSelectionData();
-			StudentPO s = new StudentPO("6", "sss", "sss", "ww", "m");
+			StudentPO s = new StudentPO("15", "sss", "sss", "ww", "m");
 //	    	System.out.println(demo.insertAccount(a));
 	    	CoursePO c = new CoursePO("1","adf",20,3,"ella","203","1");
 // 	    	cs.selectAllCourse();
