@@ -17,7 +17,8 @@ import java.rmi.RemoteException;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import config.WarningDialog;
+import common.WarningDialog;
+
 import C.businesslogic.StudentBL;
 import C.businesslogic.StudentController;
 import C.businesslogic.UserBL;
