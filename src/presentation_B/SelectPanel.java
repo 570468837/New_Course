@@ -1,6 +1,9 @@
 package presentation_B;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,9 +15,24 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+import common.WarningDialog;
+import B.BusinessLogicService.CourseBLService;
+import B.BusinessLogicService.CourseBLServiceImpl;
+import B.BusinessLogicService.StudentBLService;
+import B.BusinessLogicService.StudentBLServiceImpl;
+import B.BusinessLogicService.StudentCourseBLService;
+import B.BusinessLogicService.StudentCourseBLServiceImpl;
+import B.Model.Course;
+import B.Model.Student;
+
+
 
 public class SelectPanel extends JPanel {
-
+	Vector allCoursesData = new Vector<>();
+	StudentBLService studentBL = new StudentBLServiceImpl();
+	CourseBLService courseBL = new CourseBLServiceImpl();
+	StudentCourseBLService selectBL = new StudentCourseBLServiceImpl();
+	
 	/**
 	 * Create the panel.
 	 */
@@ -30,6 +48,13 @@ public class SelectPanel extends JPanel {
 		table.setRowSorter(new TableRowSorter<TableModel>(model));
 		table.setFillsViewportHeight(true);
 		
+		String[] titles = {"课程编号","课程名称","学分","授课老师","授课地点"};
+		Vector<String> v_title = new Vector();
+		for(int i=0;i<titles.length;i++)
+			v_title.add(titles[i]);
+		getData();
+		model.setDataVector(allCoursesData, v_title);
+		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(22, 80, 558, 402);
 		add(scrollPane);
@@ -44,5 +69,31 @@ public class SelectPanel extends JPanel {
 		confirmButton.setBounds(489, 492, 89, 38);
 		add(confirmButton);
 		
+		confirmButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				int rowIndex = table.getSelectedRow();
+				Course coursePO = courseBL.getCourseById(((String)table.getValueAt(rowIndex, 0)));
+				//如果是本院系的课
+				if(coursePO != null){
+					boolean ifSuccess = studentBL.selectCourse(((CourseFrame)theFrame).getStudentPO(), 
+							coursePO);
+					if(ifSuccess)
+						new WarningDialog("选课成功！");
+					else
+						new WarningDialog("选课失败，可能已选该课！");
+				}
+				else
+					new WarningDialog("没有这门课！");
+				//刷新表格
+				getData();
+			}
+		});
+		
 	}
+
+	private void getData() {
+		// TODO Auto-generated method stub
+		//需要补充！！
+		}
+		
 }
