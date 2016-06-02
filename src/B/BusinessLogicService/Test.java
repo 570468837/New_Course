@@ -2,6 +2,9 @@ package B.BusinessLogicService;
 
 
 
+import java.util.ArrayList;
+
+import B.Model.Course;
 import B.Model.Student;
 
 public class Test {
@@ -22,9 +25,14 @@ public class Test {
 //		while(it.hasNext()){
 //			System.out.println(it.next().getName());
 //		}
-		UserBLService ubl = new UserBLServiceImpl() ;
-		Student s = ubl.loginValidity("SY","123");
-		System.out.println(s.getName());
-		System.exit(0);
+//		UserBLService ubl = new UserBLServiceImpl() ;
+//		Student s = ubl.loginValidity("SY","123");
+//		System.out.println(s.getName());
+//		System.exit(0);
+		CourseBLService cbl = new CourseBLServiceImpl() ;
+		ArrayList<Course> list = cbl.getCourseShared() ;
+		for(Course c:list){
+			System.out.println(c.getName());
+		}
 	}
 }
