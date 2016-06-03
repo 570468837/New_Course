@@ -23,4 +23,17 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean selectCourse(FileInformation fromFile)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean quitCourse(FileInformation fromFile) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
