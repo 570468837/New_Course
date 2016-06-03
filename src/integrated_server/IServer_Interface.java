@@ -12,7 +12,8 @@ import common.FileInformation;
  *
  */
 public interface IServer_Interface extends Remote{
+	//每一个方法都要抛出RemoteException
     public String helloWorld() throws RemoteException; 
-    public FileInformation getCoursesOfOtherFaculties(Faculty self);
+    public FileInformation getCoursesOfOtherFaculties(Faculty self) throws RemoteException ;
 
 }
