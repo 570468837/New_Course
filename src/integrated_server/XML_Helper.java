@@ -1,20 +1,26 @@
 package integrated_server;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.text.Format;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
-
+import org.dom4j.io.XMLWriter;
 /**
  * 
  * @author FrankYao
  *	用于帮助在集成服务器上统计数据的类
  */
-public class XML_Decode {
+public class XML_Helper {
 	public ArrayList<Course> decodeCourses(String fileAddress){
 		ArrayList<Course> result = new ArrayList<>();
 		SAXReader reader = new SAXReader();
@@ -38,6 +44,43 @@ public class XML_Decode {
 		  }
 		return result;
 	}	
+	
+	public void outputCourses(ArrayList<Course> courses, String outputAddress) {
+		Document document = DocumentHelper.createDocument();	
+		//创建root 
+		Element root = document.addElement("courses");  
+		        //生成root的一个接点  
+		for(Course c: courses){
+			Element courseElement = root.addElement("course");
+			courseElement.addAttribute("id", c.getId());
+			courseElement.addAttribute("name", c.getName());
+			courseElement.addAttribute("score", c.getScore());
+			courseElement.addAttribute("teacher", c.getTeacher());
+			courseElement.addAttribute("location", c.getLocation());
+		}
+		//输出
+		StringWriter stringWriter = new StringWriter();  
+	    //设置文件编码  
+		OutputFormat xmlFormat = new OutputFormat();  
+	    xmlFormat.setEncoding("UTF-8"); 
+	    // 设置换行 
+	    xmlFormat.setNewlines(true); 
+	    // 生成缩进 
+	    xmlFormat.setIndent(true); 
+	    // 使用4个空格进行缩进, 可以兼容文本编辑器 
+	    xmlFormat.setIndent("    "); 
+	        
+	    //创建写文件方法  
+	    XMLWriter xmlWriter;
+		try {
+			xmlWriter = new XMLWriter(new FileWriter(outputAddress),xmlFormat);
+			xmlWriter.write(document);  
+			xmlWriter.close(); 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+	}
 
 	public ArrayList<Student> decodeStudents(String fileAddress){
 		ArrayList<Student> result = new ArrayList<>();
