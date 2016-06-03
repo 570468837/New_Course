@@ -65,6 +65,17 @@ public class QuitPanel extends JPanel {
 		label.setBounds(235, 22, 150, 35);
 		add(label);
 		
+		JButton refreshButton = new JButton("刷新");
+		refreshButton.setFont(new Font("宋体", Font.BOLD, 12));
+		refreshButton.setBounds(370, 492, 89, 38);
+		add(refreshButton);
+		
+		refreshButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				getData();
+			}
+		});
+		
 		JButton confirmButton = new JButton("退课");
 		confirmButton.setFont(new Font("宋体", Font.BOLD, 12));
 		confirmButton.setBounds(489, 492, 89, 38);
@@ -90,6 +101,7 @@ public class QuitPanel extends JPanel {
 				getData();
 				}
 			});
+		
 	}
 	private void getData() {
 		// TODO Auto-generated method stub

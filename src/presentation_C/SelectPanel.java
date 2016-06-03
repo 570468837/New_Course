@@ -64,6 +64,17 @@ public class SelectPanel extends JPanel {
 		label.setBounds(260, 22, 100, 35);
 		add(label);
 		
+		JButton refreshButton = new JButton("刷新");
+		refreshButton.setFont(new Font("宋体", Font.BOLD, 12));
+		refreshButton.setBounds(370, 492, 89, 38);
+		add(refreshButton);
+		
+		refreshButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				getData();
+			}
+		});
+		
 		JButton confirmButton = new JButton("选课");
 		confirmButton.setFont(new Font("宋体", Font.BOLD, 12));
 		confirmButton.setBounds(489, 492, 89, 38);
