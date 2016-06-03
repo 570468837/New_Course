@@ -2,6 +2,7 @@ package presentation_server;
 
 import java.awt.Font;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,6 +38,11 @@ public class Select_StatisticsPanel extends JPanel {
 		label.setFont(new Font("宋体", Font.BOLD, 19));
 		label.setBounds(260, 22, 100, 35);
 		add(label);
+		
+		String[] faculties = {"所有院","A","B","C"};
+		JComboBox box = new JComboBox(faculties);
+		box.setBounds(495,35,80,25);
+		add(box);
 		}
 	}
 

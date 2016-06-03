@@ -9,6 +9,11 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+/**
+ * 
+ * @author FrankYao
+ *	用于帮助在集成服务器上统计数据的类
+ */
 public class XML_Decode {
 	public ArrayList<Course> decodeCourses(String fileAddress){
 		ArrayList<Course> result = new ArrayList<>();
@@ -34,7 +39,6 @@ public class XML_Decode {
 		return result;
 	}	
 
-
 	public ArrayList<Student> decodeStudents(String fileAddress){
 		ArrayList<Student> result = new ArrayList<>();
 		SAXReader reader = new SAXReader();
@@ -54,6 +58,28 @@ public class XML_Decode {
 			String sex = child.elementText("sex");
 			String major = child.elementText("major");
 			result.add(new Student(id, name, sex, major));
+		  }
+		return result;
+	}
+	
+	public ArrayList<Selection> decodeSelections(String fileAddress){
+		ArrayList<Selection> result = new ArrayList<>();
+		SAXReader reader = new SAXReader();
+		File file = new File(fileAddress);
+		Document document = null;
+		try {
+			document = reader.read(file);
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Element root = document.getRootElement();
+		List<Element> childElements = root.elements();
+		for (Element child : childElements) {
+			String sid = child.elementText("sid");
+			String cid = child.elementText("cid");
+			String score = child.elementText("score");
+			result.add(new Selection(sid, cid, score));
 		  }
 		return result;
 	}
