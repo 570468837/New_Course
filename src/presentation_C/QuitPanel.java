@@ -28,6 +28,7 @@ import C.vo.AccountVO;
 
 public class QuitPanel extends JPanel {
 	JFrame theFrame;
+	JTable table ;
 	Vector allSelectedCoursesData = new Vector<>();
 	
 	CourseBLService courseBL = new CourseBL();
@@ -42,7 +43,7 @@ public class QuitPanel extends JPanel {
 		this.setLayout(null);
 		setVisible(false);
 		
-		JTable table = new JTable();
+		table = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
 		table.setModel(model);
 		table.setFont(new Font("宋体", Font.PLAIN, 13));
@@ -131,6 +132,7 @@ public class QuitPanel extends JPanel {
 			oneVector.add(oneCourse.getPla());
 			allSelectedCoursesData.add(oneVector);
 		}
+		table.repaint();
 	}
 	
 //之后根据Muyu的接口要改

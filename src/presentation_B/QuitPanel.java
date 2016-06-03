@@ -28,6 +28,7 @@ import B.Model.Student;
 
 public class QuitPanel extends JPanel {
 	JFrame theFrame ;
+	JTable table;
 	Vector allSelectedCoursesData = new Vector<>();
 
 	CourseBLService courseBL = new CourseBLServiceImpl();
@@ -43,7 +44,7 @@ public class QuitPanel extends JPanel {
 		this.setLayout(null);
 		setVisible(false);
 		
-		JTable table = new JTable();
+		table = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
 		table.setModel(model);
 		table.setFont(new Font("宋体", Font.PLAIN, 13));
@@ -73,6 +74,7 @@ public class QuitPanel extends JPanel {
 		refreshButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				getData();
+				System.out.println(allSelectedCoursesData.size());
 			}
 		});
 		
@@ -119,6 +121,7 @@ public class QuitPanel extends JPanel {
 			oneVector.add(oneCourse.getClassRoom());
 			allSelectedCoursesData.add(oneVector);
 		}
+		table.repaint();
 	}
 
 }
