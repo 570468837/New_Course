@@ -111,6 +111,8 @@ public class QuitPanel extends JPanel {
 		Student s = ((CourseFrame)theFrame).getStudentPO() ;
 		
 		ArrayList<Course> courses= selectBL.getSelectedCourses(s);
+		if(courses.size() == 0)
+			return;
 		for(int i=0;i<courses.size();i++){
 			Course oneCourse = courses.get(i);
 			Vector oneVector = new Vector<>();

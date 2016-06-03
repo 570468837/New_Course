@@ -106,6 +106,8 @@ public class SelectPanel extends JPanel {
 	public void getData(){
 		allCoursesData.clear();
 		CoursePO[] courses = courseBL.showAllCourse();
+		if(courses.length == 0)
+			return;
 		for(int i=0;i<courses.length;i++){
 			CoursePO oneCourse = courses[i];
 			Vector oneVector = new Vector<>();

@@ -110,6 +110,8 @@ public class SelectPanel extends JPanel {
 		// TODO Auto-generated method stub
 		allCoursesData.clear();
 		ArrayList<Course> courses= courseBL.getAllLocalCourse() ;
+		if(courses.size() == 0)
+			return;
 		for(int i=0;i<courses.size();i++){
 			Course oneCourse = courses.get(i);
 			Vector oneVector = new Vector<>();

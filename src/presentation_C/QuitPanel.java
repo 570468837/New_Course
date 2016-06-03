@@ -122,6 +122,8 @@ public class QuitPanel extends JPanel {
 	private void getData() throws RemoteException{
 		allSelectedCoursesData.clear();
 		CoursePO[] courses = selectBL.showSelectedCourse(((CourseFrame)theFrame).getStudentPO());
+		if(courses.length == 0)
+			return;
 		for(int i=0;i<courses.length;i++){
 			CoursePO oneCourse = courses[i];
 			Vector oneVector = new Vector<>();
