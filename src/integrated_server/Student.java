@@ -12,15 +12,12 @@ import java.util.Set;
 @SuppressWarnings("serial")
 public class Student implements Serializable {
 	
-	public Student(String id, String name, String gender, String major,
-			String password) {
+	public Student(String id, String name, String sex, String major) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.sex = sex;
 		this.major = major;
-	}
-	public Student(String id){
-		
 	}
 	private String id ; //学号
 	private String name ;//姓名
