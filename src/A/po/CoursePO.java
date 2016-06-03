@@ -1,4 +1,4 @@
-package A.PO;
+package A.po;
 
 import java.io.Serializable;
 
@@ -10,7 +10,7 @@ public class CoursePO  implements Serializable{
 	String Tec;
 	String Pla;
 	int share;
-	public CoursePO(String cno, String cnm, int ctm, int cpt, String tec, String pla, int share) {
+	public CoursePO(String cno, String cnm, int cpt, String tec, String pla, int share) {
 		super();
 		this.Cno = cno;
 		this.Cnm = cnm;
