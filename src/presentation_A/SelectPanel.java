@@ -38,7 +38,7 @@ public class SelectPanel extends JPanel {
 		this.setBounds(127, 0, 607, 535);
 		this.setLayout(null);
 		
-		JTable table = new JTable();
+		table = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
 		table.setModel(model);
 		table.setFont(new Font("宋体", Font.PLAIN, 13));

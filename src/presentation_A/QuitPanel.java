@@ -40,7 +40,7 @@ public class QuitPanel extends JPanel {
 		this.setLayout(null);
 		setVisible(false);
 		
-		JTable table = new JTable();
+		table = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
 		table.setModel(model);
 		table.setFont(new Font("宋体", Font.PLAIN, 13));

@@ -126,32 +126,52 @@ public class StatisticsFrame extends JFrame {
 	public void refreshStudents(){
 		String student_parentFolder = "IServer/statistics/student/";
 		
-		FileInformation student_file = BClient.getAllStudents();
-		printXML(student_parentFolder, student_file);
-		students.clear();
-		students.addAll(XML_Helper.decodeStudents
-				(student_parentFolder+student_file.getName()));
+		FileInformation student_file;
+		try {
+			student_file = BClient.getAllStudents();
+			printXML(student_parentFolder, student_file);
+			students.clear();
+			students.addAll(XML_Helper.decodeStudents
+					(student_parentFolder+student_file.getName()));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	public void refreshCourses(){
 		String course_parentFolder = "IServer/statistics/course/";
 		
-		FileInformation B_course_file = BClient.getAllCourses();
-		printXML(course_parentFolder, B_course_file);
-		courses.clear();
-		courses.addAll(XML_Helper.decodeCourses
-				(course_parentFolder+B_course_file.getName()));
+		FileInformation B_course_file;
+		try {
+			B_course_file = BClient.getAllCourses();
+			printXML(course_parentFolder, B_course_file);
+			courses.clear();
+			courses.addAll(XML_Helper.decodeCourses
+					(course_parentFolder+B_course_file.getName()));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	public void refreshSelections(){
 		String selection_parentFolder = "IServer/statistics/selection/";
 
-		FileInformation selection_file = BClient.getAllSelections();
-		
-		printXML(selection_parentFolder, selection_file);
-		selections.clear();
-		selections.addAll(XML_Helper.decodeSelections
-				(selection_parentFolder+selection_file.getName()));
+		FileInformation selection_file;
+		try {
+			selection_file = BClient.getAllSelections();
+			printXML(selection_parentFolder, selection_file);
+			selections.clear();
+			selections.addAll(XML_Helper.decodeSelections
+					(selection_parentFolder+selection_file.getName()));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	public void printXML(String parentPath, FileInformation fileinfo){
