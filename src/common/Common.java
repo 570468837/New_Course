@@ -1,9 +1,11 @@
 package common;
-/*
- * 一些公用的方法
+/**
+ * 
+ * @author FrankYao
+ *	一些公共的方法
  */
 public class Common {
-	public static Faculty getFacultyByCourseId(String id){
+	public static Faculty getFacultyById(String id){
 		String head = id.substring(0,2);
 		if(head.equals("01"))
 			return Faculty.C;
