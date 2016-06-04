@@ -22,4 +22,12 @@ public interface CourseDataService {
 	 * @return null if failed
 	 */
 	public Course find(String id) ;
+	/**
+	 * 生成所有课程的xml文件
+	 */
+	public void createAllCoursesXMLFile();
+	/**
+	 * 生成所以共享课程的xml文件
+	 */
+	public void createSharedCoursesXMLFile() ;
 }
