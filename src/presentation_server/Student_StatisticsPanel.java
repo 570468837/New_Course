@@ -77,5 +77,4 @@ public class Student_StatisticsPanel extends JPanel {
 		}
 		table.repaint();
 	}
-
 }

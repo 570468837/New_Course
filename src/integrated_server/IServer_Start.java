@@ -3,11 +3,17 @@ package integrated_server;
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
+import B.B_Server.B_Interface;
+
 public class IServer_Start {
-	 public static void main(String args[]) { 
+	
+	public static B_Interface BClient ;
+	
+	public void register(){
 		 try { 
 			 //创建一个远程对象 
 			 IServer_Interface rhello = new IServer_Controller();
@@ -30,4 +36,24 @@ public class IServer_Start {
 	        		e.printStackTrace(); 
 	        	} 
 	    	} 
+	
+	private void initClients() {
+		// TODO Auto-generated method stub
+			try {
+				
+				BClient = (B_Interface) Naming.lookup("rmi://localhost:8882/B_Interface");
+				
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
+	
+	public static void main(String args[]) { 
+		IServer_Start IS = new IServer_Start();
+		IS.register();
+		IS.initClients();
+	}
+	
+}

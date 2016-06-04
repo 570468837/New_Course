@@ -104,22 +104,10 @@ public class StatisticsFrame extends JFrame {
 
 	private void startRMI() {
 		// TODO Auto-generated method stub
-		try {
-			BClient = (B_Interface)Naming.lookup("rmi://localhost:8882/B_Interface");
+			BClient = IServer_Start.BClient;
 			refreshStudents();
 			refreshCourses();
 			refreshSelections();
-			
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 	}
 
