@@ -16,6 +16,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import common.Common;
+
 public class Course_StatisticsPanel extends JPanel {
 	JFrame theFrame ;
 	JTable table;
@@ -37,7 +39,7 @@ public class Course_StatisticsPanel extends JPanel {
 		table.setRowSorter(new TableRowSorter<TableModel>(model));
 		table.setFillsViewportHeight(true);
 		
-		String[] titles = {"课程编号","课程名称","学分","授课老师","授课地点"};
+		String[] titles = {"课程编号","课程名称","学分","授课老师","授课地点","开设院系"};
 		Vector v_titles = new Vector<>();
 		for(int i=0;i<titles.length;i++)
 			v_titles.add(titles[i]);
@@ -71,6 +73,7 @@ public class Course_StatisticsPanel extends JPanel {
 			oneVector.add(c.getScore());
 			oneVector.add(c.getTeacher());
 			oneVector.add(c.getLocation());
+			oneVector.add(Common.getFacultyById(c.getId()));
 			allCoursesData.add(oneVector);
 		}
 		table.repaint();

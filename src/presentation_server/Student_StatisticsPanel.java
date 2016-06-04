@@ -1,7 +1,9 @@
 package presentation_server;
 
-import java.awt.Color;
+import integrated_server.Student;
+
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
@@ -17,7 +19,7 @@ import javax.swing.table.TableRowSorter;
 public class Student_StatisticsPanel extends JPanel {
 	JFrame theFrame ;
 	JTable table;
-	Vector allCoursesData = new Vector();
+	Vector allStudentsData = new Vector();
 	
 	/**
 	 * Create the panel.
@@ -36,6 +38,13 @@ public class Student_StatisticsPanel extends JPanel {
 		table.setRowSorter(new TableRowSorter<TableModel>(model));
 		table.setFillsViewportHeight(true);
 		
+		String[] titles = {"学号","姓名","性别","院系"};
+		Vector v_titles = new Vector<>();
+		for(int i=0;i<titles.length;i++)
+			v_titles.add(titles[i]);
+		getData();
+		model.setDataVector(allStudentsData, v_titles);
+		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(22, 80, 558, 402);
 		add(scrollPane);
@@ -50,6 +59,23 @@ public class Student_StatisticsPanel extends JPanel {
 		box.setBounds(495,35,80,25);
 		add(box);
 
+	}
+
+	private void getData() {
+		// TODO Auto-generated method stub
+		allStudentsData.clear();
+		ArrayList<Student> students = ((StatisticsFrame)theFrame).getStudents();
+		if(students.size() == 0)
+			return;
+		for(Student s:students){
+			Vector oneVector = new Vector<>();
+			oneVector.add(s.getId());
+			oneVector.add(s.getName());
+			oneVector.add(s.getSex());
+			oneVector.add(s.getMajor());
+			allStudentsData.add(oneVector);
+		}
+		table.repaint();
 	}
 
 }
