@@ -67,12 +67,12 @@ public class CourseBL implements CourseBLService{
 	public static void main(String[] args) {
 		CourseBL cbl = new CourseBL();
 	
-//		for(int i = 0;i<cbl.showAllCourse().length-1;i++){
-//			
-//			
-//			System.out.println(cbl.showAllCourse()[i].getCno());
-//		}
-		System.out.println(cbl.showCourseById("0103").getCnm());
+		for(int i = 0;i<cbl.showAllCourse().length;i++){
+			
+			
+			System.out.println(cbl.showAllCourse()[i].getCno());
+		}
+//		System.out.println(cbl.showCourseById("0103").getCnm());
 	}
 
 

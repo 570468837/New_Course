@@ -258,18 +258,18 @@ public class Demo {
     public static void main(String[] args) throws IOException{
     	Demo demo = new Demo();
 //    	demo.getTables();
-//    	Student s = new Student("001","abcd","F","SE","1234");
-//    	System.out.println(demo.insertStudent(s));
+    	StudentPO s = new StudentPO("1","abcd","F","SE","1234");
+    	System.out.println(demo.insertStudent(s));
     	AccountPO a = new AccountPO("2","2333",20160708);
 //    	System.out.println(demo.insertAccount(a));
     	CoursePO c = new CoursePO("0110","DiscreteM",30,3,"David","110","1");
 //    	System.out.println(demo.insertCourse(c));
-//    	CourseSelectionPO cs = new CourseSelectionPO("1","001",90);
+    	CourseSelectionPO cs = new CourseSelectionPO("0101","12",90);
 //    	System.out.println(demo.insertCourseSelection(cs));
 //    	demo.selectall();
 //    	demo.selectCourse(a, c);
 //    	demo.insertCourse(c);
-    	demo.studentXML();
+//    	demo.studentXML();
     	
     }
 }  

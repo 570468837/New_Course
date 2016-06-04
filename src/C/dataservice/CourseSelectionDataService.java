@@ -3,6 +3,7 @@ package C.dataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import C.po.AccountPO;
@@ -19,4 +20,7 @@ public interface CourseSelectionDataService extends Remote {
 	
 	public CoursePO[] selectMyCourse(StudentPO spo)throws RemoteException;	
 	public boolean quitCourse(StudentPO s,CoursePO c)throws RemoteException;
+	 public int countC() throws RemoteException;
+	 public int countCS() throws RemoteException;
+	 public int countA() throws RemoteException;
 }

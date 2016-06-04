@@ -40,7 +40,7 @@ public class CourseFrame extends JFrame {
 		} catch(Exception e){
 			System.out.println("包有问题");
 			}
-		CourseFrame frame = new CourseFrame(new StudentPO("1001", "盛宇", "女", "未知", "hhh"));
+		CourseFrame frame = new CourseFrame(new StudentPO("1", "盛宇", "女", "未知", "hhh"));
 	}
 
 	/**

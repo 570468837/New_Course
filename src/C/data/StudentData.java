@@ -20,12 +20,33 @@ public class StudentData   extends UnicastRemoteObject implements StudentDataSer
     static DBHelper db1 = null;  
     static ResultSet ret = null; 
     static String insql = null;
-
+    public int count() throws RemoteException{
+    	sql = "select count(Sno) from student";
+    	
+    	
+    	db1 = new DBHelper(sql);
+    	int count = 0;
+    	try {  
+            ret = db1.pst.executeQuery();//执行语句，得到结果集  
+            while (ret.next()) {  
+            	count = ret.getInt(1);
+               
+            }//显示数据  
+//            System.out.println(count);
+            ret.close();  
+            db1.close();//关闭连接  
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+        }  
+    	return count;
+    }
 
     public StudentPO[] selectAll()throws RemoteException{
+    	int count = 0;
+    	count = count();
     	sql = "select * from student";
     	db1 = new DBHelper(sql);
-    	StudentPO[] po = new StudentPO[50];
+    	StudentPO[] po = new StudentPO[count];
     	int i = 0;
     	try {  
             ret = db1.pst.executeQuery();//执行语句，得到结果集  
@@ -68,8 +89,8 @@ public class StudentData   extends UnicastRemoteObject implements StudentDataSer
     
 	public static void main(String[] args) throws RemoteException, SQLException {
 		StudentData sd = new StudentData();
-//		sd.selectAll();
-		System.out.println(sd.selectById("001").getSnm());
+		sd.selectAll();
+//		System.out.println(sd.selectById("001").getSnm());
 	}	
 	
 	

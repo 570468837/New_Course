@@ -29,11 +29,32 @@ public class UserData  extends UnicastRemoteObject implements UserDataService{
     static ResultSet ret = null; 
     static String insql = null;
 
-
-    public AccountPO[] selectAll()throws RemoteException{
+    public int count() throws RemoteException{
+    	sql = "select count(acc) from account";
+    	
+    	
+    	db1 = new DBHelper(sql);
+    	int count = 0;
+    	try {  
+            ret = db1.pst.executeQuery();//执行语句，得到结果集  
+            while (ret.next()) {  
+            	count = ret.getInt(1);
+               
+            }//显示数据  
+//            System.out.println(count);
+            ret.close();  
+            db1.close();//关闭连接  
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+        }  
+    	return count;
+    }
+    public AccountPO[] selectAll()throws RemoteException{ 
+    	int count = 0;
+    	count = count();
     	sql = "select * from account";
     	db1 = new DBHelper(sql);
-    	AccountPO[] po = new AccountPO[50];
+    	AccountPO[] po = new AccountPO[count];
     	int i = 0;
     	try {  
             ret = db1.pst.executeQuery();//执行语句，得到结果集  

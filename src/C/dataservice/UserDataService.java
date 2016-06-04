@@ -11,6 +11,6 @@ public interface UserDataService extends Remote {
 
 
 	public AccountPO[] selectAll()throws RemoteException;
-	
+	 public int count() throws RemoteException;
 }
 
