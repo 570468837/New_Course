@@ -57,25 +57,23 @@ public class CourseSelectionData implements CourseSelectionDataService {
 		ArrayList<CoursePO> poList = new ArrayList<CoursePO>();
 		dbh=new DBHelper();
 		Connection conn = dbh.getConnection();
-		String[] cpo=new String[50];
-		int j=0;
+		ArrayList<String> cpo=new ArrayList<String>();
 		inSql = "select 课程编号 from [select] where 学生编号 ="+spo.getSno();
 		try {
 			ps=conn.prepareStatement(inSql);
 			rs=ps.executeQuery();
 			while(rs.next()){
-				cpo[j] = rs.getString(1);
-						j++;}
+				cpo.add(rs.getString(1));
+						}
 			rs.close();  
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		CoursePO[] cpos = new CoursePO[50];
-		for(int i=0;i<50;i++){
-			if(!cpo[i].equals(null))
+		for(String s : cpo){
+			if(!s.equals(null))
 				try {
-					poList.add(cd.selectById(cpo[i]));
+					poList.add(cd.selectById(s));
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
