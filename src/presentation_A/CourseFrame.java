@@ -49,7 +49,7 @@ public class CourseFrame extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel welcomeLabel = new JLabel("<html><body><p align=\"center\">Welcome</p><br>"+
-		"<p align=\"center\">"+student+"</p></body></html>");
+		"<p align=\"center\">"+student.getSnm()+"</p></body></html>");
 		welcomeLabel.setFont(new Font("宋体", Font.BOLD, 14));
 		welcomeLabel.setBounds(39, 10, 81, 50);
 		getContentPane().add(welcomeLabel);
