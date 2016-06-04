@@ -132,4 +132,16 @@ public class StudentCourseDataServiceImpl implements StudentCourseDataService {
 		}
 		return result;
 	}
+
+	@Override
+	public void CreateAllSelectionsXMLFile() {
+		// TODO Auto-generated method stub
+		IOHelper.createXMLFile("select student_id,course_id,grade from STUDENTS_COURSES_TABLE", "selection");
+	}
+
+	public static void main(String[] args){
+		StudentCourseDataService scds = new StudentCourseDataServiceImpl() ;
+		scds.CreateAllSelectionsXMLFile(); 
+	}
+	
 }

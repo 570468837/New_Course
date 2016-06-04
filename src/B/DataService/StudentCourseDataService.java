@@ -36,4 +36,8 @@ public interface StudentCourseDataService {
 	 * @return empty list if failed
 	 */
 	public ArrayList<Course> getSelectedCourses(Student s) ;
+	/**
+	 * 生成选课表的xml文件
+	 */
+	public void CreateAllSelectionsXMLFile() ;
 }

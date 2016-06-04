@@ -27,4 +27,8 @@ public interface StudentDataService {
 	 * @return null if no
 	 */
 	public Student find(String id);
+	/**
+	 * 返回所有学生的xml文件
+	 */
+	public void createAllStudentsXMLFile() ;
 }

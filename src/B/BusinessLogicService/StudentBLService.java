@@ -24,4 +24,8 @@ public interface StudentBLService {
 	 * @return whether succeed
 	 */
 	public boolean quitCourse(Student s,Course c) ;
+	/**
+	 * 返回所有学生的xml文件
+	 */
+	public void createAllStudentsXMLFile() ;
 }

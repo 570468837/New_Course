@@ -67,4 +67,13 @@ public class StudentDataServiceImpl implements StudentDataService{
 		}
 		return s;
 	}
+	@Override
+	public void createAllStudentsXMLFile() {
+		// TODO Auto-generated method stub
+		IOHelper.createXMLFile("select * from STUDENTS_TABLE", "student");
+	}
+	public static void main(String[] args){
+		StudentDataService sds = new StudentDataServiceImpl() ;
+		sds.createAllStudentsXMLFile();
+	}
 }

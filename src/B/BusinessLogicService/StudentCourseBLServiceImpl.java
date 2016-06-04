@@ -18,5 +18,10 @@ public class StudentCourseBLServiceImpl implements StudentCourseBLService{
 		// TODO Auto-generated method stub
 		return scController.getSelectedCourses(s);
 	}
+	@Override
+	public void CreateAllSelectionsXMLFile() {
+		// TODO Auto-generated method stub
+		scController.CreateAllSelectionsXMLFile(); 
+	}
 
 }

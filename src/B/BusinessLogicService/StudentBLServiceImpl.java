@@ -30,5 +30,10 @@ public class StudentBLServiceImpl implements StudentBLService{
 		// TODO Auto-generated method stub
 		return scDataControler.delete(s, c) ;
 	}
+	@Override
+	public void createAllStudentsXMLFile() {
+		// TODO Auto-generated method stub
+		sDataController.createAllStudentsXMLFile();
+	}
 	
 }

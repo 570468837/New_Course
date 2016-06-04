@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<STUDENTS>
+  <student>
+    <ID>131250011</ID>
+    <NAME>shengyu</NAME>
+    <GENDER>M</GENDER>
+    <MAJOR>softwar</MAJOR>
+    <PASSWORD>123</PASSWORD>
+  </student>
+</STUDENTS>

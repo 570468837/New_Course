@@ -35,4 +35,14 @@ public class CourseBLServiceImpl implements CourseBLService{
 		// TODO Auto-generated method stub
 		return (ArrayList<Course>)dataControler.show();
 	}
+	@Override
+	public void createAllCoursesXMLFile() {
+		// TODO Auto-generated method stub
+		dataControler.createAllCoursesXMLFile();
+	}
+	@Override
+	public void createSharedCoursesXMLFile() {
+		// TODO Auto-generated method stub
+		dataControler.createSharedCoursesXMLFile();
+	}
 }
