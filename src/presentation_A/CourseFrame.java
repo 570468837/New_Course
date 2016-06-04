@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import A.po.StudentPO;
+
 import java.awt.Font;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
@@ -37,13 +39,13 @@ public class CourseFrame extends JFrame {
 		} catch(Exception e){
 			System.out.println("包有问题");
 			}
-		CourseFrame frame = new CourseFrame("盛宇");
+		CourseFrame frame = new CourseFrame(new StudentPO("0301", "小蛇", "0", "0", "0"));
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public CourseFrame(String name) {
+	public CourseFrame(StudentPO student) {
 		selectPanel = new SelectPanel(this);
 		quitPanel = new QuitPanel(this);
 		setVisible(true);
@@ -53,7 +55,7 @@ public class CourseFrame extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel welcomeLabel = new JLabel("<html><body><p align=\"center\">Welcome</p><br>"+
-		"<p align=\"center\">"+name+"</p></body></html>");
+		"<p align=\"center\">"+student+"</p></body></html>");
 		welcomeLabel.setFont(new Font("宋体", Font.BOLD, 14));
 		welcomeLabel.setBounds(39, 10, 81, 50);
 		getContentPane().add(welcomeLabel);

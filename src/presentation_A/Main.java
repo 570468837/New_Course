@@ -26,8 +26,6 @@ public class Main {
 	public static void main(String[] args){
 		Main m = new Main();
 		LoginFrame lf = new LoginFrame();
-		CourseFrame cf = new CourseFrame("盛宇");
-		StatisticsFrame sf = new StatisticsFrame();
 		
 	}
 }

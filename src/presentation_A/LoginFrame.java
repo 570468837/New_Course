@@ -9,9 +9,18 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import common.WarningDialog;
+import A.businesslogic.StudentBL;
+import A.businesslogic.UserBL;
+import A.businesslogicservice.StudentBLService;
+import A.businesslogicservice.UserBLService;
+import A.po.StudentPO;
 
 
 public class LoginFrame extends JFrame {
@@ -20,10 +29,15 @@ public class LoginFrame extends JFrame {
 	private JTextField userField;
 	private JPasswordField passwordField;
 	private JLabel titlelabel;
+	
+	JFrame thisFrame;
+	UserBLService userBL = new UserBL();
+	StudentBLService studentBL = new StudentBL();
 	/**
 	 * Create the frame.
 	 */
 	public LoginFrame() {
+		thisFrame = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(510, 357);
 		setLocationRelativeTo(null);
@@ -61,6 +75,20 @@ public class LoginFrame extends JFrame {
 		loginButton.setFont(new Font("宋体", Font.PLAIN, 15));
 		loginButton.setBounds(200, 234, 98, 35);
 		contentPane.add(loginButton);
+		
+		loginButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				StudentPO student = userBL.loginValidity(userField.getText().trim(), 
+						new String(passwordField.getPassword()));
+				if( student != null){
+					new CourseFrame(student);
+					thisFrame.dispose();
+				}
+				else{
+					new WarningDialog("用户名或密码不正确！");
+				}
+			}
+		});
 		
 		contentPane.repaint();
 		repaint();

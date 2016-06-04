@@ -27,8 +27,5 @@ public class Main {
 	public static void main(String[] args){
 		Main m = new Main();
 		LoginFrame lf = new LoginFrame();
-		CourseFrame cf = new CourseFrame(new StudentPO("1001", "盛宇", "女", "未知", "hhh"));
-		StatisticsFrame sf = new StatisticsFrame();
-		
 	}
 }
