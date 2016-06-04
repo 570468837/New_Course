@@ -1,8 +1,15 @@
 package presentation_server;
 
+import integrated_server.*;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,15 +19,24 @@ import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import B.B_Server.B_Interface;
+
 
 public class StatisticsFrame extends JFrame {
 	private Student_StatisticsPanel studentPanel = new Student_StatisticsPanel(this);
 	private Course_StatisticsPanel coursePanel = new Course_StatisticsPanel(this);
 	private Select_StatisticsPanel selectPanel = new Select_StatisticsPanel(this);
+	
+	ArrayList<Student> students = new ArrayList<>();
+	ArrayList<Course> courses = new ArrayList<>();
+	ArrayList<Selection> selections = new ArrayList<>();
+	
+	B_Interface BClient = null;
 	/**
 	 * Create the frame.
 	 */
 	public StatisticsFrame() {
+		startRMI();
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(760, 589);
@@ -75,6 +91,44 @@ public class StatisticsFrame extends JFrame {
 		});
 	
 		this.repaint();
+	}
+
+	private void startRMI() {
+		String student_ParentFolder = "IServer/student/";
+		// TODO Auto-generated method stub
+		try {
+			BClient = (B_Interface)Naming.lookup("rmi://localhost:8882/B_Interface");
+			
+			//students.addAll(XML_Helper.decodeStudents(fileAddress)BClient.getAllStudents());
+			
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public B_Interface getBClient() {
+		return BClient;
+	}
+	
+
+	public ArrayList<Student> getStudents() {
+		return students;
+	}
+
+	public ArrayList<Course> getCourses() {
+		return courses;
+	}
+
+	public ArrayList<Selection> getSelections() {
+		return selections;
 	}
 
 	/**

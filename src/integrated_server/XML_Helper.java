@@ -21,7 +21,7 @@ import org.dom4j.io.XMLWriter;
  *	用于帮助在集成服务器上统计数据的类
  */
 public class XML_Helper {
-	public ArrayList<Course> decodeCourses(String fileAddress){
+	public static ArrayList<Course> decodeCourses(String fileAddress){
 		ArrayList<Course> result = new ArrayList<>();
 		SAXReader reader = new SAXReader();
 		File file = new File(fileAddress);
@@ -45,7 +45,7 @@ public class XML_Helper {
 		return result;
 	}	
 	
-	public void outputCourses(ArrayList<Course> courses, String outputAddress) {
+	public static void outputCourses(ArrayList<Course> courses, String outputAddress) {
 		Document document = DocumentHelper.createDocument();	
 		//创建root 
 		Element root = document.addElement("courses");  
@@ -87,7 +87,7 @@ public class XML_Helper {
 		}  
 	}
 
-	public ArrayList<Student> decodeStudents(String fileAddress){
+	public static ArrayList<Student> decodeStudents(String fileAddress){
 		ArrayList<Student> result = new ArrayList<>();
 		SAXReader reader = new SAXReader();
 		File file = new File(fileAddress);
@@ -110,7 +110,7 @@ public class XML_Helper {
 		return result;
 	}
 	
-	public ArrayList<Selection> decodeSelections(String fileAddress){
+	public static ArrayList<Selection> decodeSelections(String fileAddress){
 		ArrayList<Selection> result = new ArrayList<>();
 		SAXReader reader = new SAXReader();
 		File file = new File(fileAddress);

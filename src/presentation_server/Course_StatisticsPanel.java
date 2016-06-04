@@ -30,6 +30,8 @@ public class Course_StatisticsPanel extends JPanel {
 		table.setRowSorter(new TableRowSorter<TableModel>(model));
 		table.setFillsViewportHeight(true);
 		
+		String[] titles = {"学号","姓名","性别","院系"};
+		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(22, 80, 558, 402);
 		add(scrollPane);
