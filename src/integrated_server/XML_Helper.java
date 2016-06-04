@@ -52,11 +52,16 @@ public class XML_Helper {
 		        //生成root的一个接点  
 		for(Course c: courses){
 			Element courseElement = root.addElement("course");
-			courseElement.addAttribute("id", c.getId());
-			courseElement.addAttribute("name", c.getName());
-			courseElement.addAttribute("score", c.getScore());
-			courseElement.addAttribute("teacher", c.getTeacher());
-			courseElement.addAttribute("location", c.getLocation());
+			Element id = courseElement.addElement("id");
+			id.setText(c.getId());
+			Element name = courseElement.addElement("name");
+			name.setText(c.getName());
+			Element score = courseElement.addElement("score");
+			score.setText(c.getScore());
+			Element teacher = courseElement.addElement("teacher");
+			teacher.setText(c.getTeacher());
+			Element location = courseElement.addElement("location");
+			location.setText(c.getLocation());
 		}
 		//输出
 		StringWriter stringWriter = new StringWriter();  
@@ -125,6 +130,24 @@ public class XML_Helper {
 			result.add(new Selection(sid, cid, score));
 		  }
 		return result;
+	}
+	
+	public static void main(String[] args){
+		XML_Helper x = new XML_Helper();
+		ArrayList<Course> result = new ArrayList<>();
+//		result.add(new Course("1", "姚锰舟", "余泳桦", "张孙暮雨", "1"));
+//		result.add(new Course("2", "盛宇", "高杨逸乔", "胡韬", "2"));
+//		result.add(new Course("3", "盛宇", "宋仲基", "胡韬", "3"));
+//		x.outputCourses(result, "test.xml");
+		result = x.decodeCourses("test.xml");
+		for(Course c:result){
+			System.out.println(c.getId());
+			System.out.println(c.getName());
+			System.out.println(c.getScore());
+			System.out.println(c.getTeacher());
+			System.out.println(c.getLocation());
+			System.out.println();
+		}
 	}
 	
 }
