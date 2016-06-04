@@ -2,6 +2,7 @@ package presentation_server;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Vector;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -14,17 +15,21 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public class Student_StatisticsPanel extends JPanel {
-
+	JFrame theFrame ;
+	JTable table;
+	Vector allCoursesData = new Vector();
+	
 	/**
 	 * Create the panel.
 	 */
 	public Student_StatisticsPanel(JFrame theFrame) {
+		this.theFrame = theFrame;
 		this.setBounds(127, 0, 607, 535);
 		this.setLayout(null);
 		this.setVisible(true);
 		theFrame.add(this);
 		
-		JTable table = new JTable();
+		table = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
 		table.setModel(model);
 		table.setFont(new Font("宋体", Font.PLAIN, 13));
