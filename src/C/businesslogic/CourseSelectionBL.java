@@ -99,7 +99,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 			
 			cs.quitCourse(s, c);
 			result = cs.quitCourse(s, c);
-			return result;
+//			return result;
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

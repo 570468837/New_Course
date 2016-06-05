@@ -75,7 +75,7 @@ public class DatabaseToXML {
 	            Writer w = new FileWriter("C."+tableName+".xml");	
 	            System.out.println("success");
 	            OutputFormat opf = OutputFormat.createPrettyPrint();
-	            opf.setEncoding("GB2312");
+	            opf.setEncoding("utf8");
 	            XMLWriter xw = new XMLWriter(w,opf);
 	            xw.write(doc);
 	            xw.close();
