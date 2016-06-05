@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <SELECTIONS>
-  <selection>
+  <SELECTION>
     <STUDENT_ID>131250011</STUDENT_ID>
     <COURSE_ID>0201</COURSE_ID>
-    <GRADE></GRADE>
-  </selection>
-  <selection>
+    <GRADE/>
+  </SELECTION>
+  <SELECTION>
     <STUDENT_ID>131250011</STUDENT_ID>
     <COURSE_ID>0205</COURSE_ID>
-    <GRADE></GRADE>
-  </selection>
-  <selection>
+    <GRADE/>
+  </SELECTION>
+  <SELECTION>
     <STUDENT_ID>131250011</STUDENT_ID>
     <COURSE_ID>0210</COURSE_ID>
-    <GRADE></GRADE>
-  </selection>
-  <selection>
+    <GRADE/>
+  </SELECTION>
+  <SELECTION>
     <STUDENT_ID>131250011</STUDENT_ID>
     <COURSE_ID>0204</COURSE_ID>
-    <GRADE></GRADE>
-  </selection>
-  <selection>
+    <GRADE/>
+  </SELECTION>
+  <SELECTION>
     <STUDENT_ID>131250011</STUDENT_ID>
     <COURSE_ID>0206</COURSE_ID>
-    <GRADE></GRADE>
-  </selection>
-  <selection>
+    <GRADE/>
+  </SELECTION>
+  <SELECTION>
     <STUDENT_ID>131250011</STUDENT_ID>
     <COURSE_ID>0209</COURSE_ID>
-    <GRADE></GRADE>
-  </selection>
+    <GRADE/>
+  </SELECTION>
 </SELECTIONS>

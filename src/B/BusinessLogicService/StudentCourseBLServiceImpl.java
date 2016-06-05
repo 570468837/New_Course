@@ -23,5 +23,4 @@ public class StudentCourseBLServiceImpl implements StudentCourseBLService{
 		// TODO Auto-generated method stub
 		scController.CreateAllSelectionsXMLFile(); 
 	}
-
 }

@@ -4,8 +4,8 @@
 	<xsl:template match="COURSES">
 		<!-- TODO: Auto-generated template -->
 		<xsl:apply-templates />
-		<COURSES>
-			<xsl:for-each select="course">
+		<courses>
+			<xsl:for-each select="COURSE">
 				<course>
 					<id>
 						<xsl:value-of select="ID"></xsl:value-of>
@@ -24,6 +24,6 @@
 					</location>
 				</course>
 			</xsl:for-each>
-		</COURSES>
+		</courses>
 	</xsl:template>
 </xsl:stylesheet>

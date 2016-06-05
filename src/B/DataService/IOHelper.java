@@ -25,11 +25,13 @@ import common.FileInformation;
 import common.FileInformationSev;
 
 public class IOHelper {
-	private static String path ="./BFiles/B." ;
+	private static String path ="./BFiles/B_XML/B_" ;
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void createXMLFile(String sql, String elementName){
 		// TODO Auto-generated method stub
-		
+		String fileName = elementName ;
+		if(elementName.equals("sharedcourse"))
+			elementName = "course" ;
 		//获取ResultSet
 		Session session = HibernateUtils.getSession() ;;
 		ResultSet result = (ResultSet) session.doReturningWork(new ReturningWork(){
@@ -53,7 +55,7 @@ public class IOHelper {
 			doc = DocumentHelper.createDocument() ;
 			Element root = doc.addElement(elementName.toUpperCase()+"S") ;
 			while(result.next()){
-				Element emp = root.addElement(elementName) ;
+				Element emp = root.addElement(elementName.toUpperCase()) ;
 				for(int i=0;i<count;i++){
 					Element column = emp.addElement(columnNames[i]) ;
 					if(result.getObject(i+1)!=null)
@@ -70,7 +72,7 @@ public class IOHelper {
 		
 		//生成xml文件
 		try {
-			Writer w = new FileWriter(path+elementName.toUpperCase()+"S.xml") ;
+			Writer w = new FileWriter(path+fileName.toUpperCase()+"S.xml") ;
 			OutputFormat opf = OutputFormat.createPrettyPrint() ;
 			opf.setEncoding("UTF-8");
 			XMLWriter xw = new XMLWriter(w,opf) ;
@@ -84,20 +86,21 @@ public class IOHelper {
 		System.out.println("生成xml文件");
 	}
 	
-	public static FileInformation getFileInformation(String url,String fileName) {
+	public static FileInformation getFileInformation(String fileName) {
 		FileInformation fileInfo = new FileInformationSev() ;
 		
-		File file = new File(url) ;
+		File file = new File(path+fileName.toUpperCase()+"S.xml") ;
 		if(!file.exists()){
 			System.out.println("xml文件不存在");
 		}
+		
 		byte[] content = new byte[(int)file.length()] ;
 		
 		BufferedInputStream input = null ;
 		try {
 			input =  new BufferedInputStream(new FileInputStream(file)) ;
 			input.read(content) ;
-			fileInfo.setInformation(fileName, content);
+			fileInfo.setInformation(fileName.toUpperCase()+"S.xml", content);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
