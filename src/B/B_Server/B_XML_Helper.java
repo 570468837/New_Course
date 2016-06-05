@@ -35,7 +35,7 @@ public class B_XML_Helper {
 	 * 
 	 * @param sourceFileInfo 将要转化的目标文件对象
 	 * @param XSLpath 转化标准xsl文件所在路径
-	 * @param savePath xml存储路径
+	 * @param savePath xml存储路径文件夹
 	 * @param fileName 转化后的文件名
 	 * @return 是否转化成功
 	 */

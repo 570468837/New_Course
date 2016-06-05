@@ -113,14 +113,15 @@ public class StatisticsFrame extends JFrame {
 
 	public void refreshStudents(){
 		String student_parentFolder = "IServer/statistics/student/";
+		String xsl_parentFolder = "IServer/xsl/";
 		
-		FileInformation student_file;
+		FileInformation original_student_file;
 		try {
-			student_file = BClient.getAllStudents();
-			printXML(student_parentFolder, student_file);
+			original_student_file = BClient.getAllStudents();
+			printXML(student_parentFolder, original_student_file);
 			students.clear();
 			students.addAll(XML_Helper.decodeStudents
-					(student_parentFolder+student_file.getName()));
+					(student_parentFolder+original_student_file.getName()));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -161,7 +162,11 @@ public class StatisticsFrame extends JFrame {
 		}
 
 	}
-	
+	/**
+	 * 将FileInformation转成xml文件，存在parentPath文件夹下
+	 * @param parentPath
+	 * @param fileinfo
+	 */
 	public void printXML(String parentPath, FileInformation fileinfo){
 		 BufferedOutputStream output;
 		try {
