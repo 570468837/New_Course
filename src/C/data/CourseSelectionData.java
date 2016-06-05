@@ -1,5 +1,6 @@
 package C.data;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 
 import java.rmi.server.UnicastRemoteObject;
@@ -32,6 +33,7 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
     static ResultSet ret2 = null; 
     static String insql = null;
     static String sql2 = null;
+    static DatabaseToXML dtx = null;
     public int countCS() throws RemoteException{
     	sql = "select count(Cno) from courseSelection";
     	
@@ -308,6 +310,10 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
     	return po;
 	}
 	
+	public void createCourseSelectionXML() throws IOException{
+		dtx = new DatabaseToXML();
+		dtx.courseSelectionXML();
+	}
 	public static void main(String[] args) {
 		try {
 			CourseSelectionData cs = new CourseSelectionData();

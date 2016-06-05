@@ -1,5 +1,6 @@
 package C.data;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
@@ -20,6 +21,8 @@ public class StudentData   extends UnicastRemoteObject implements StudentDataSer
     static DBHelper db1 = null;  
     static ResultSet ret = null; 
     static String insql = null;
+    static DatabaseToXML dtx = null;
+
     public int count() throws RemoteException{
     	sql = "select count(Sno) from student";
     	
@@ -86,7 +89,10 @@ public class StudentData   extends UnicastRemoteObject implements StudentDataSer
     	return po;
     	
     }
-    
+    public void createStudentXML() throws IOException{
+		dtx = new DatabaseToXML();
+		dtx.studentXML();
+	}
 	public static void main(String[] args) throws RemoteException, SQLException {
 		StudentData sd = new StudentData();
 		sd.selectAll();

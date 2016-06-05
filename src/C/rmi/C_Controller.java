@@ -1,5 +1,6 @@
 package C.rmi;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Iterator;
@@ -7,15 +8,17 @@ import java.util.Vector;
 
 import org.dom4j.Document;
 import org.dom4j.Element;
-import B.BusinessLogicService.CourseBLService;
-import B.BusinessLogicService.CourseBLServiceImpl;
-import B.BusinessLogicService.StudentBLService;
-import B.BusinessLogicService.StudentBLServiceImpl;
-import B.BusinessLogicService.StudentCourseBLService;
-import B.BusinessLogicService.StudentCourseBLServiceImpl;
-import B.DataService.IOHelper;
-import B.Model.Course;
-import B.Model.Student;
+
+
+import C.businesslogic.CourseBL;
+import C.businesslogic.CourseSelectionBL;
+import C.businesslogic.StudentBL;
+import C.businesslogicservice.CourseBLService;
+import C.businesslogicservice.CourseSelectionBLService;
+import C.businesslogicservice.StudentBLService;
+import C.data.DatabaseToXML;
+import C.po.CoursePO;
+import C.po.StudentPO;
 import common.FileInformation;
 
 public class C_Controller extends UnicastRemoteObject implements C_Interface{
@@ -25,41 +28,61 @@ public class C_Controller extends UnicastRemoteObject implements C_Interface{
 	
 	private StudentBLService studentController ;
 	private CourseBLService courseController ;
-	private StudentCourseBLService selectionController ;
+	private CourseSelectionBLService selectionController ;
 	protected C_Controller() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
-		studentController = new StudentBLServiceImpl() ;
-		courseController = new CourseBLServiceImpl() ;
-		selectionController = new StudentCourseBLServiceImpl() ;
+		studentController = new StudentBL() ;
+		courseController = new CourseBL() ;
+		selectionController = new CourseSelectionBL() ;
 	}
 
 	@Override
 	public FileInformation getSharedCourses() {
 		// TODO Auto-generated method stub
-		courseController.createSharedCoursesXMLFile();
-		return IOHelper.getFileInformation("sharedcourse");
+		try {
+			courseController.courseSharedXML();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return DatabaseToXML.getFileInformation("courseShare");
 	}
 
 	@Override
 	public FileInformation getAllCourses() {
 		// TODO Auto-generated method stub
-		courseController.createAllCoursesXMLFile();
-		return IOHelper.getFileInformation("course");
+		try {
+			courseController.courseXML();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return DatabaseToXML.getFileInformation("course");
 	}
 
 	@Override
 	public FileInformation getAllStudents() {
 		// TODO Auto-generated method stub
-		studentController.createAllStudentsXMLFile();
-		return IOHelper.getFileInformation("student");
+		try {
+			studentController.studentXML();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return DatabaseToXML.getFileInformation("student");
 	}
 
 	@Override
 	public FileInformation getAllSelections() {
 		// TODO Auto-generated method stub
-		selectionController.CreateAllSelectionsXMLFile();
-		return IOHelper.getFileInformation("selection");
+		try {
+			selectionController.courseSelectionXML();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return DatabaseToXML.getFileInformation("courseSelection");
 	}
 
 	@SuppressWarnings("unchecked")
@@ -76,10 +99,10 @@ public class C_Controller extends UnicastRemoteObject implements C_Interface{
 				Element tmp = j.next() ;
 				strs.add(tmp.getStringValue()) ;
 			}
-			Student student = new Student() ;
-			student.setId(strs.get(0));
-			Course course = courseController.getCourseById(strs.get(1)) ;
-			result = studentController.selectCourse(student, course) ;
+			StudentPO student = new StudentPO(null, null, null, null, null) ;
+			student.setSno(strs.get(0));
+			CoursePO course = courseController.showCourseById(strs.get(1)) ;
+			result = selectionController.courseSelect(student, course) ;
 		}
 		return result ;
 	}
@@ -98,10 +121,15 @@ public class C_Controller extends UnicastRemoteObject implements C_Interface{
 				Element tmp = j.next() ;
 				strs.add(tmp.getStringValue()) ;
 			}
-			Student student = new Student() ;
-			student.setId(strs.get(0));
-			Course course = courseController.getCourseById(strs.get(1)) ;
-			result = studentController.quitCourse(student, course) ;
+			StudentPO student = new StudentPO(null, null, null, null, null) ;
+			student.setSno(strs.get(0));
+			CoursePO course = courseController.showCourseById(strs.get(1)) ;
+			try {
+				result = selectionController.courseQuit(student, course) ;
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return result ;
 	}

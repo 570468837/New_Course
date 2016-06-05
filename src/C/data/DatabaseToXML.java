@@ -1,4 +1,8 @@
 package C.data;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -12,12 +16,16 @@ import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
+import common.FileInformation;
+import common.FileInformationSev;
+
 public class DatabaseToXML {
 	  static String sql = null;  
 	    static DBHelper db1 = null;  
 	    static ResultSet ret = null; 
 	    static String insql = null;
 	    static String  tableName = null;
+		private static String path ="./CFiles/C_XML/C_" ;
 	  
 	    public void accountXML() throws IOException{
 	    	sql = "select * from account";
@@ -89,6 +97,39 @@ public class DatabaseToXML {
 	    	
 	    	
 	    }
+	    public static FileInformation getFileInformation(String fileName) {
+			FileInformation fileInfo = new FileInformationSev() ;
+			
+			File file = new File(path+fileName.toUpperCase()+".xml") ;
+			if(!file.exists()){
+				System.out.println("xml文件不存在");
+			}
+			
+			byte[] content = new byte[(int)file.length()] ;
+			
+			BufferedInputStream input = null ;
+			try {
+				input =  new BufferedInputStream(new FileInputStream(file)) ;
+				input.read(content) ;
+				fileInfo.setInformation(fileName.toUpperCase()+".xml", content);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				if(input!=null){
+					try {
+						input.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} 
+				}
+			}
+			return fileInfo ;
+		}
 	    public static void main(String[] args) throws IOException {
 			DatabaseToXML dtx = new DatabaseToXML();
 			dtx.studentXML();

@@ -1,6 +1,7 @@
 package C.data;
 
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
@@ -28,6 +29,7 @@ public class UserData  extends UnicastRemoteObject implements UserDataService{
     static DBHelper db1 = null;  
     static ResultSet ret = null; 
     static String insql = null;
+    static DatabaseToXML dtx = null;
 
     public int count() throws RemoteException{
     	sql = "select count(acc) from account";
@@ -72,7 +74,10 @@ public class UserData  extends UnicastRemoteObject implements UserDataService{
     	return po;
     	
     }
-
+    public void createAccountXML() throws IOException{
+		dtx = new DatabaseToXML();
+		dtx.accountXML();
+	}
     
 	public static void main(String[] args) throws RemoteException {
 		UserData ud = new UserData();

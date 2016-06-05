@@ -1,4 +1,5 @@
 package C.businesslogic;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -113,6 +114,29 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 		return true;
 		
 	}
+	public void courseSelectionXML() throws IOException {
+		// TODO Auto-generated method stub
+		CourseSelectionDataService cs;
+	
+		
+		try {
+			cs=(CourseSelectionDataService) Naming.lookup("rmi://127.0.0.1:2016/Server");
+			
+			
+			cs.createCourseSelectionXML();
+		
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) throws RemoteException {
 		CourseSelectionBL csbl = new CourseSelectionBL();
 		AccountVO avo = new AccountVO("3","2333",20190908);

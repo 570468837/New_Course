@@ -1,5 +1,6 @@
 package C.businesslogicservice;
 
+import java.io.IOException;
 import java.rmi.Remote;
 
 import C.po.CoursePO;
@@ -10,4 +11,5 @@ public interface StudentBLService{
 	//学生统计
 	public void showAllStudent();
 	public StudentPO showStudentById(String studentId);
+	public void studentXML() throws IOException;
 }
