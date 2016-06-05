@@ -112,16 +112,18 @@ public class StatisticsFrame extends JFrame {
 	}
 
 	public void refreshStudents(){
+		students.clear();
+		
 		String student_parentFolder = "IServer/statistics/student/";
 		String xsl_parentFolder = "IServer/xsl/";
-		
 		FileInformation original_student_file;
 		try {
 			original_student_file = BClient.getAllStudents();
-			printXML(student_parentFolder, original_student_file);
-			students.clear();
+//			printXML(student_parentFolder, original_student_file);
+
 			students.addAll(XML_Helper.decodeStudents
-					(student_parentFolder+original_student_file.getName()));
+					(XML_Helper.TransformXML(original_student_file, xsl_parentFolder+"B/formatStudent.xsl", 
+							student_parentFolder+"B/", "student.xml")));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -130,15 +132,18 @@ public class StatisticsFrame extends JFrame {
 	}
 	
 	public void refreshCourses(){
-		String course_parentFolder = "IServer/statistics/course/";
+		courses.clear();
 		
-		FileInformation B_course_file;
+		String course_parentFolder = "IServer/statistics/course/";
+		String xsl_parentFolder = "IServer/xsl/";
+		FileInformation original_course_file;
 		try {
-			B_course_file = BClient.getAllCourses();
-			printXML(course_parentFolder, B_course_file);
-			courses.clear();
+			original_course_file = BClient.getAllCourses();
+//			printXML(course_parentFolder, original_course_file);
+			
 			courses.addAll(XML_Helper.decodeCourses
-					(course_parentFolder+B_course_file.getName()));
+					(XML_Helper.TransformXML(original_course_file, xsl_parentFolder+"B/formatClass.xsl", 
+							course_parentFolder+"B/", "course.xml")));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -147,15 +152,18 @@ public class StatisticsFrame extends JFrame {
 	}
 	
 	public void refreshSelections(){
+		selections.clear();
+		
 		String selection_parentFolder = "IServer/statistics/selection/";
-
-		FileInformation selection_file;
+		String xsl_parentFolder = "IServer/xsl/";
+		FileInformation original_selection_file;
 		try {
-			selection_file = BClient.getAllSelections();
-			printXML(selection_parentFolder, selection_file);
-			selections.clear();
+			original_selection_file = BClient.getAllSelections();
+//			printXML(selection_parentFolder, selection_file);
+			
 			selections.addAll(XML_Helper.decodeSelections
-					(selection_parentFolder+selection_file.getName()));
+					(XML_Helper.TransformXML(original_selection_file, xsl_parentFolder+"B/formatClassChoice.xsl", 
+							selection_parentFolder+"B/", "selection.xml")));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
