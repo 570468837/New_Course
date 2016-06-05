@@ -91,14 +91,15 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 	public boolean courseQuit(StudentPO s, CoursePO c) throws RemoteException {
 		// TODO Auto-generated method stub
 		CourseSelectionDataService cs = null;
+		boolean result  = false;
 		
 		try {
 			cs=(CourseSelectionDataService) Naming.lookup("rmi://127.0.0.1:2016/Server");
 			
 			
 			cs.quitCourse(s, c);
-			
-			
+			result = cs.quitCourse(s, c);
+			return result;
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -109,7 +110,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return cs.quitCourse(s, c);
+		return true;
 		
 	}
 	public static void main(String[] args) throws RemoteException {
@@ -119,9 +120,9 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 		StudentPO spo = new StudentPO("12",null,null,null,null);
 //		csbl.courseSelect(spo, cpo);
 //		System.out.println(csbl.courseSelect(spo, cpo));
+//		csbl.showSelectedCourse(spo);
 		for(int i = 0;i<csbl.showSelectedCourse(spo).length;i++){
-			
-			
+
 			System.out.println(csbl.showSelectedCourse(spo)[i].getCno()+" "+csbl.showSelectedCourse(spo)[i].getCnm()+" "+csbl.showSelectedCourse(spo)[i].getPla());
 		}
 

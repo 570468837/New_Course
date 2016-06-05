@@ -133,7 +133,7 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
     	
     	sql = "insert into courseSelection(Cno,Sno,Grd) values (?,?,?)";
     	 db1 = new DBHelper(sql);
-    	 
+
      	 try {
  			db1.pst.setString(1, cno);
  			db1.pst.setString(2,sno);
@@ -245,12 +245,13 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
 //		int count = 0;
 //    	count = countCS();
 //    	System.out.println(count);
+	
 		sql = "select * from courseSelection where Sno=?";
     	db1 = new DBHelper(sql);
     	sql2 = "select * from course where Cno=?";
     	db2 = new DBHelper(sql2);
 
-  	
+    
     	
     	try {
 			db1.pst.setString(1, spo.getSno());
