@@ -135,18 +135,17 @@ public class XML_Helper {
 	public static void main(String[] args){
 		XML_Helper x = new XML_Helper();
 		ArrayList<Course> result = new ArrayList<>();
-//		result.add(new Course("1", "姚锰舟", "余泳桦", "张孙暮雨", "1"));
-//		result.add(new Course("2", "盛宇", "高杨逸乔", "胡韬", "2"));
-//		result.add(new Course("3", "盛宇", "宋仲基", "胡韬", "3"));
-//		x.outputCourses(result, "test.xml");
-		result = x.decodeCourses("test.xml");
-		for(Course c:result){
-			System.out.println(c.getId());
-			System.out.println(c.getName());
-			System.out.println(c.getScore());
-			System.out.println(c.getTeacher());
-			System.out.println(c.getLocation());
-			System.out.println();
+		result.add(new Course("1", "离散数学", "3", "陈道蓄", "102"));
+		result.add(new Course("2", "软工", "3", "刘钦", "103"));
+		result.add(new Course("3", "网络", "刘峰", "3", "104"));
+		x.outputCourses(result, "test.xml");
+//		result = x.decodeCourses("test.xml");
+//		for(Course c:result){
+//			System.out.println(c.getId());
+//			System.out.println(c.getName());
+//			System.out.println(c.getScore());
+//			System.out.println(c.getTeacher());
+//			System.out.println(c.getLocation());
+//			System.out.println();
 		}
 	}
-}
