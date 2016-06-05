@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<students>
+  <student>
+    <id>000000001</id>
+    <name>abcd</name>
+    <sex>F</sex>
+    <major>SE</major>
+  </student>
+  <student>
+    <id>001</id>
+    <name>abcd</name>
+    <sex>F</sex>
+    <major>SE</major>
+  </student>
+  <student>
+    <id>1</id>
+    <name>abcd</name>
+    <sex>F</sex>
+    <major>SE</major>
+  </student>
+</students>

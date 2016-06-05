@@ -72,7 +72,7 @@ public class DatabaseToXML {
 	            	
 	            }
 	            
-	            Writer w = new FileWriter("C."+tableName+".xml");	
+	            Writer w = new FileWriter("./CFiles/C_XML"+tableName+".xml");	
 	            System.out.println("success");
 	            OutputFormat opf = OutputFormat.createPrettyPrint();
 	            opf.setEncoding("utf8");
