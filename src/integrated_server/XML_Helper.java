@@ -150,7 +150,7 @@ public class XML_Helper {
 	
 	//下面是小宇的代码
 	/**
-	 * 
+	 * 将FileInformation类对象根据xsl文件转换成目标xml文件。
 	 * @param sourceFileInfo 将要转化的目标文件对象
 	 * @param XSLpath 转化标准xsl文件所在路径
 	 * @param savePath xml存储路径文件夹，最后要加"/"
