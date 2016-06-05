@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="GB2312"?>
-
-<accounts>
+<?xml version="1.0" encoding="utf8"?>
+  
+<accounts >
   <account>
     <acc>1</acc>
     <passwd>222</passwd>

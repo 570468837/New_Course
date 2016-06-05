@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="GB2312"?>
+<?xml version="1.0" encoding="utf8"?>
 
 <courseSelections>
   <courseSelection>
@@ -34,6 +34,41 @@
   <courseSelection>
     <Cno>1</Cno>
     <Sno>9</Sno>
+    <Grd>0</Grd>
+  </courseSelection>
+  <courseSelection>
+    <Cno>1</Cno>
+    <Sno>12</Sno>
+    <Grd>0</Grd>
+  </courseSelection>
+  <courseSelection>
+    <Cno>1</Cno>
+    <Sno>13</Sno>
+    <Grd>0</Grd>
+  </courseSelection>
+  <courseSelection>
+    <Cno>1</Cno>
+    <Sno>14</Sno>
+    <Grd>0</Grd>
+  </courseSelection>
+  <courseSelection>
+    <Cno>1</Cno>
+    <Sno>15</Sno>
+    <Grd>0</Grd>
+  </courseSelection>
+  <courseSelection>
+    <Cno>1</Cno>
+    <Sno>20</Sno>
+    <Grd>0</Grd>
+  </courseSelection>
+  <courseSelection>
+    <Cno>0101</Cno>
+    <Sno>12</Sno>
+    <Grd>90</Grd>
+  </courseSelection>
+  <courseSelection>
+    <Cno>0110</Cno>
+    <Sno>1</Sno>
     <Grd>0</Grd>
   </courseSelection>
 </courseSelections>
