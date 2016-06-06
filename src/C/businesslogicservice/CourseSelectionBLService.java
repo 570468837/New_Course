@@ -1,5 +1,6 @@
 package C.businesslogicservice;
 
+import java.io.IOException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -15,5 +16,6 @@ public interface CourseSelectionBLService{
 	public CoursePO[] showSelectedCourse(StudentPO spo) throws RemoteException ;
 	public boolean courseQuit(StudentPO s,CoursePO c) throws RemoteException;
 	public boolean courseSelect(StudentPO s, CoursePO c);
+	public void courseSelectionXML() throws IOException;
 	
 }

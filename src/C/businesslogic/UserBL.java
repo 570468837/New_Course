@@ -1,6 +1,7 @@
 package C.businesslogic;
 
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -71,6 +72,28 @@ public class UserBL  implements UserBLService{
 		
     	return res;
 	}
+	public void accountXML() throws IOException {
+		UserDataService ud;
+		
+		
+    	try {
+			ud=(UserDataService) Naming.lookup("rmi://127.0.0.1:2015/Server");
+			ud.createAccountXML();
+		
+			
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+	}
+
 
 	public static void main(String[] args) {
 		UserBL ubl = new UserBL();

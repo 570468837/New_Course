@@ -11,7 +11,16 @@ import B.B_Server.B_Interface;
 
 public class IServer_Start {
 	
-	public static B_Interface BClient ;
+	public static B_Interface BClient;
+	
+	public IServer_Start(){
+		try {
+			BClient =(B_Interface) Naming.lookup("rmi://localhost:8882/B_Interface");
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	public void register(){
 		 try { 
@@ -37,23 +46,10 @@ public class IServer_Start {
 	        	} 
 	    	} 
 	
-	private void initClients() {
-		// TODO Auto-generated method stub
-			try {
-				
-				BClient = (B_Interface) Naming.lookup("rmi://localhost:8882/B_Interface");
-				
-			} catch (MalformedURLException | RemoteException
-					| NotBoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	}
-	
 	public static void main(String args[]) { 
 		IServer_Start IS = new IServer_Start();
 		IS.register();
-		IS.initClients();
+		System.out.println(BClient==null);
 	}
 	
 }

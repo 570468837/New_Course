@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<students>
+  <student>
+    <Sno>000000001</Sno>
+    <Snm>abcd</Snm>
+    <Sex>F</Sex>
+    <Sde>SE</Sde>
+  </student>
+  <student>
+    <Sno>001</Sno>
+    <Snm>abcd</Snm>
+    <Sex>F</Sex>
+    <Sde>SE</Sde>
+  </student>
+  <student>
+    <Sno>1</Sno>
+    <Snm>abcd</Snm>
+    <Sex>F</Sex>
+    <Sde>SE</Sde>
+  </student>
+</students>

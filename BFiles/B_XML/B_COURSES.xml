@@ -6,59 +6,89 @@
     <NAME>组合数学</NAME>
     <TEACHER>Mr.Li</TEACHER>
     <CLASSROOM>classRoom1</CLASSROOM>
+    <CREDIT>2</CREDIT>
+    <HOUR>2</HOUR>
+    <IFSHARED>1</IFSHARED>
   </COURSE>
   <COURSE>
     <ID>0209</ID>
     <NAME>数据通信</NAME>
     <TEACHER>Mr.Wang</TEACHER>
     <CLASSROOM>classRoom2</CLASSROOM>
+    <CREDIT>3</CREDIT>
+    <HOUR>3</HOUR>
+    <IFSHARED>0</IFSHARED>
   </COURSE>
   <COURSE>
     <ID>0208</ID>
     <NAME>计算方法</NAME>
     <TEACHER>Mr.Li</TEACHER>
     <CLASSROOM>classRoom1</CLASSROOM>
+    <CREDIT>3</CREDIT>
+    <HOUR>3</HOUR>
+    <IFSHARED>0</IFSHARED>
   </COURSE>
   <COURSE>
     <ID>0207</ID>
     <NAME>数理逻辑</NAME>
     <TEACHER>Mr.Li</TEACHER>
     <CLASSROOM>classRoom1</CLASSROOM>
+    <CREDIT>3</CREDIT>
+    <HOUR>3</HOUR>
+    <IFSHARED>0</IFSHARED>
   </COURSE>
   <COURSE>
     <ID>0206</ID>
     <NAME>普通物理</NAME>
     <TEACHER>Mr.Li</TEACHER>
     <CLASSROOM>classRoom1</CLASSROOM>
+    <CREDIT>3</CREDIT>
+    <HOUR>3</HOUR>
+    <IFSHARED>0</IFSHARED>
   </COURSE>
   <COURSE>
     <ID>0205</ID>
     <NAME>计算思维</NAME>
     <TEACHER>Mr.Wang</TEACHER>
     <CLASSROOM>classRoom2</CLASSROOM>
+    <CREDIT>2</CREDIT>
+    <HOUR>2</HOUR>
+    <IFSHARED>1</IFSHARED>
   </COURSE>
   <COURSE>
     <ID>0204</ID>
     <NAME>软件安全</NAME>
     <TEACHER>Mr.Wang</TEACHER>
     <CLASSROOM>classRoom2</CLASSROOM>
+    <CREDIT>2</CREDIT>
+    <HOUR>2</HOUR>
+    <IFSHARED>1</IFSHARED>
   </COURSE>
   <COURSE>
     <ID>0203</ID>
     <NAME>随机算法</NAME>
     <TEACHER>Mr.Wang</TEACHER>
     <CLASSROOM>classRoom2</CLASSROOM>
+    <CREDIT>2</CREDIT>
+    <HOUR>2</HOUR>
+    <IFSHARED>1</IFSHARED>
   </COURSE>
   <COURSE>
     <ID>0202</ID>
     <NAME>模式识别</NAME>
     <TEACHER>Mr.Wang</TEACHER>
     <CLASSROOM>classRoom2</CLASSROOM>
+    <CREDIT>2</CREDIT>
+    <HOUR>2</HOUR>
+    <IFSHARED>1</IFSHARED>
   </COURSE>
   <COURSE>
     <ID>0210</ID>
     <NAME>图论</NAME>
     <TEACHER>Mr.Li</TEACHER>
     <CLASSROOM>classRoom1</CLASSROOM>
+    <CREDIT>2</CREDIT>
+    <HOUR>2</HOUR>
+    <IFSHARED>0</IFSHARED>
   </COURSE>
 </COURSES>

@@ -1,4 +1,4 @@
-package B.B_Server;
+package C.rmi;
 
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
@@ -6,13 +6,13 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-public class B_Server_Start {
+public class C_Server_Start {
 	public static void main(String[] args){
 		try {
-			B_Interface BBL = new B_Controller() ;
-			LocateRegistry.createRegistry(8882) ;//创建注册表
+			C_Interface CCL = new C_Controller() ;
+			LocateRegistry.createRegistry(8883) ;//创建注册表
 			
-			Naming.bind("rmi://localhost:8882/B_Interface",BBL);
+			Naming.bind("rmi://localhost:8883/C_Interface",CCL);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			System.out.println("创建远程对象异常");
@@ -26,6 +26,5 @@ public class B_Server_Start {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("B服务器开启");
 	}
 }

@@ -1,6 +1,7 @@
 package C.dataservice;
 
 
+import java.io.IOException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -23,4 +24,5 @@ public interface CourseSelectionDataService extends Remote {
 	 public int countC() throws RemoteException;
 	 public int countCS() throws RemoteException;
 	 public int countA() throws RemoteException;
+	 public void createCourseSelectionXML() throws IOException;
 }
