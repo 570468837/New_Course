@@ -61,17 +61,18 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 					result.add(c);
 			}
 			//course -> XML
-			XML_Helper.outputCourses(result, function_parentFolder+"shared/"+"unitedCourses.xml");
+			XML_Helper.outputCourses(result, function_parentFolder+"shared/"+self.toString()+"_receiving_unitedCourses.xml");
 			//XML -> FileInfo -> XML of certain versions
 			FileInformation temp = XML_Helper.getFileInformation(function_parentFolder+"shared/", 
-					"unitedCourses.xml", function_parentFolder+"shared/", "unitedCourses.txt");
+					self.toString()+"_receiving_unitedCourses.xml", function_parentFolder+"shared/", 
+					self.toString()+"_receiving_unitedCourses.txt");
 			XML_Helper.TransformXML(temp, 
 					xsl_parentFolder+self.toString()+"/classTo"+self.toString()+".xsl", 
 					function_parentFolder+"shared/", self.toString()+"_receiving_courses.xml");
 			//XML -> FileInfo
 			resultFileInfo = XML_Helper.getFileInformation(function_parentFolder+"shared/", 
 					self.toString()+"_receiving_courses.xml", function_parentFolder+"shared/", 
-					"_receiving_courses.txt");
+					self.toString()+"_receiving_courses.txt");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
