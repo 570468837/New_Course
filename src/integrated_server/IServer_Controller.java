@@ -43,7 +43,7 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		ArrayList<Course> result = new ArrayList<>();
 		String function_parentFolder = "IServer/functions/";
 		String xsl_parentFolder = "IServer/xsl/";
-		FileInformation course_file = null;
+		FileInformation course_file = null, resultFileInfo = null;
 		try {
 			course_file = BClient.getSharedCourses();
 			allSharedCourses.addAll(XML_Helper.decodeCourses(
@@ -60,17 +60,23 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 				if(!faculty.equals(self))
 					result.add(c);
 			}
-			XML_Helper.outputCourses(result, function_parentFolder+"shared/"+"originalcourses.xml");
-			//return XML_Helper.getFileInformation(parentPath, fileName, outputFolder, outputFileName);
-			
+			//course -> XML
+			XML_Helper.outputCourses(result, function_parentFolder+"shared/"+"unitedCourses.xml");
+			//XML -> FileInfo -> XML of certain versions
+			FileInformation temp = XML_Helper.getFileInformation(function_parentFolder+"shared/", 
+					"unitedCourses.xml", function_parentFolder+"shared/", "unitedCourses.txt");
+			XML_Helper.TransformXML(temp, 
+					xsl_parentFolder+self.toString()+"/classTo"+self.toString()+".xsl", 
+					function_parentFolder+"shared/", self.toString()+"_receiving_courses.xml");
+			//XML -> FileInfo
+			resultFileInfo = XML_Helper.getFileInformation(function_parentFolder+"shared/", 
+					self.toString()+"_receiving_courses.xml", function_parentFolder+"shared/", 
+					"_receiving_courses.txt");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		return null;
+		return resultFileInfo;
 	}
 
 	@Override
