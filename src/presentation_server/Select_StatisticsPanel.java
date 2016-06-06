@@ -67,6 +67,8 @@ public class Select_StatisticsPanel extends JPanel {
 		// TODO Auto-generated method stub
 		allSelectionsData.clear();
 		// TODO Auto-generated method stub
+		allStudents = ((StatisticsFrame)theFrame).getStudents();
+		allCourses = ((StatisticsFrame)theFrame).getCourses();
 		ArrayList<Selection> selections = ((StatisticsFrame)theFrame).getSelections();
 		if(selections.size() == 0)
 			return;

@@ -106,7 +106,7 @@ public class StatisticsFrame extends JFrame {
 		// TODO Auto-generated method stub
 			BClient = IServer_Start.BClient;
 			try {
-				BClient = (B_Interface) Naming.lookup("rmi://localhost:8882/B_Interface");
+				BClient = (B_Interface) Naming.lookup("rmi://192.168.45.65:8882/B_Interface");
 			} catch (MalformedURLException | RemoteException
 					| NotBoundException e) {
 				// TODO Auto-generated catch block
