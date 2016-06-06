@@ -126,6 +126,7 @@ public class StatisticsFrame extends JFrame {
 		FileInformation original_student_file;
 		try {
 			original_student_file = BClient.getAllStudents();
+			System.out.println(original_student_file.getName());
 //			printXML(student_parentFolder, original_student_file);
 
 			students.addAll(XML_Helper.decodeStudents
