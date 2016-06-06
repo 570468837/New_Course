@@ -70,10 +70,17 @@ public class Select_StatisticsPanel extends JPanel {
 		ArrayList<Selection> selections = ((StatisticsFrame)theFrame).getSelections();
 		if(selections.size() == 0)
 			return;
+		for(Student ss: allStudents){
+			System.out.println(ss.getId());
+			System.out.println(ss.getName());
+			System.out.println();
+		}
+		System.out.println(allStudents.size());
 		for(Selection s: selections){
 			Student student = getStudentById(s.getSid());
 			Course course = getCourseById(s.getCid());
 			Vector oneVector = new Vector<>();
+			System.out.println(s.getSid());
 			oneVector.add(s.getSid());
 			oneVector.add(student.getName());
 			oneVector.add(student.getMajor());
