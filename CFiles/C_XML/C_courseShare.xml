@@ -46,13 +46,4 @@
     <Pla>110</Pla>
     <Share>1</Share>
   </courseShare>
-  <courseShare>
-    <Cno>1</Cno>
-    <Cnm>adf</Cnm>
-    <Ctm>20</Ctm>
-    <Cpt>3</Cpt>
-    <Tec>ella</Tec>
-    <Pla>203</Pla>
-    <Share>1</Share>
-  </courseShare>
 </courseShares>

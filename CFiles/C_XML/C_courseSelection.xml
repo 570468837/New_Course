@@ -1,74 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf8"?>
 
 <courseSelections>
   <courseSelection>
-    <Sno>001</Sno>
-    <Cno>1</Cno>
-    <Grd>90</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Sno>1</Sno>
-    <Cno>1</Cno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Sno>3</Sno>
-    <Cno>1</Cno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Sno>4</Sno>
-    <Cno>1</Cno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Sno>5</Sno>
-    <Cno>1</Cno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Sno>6</Sno>
-    <Cno>1</Cno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Sno>9</Sno>
-    <Cno>1</Cno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Sno>12</Sno>
-    <Cno>1</Cno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Sno>13</Sno>
-    <Cno>1</Cno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Sno>14</Sno>
-    <Cno>1</Cno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Sno>15</Sno>
-    <Cno>1</Cno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Sno>20</Sno>
-    <Cno>1</Cno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Sno>12</Sno>
     <Cno>0101</Cno>
+    <Sno>01001</Sno>
+    <Grd></Grd>
+  </courseSelection>
+  <courseSelection>
+    <Cno>0101</Cno>
+    <Sno>01002</Sno>
+    <Grd></Grd>
+  </courseSelection>
+  <courseSelection>
+    <Cno>0102</Cno>
+    <Sno>01001</Sno>
     <Grd>90</Grd>
   </courseSelection>
   <courseSelection>
-    <Sno>1</Sno>
-    <Cno>0110</Cno>
+    <Cno>0103</Cno>
+    <Sno>01001</Sno>
+    <Grd>100</Grd>
+  </courseSelection>
+  <courseSelection>
+    <Cno>0108</Cno>
+    <Sno>01001</Sno>
     <Grd>0</Grd>
   </courseSelection>
 </courseSelections>

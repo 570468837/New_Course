@@ -1,22 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf8"?>
 
 <students>
   <student>
-    <Sno>000000001</Sno>
-    <Snm>abcd</Snm>
+    <Sno>01001</Sno>
+    <Snm>NANCY</Snm>
     <Sex>F</Sex>
     <Sde>SE</Sde>
+    <Pwd>1234</Pwd>
   </student>
   <student>
-    <Sno>001</Sno>
-    <Snm>abcd</Snm>
+    <Sno>01002</Sno>
+    <Snm>LUCY</Snm>
     <Sex>F</Sex>
     <Sde>SE</Sde>
+    <Pwd>1234</Pwd>
   </student>
   <student>
-    <Sno>1</Sno>
-    <Snm>abcd</Snm>
-    <Sex>F</Sex>
+    <Sno>01003</Sno>
+    <Snm>TOM</Snm>
+    <Sex>M</Sex>
     <Sde>SE</Sde>
+    <Pwd>1234</Pwd>
   </student>
 </students>
