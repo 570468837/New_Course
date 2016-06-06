@@ -12,7 +12,11 @@ import common.FileInformation;
  *
  */
 public interface IServer_Interface extends Remote{
-	//每一个方法都要抛出RemoteException
+	/**
+	 * 请忽略这个方法
+	 * @return
+	 * @throws RemoteException
+	 */
     public String helloWorld() throws RemoteException; 
     /**
      * 
@@ -27,14 +31,14 @@ public interface IServer_Interface extends Remote{
      * @return	是否选课成功
      * @throws RemoteException
      */
-    public boolean selectCourse(FileInformation fromFile) throws RemoteException;
+    public boolean selectCourse(FileInformation fromFile, Faculty self) throws RemoteException;
     /**
      * 
      * @param fromFile 一条退课记录（其他院系的课）
      * @return
      * @throws RemoteException
      */
-    public boolean quitCourse(FileInformation fromFile) throws RemoteException;
+    public boolean quitCourse(FileInformation fromFile, Faculty self) throws RemoteException;
     
 
 }
