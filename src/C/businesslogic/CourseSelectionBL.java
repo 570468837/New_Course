@@ -141,13 +141,13 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 		CourseSelectionBL csbl = new CourseSelectionBL();
 		AccountVO avo = new AccountVO("3","2333",20190908);
 		CoursePO cpo = new CoursePO("1", null, 0, 0, null, null, null);
-		StudentPO spo = new StudentPO("12",null,null,null,null);
+		StudentPO spo = new StudentPO("01001",null,null,null,null);
 //		csbl.courseSelect(spo, cpo);
 //		System.out.println(csbl.courseSelect(spo, cpo));
 //		csbl.showSelectedCourse(spo);
 		for(int i = 0;i<csbl.showSelectedCourse(spo).length;i++){
 
-			System.out.println(csbl.showSelectedCourse(spo)[i].getCno()+" "+csbl.showSelectedCourse(spo)[i].getCnm()+" "+csbl.showSelectedCourse(spo)[i].getPla());
+			System.out.println(csbl.showSelectedCourse(spo)[i].getCno()+" "+csbl.showSelectedCourse(spo)[i].getTec()+" "+csbl.showSelectedCourse(spo)[i].getPla());
 		}
 
 //		System.out.println(csbl.courseQuit(avo, cvo)+"ssss");

@@ -285,7 +285,7 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
  	            	 c.setCtm(ret2.getInt(3));
  	            	 c.setCpt(ret2.getInt(4));
  	            	 c.setPla(ret2.getString(6));
- 	            	 c.setTec(ret2.getString(7));
+ 	            	 c.setTec(ret2.getString(5));
  	            	 c.setShare(ret2.getString(7));
  	            	 
  	                
@@ -322,10 +322,10 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
 	    	CoursePO c = new CoursePO("1","adf",20,3,"ella","203","1");
 // 	    	cs.selectAllCourse();
 //			cs.selectAllAccount();
-			StudentPO spo = new StudentPO("12",null,null,null,null);
+			StudentPO spo = new StudentPO("01001",null,null,null,null);
 			cs.selectMyCourse(spo);
 			for (int i=0;i<cs.selectMyCourse(spo).length;i++){
-				System.out.println(cs.selectMyCourse(spo)[i].getCnm());
+				System.out.println(cs.selectMyCourse(spo)[i].getTec());
 				System.out.println(cs.selectMyCourse(spo)[i].getPla());
 			}
 //	    	System.out.println(cs.quitCourse(a, c));

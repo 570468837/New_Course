@@ -2,73 +2,28 @@
 
 <courseSelections>
   <courseSelection>
-    <Cno>1</Cno>
-    <Sno>001</Sno>
-    <Grd>90</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>1</Cno>
-    <Sno>1</Sno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>1</Cno>
-    <Sno>3</Sno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>1</Cno>
-    <Sno>4</Sno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>1</Cno>
-    <Sno>5</Sno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>1</Cno>
-    <Sno>6</Sno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>1</Cno>
-    <Sno>9</Sno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>1</Cno>
-    <Sno>12</Sno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>1</Cno>
-    <Sno>13</Sno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>1</Cno>
-    <Sno>14</Sno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>1</Cno>
-    <Sno>15</Sno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>1</Cno>
-    <Sno>20</Sno>
-    <Grd>0</Grd>
+    <Cno>0101</Cno>
+    <Sno>01001</Sno>
+    <Grd></Grd>
   </courseSelection>
   <courseSelection>
     <Cno>0101</Cno>
-    <Sno>12</Sno>
+    <Sno>01002</Sno>
+    <Grd></Grd>
+  </courseSelection>
+  <courseSelection>
+    <Cno>0102</Cno>
+    <Sno>01001</Sno>
     <Grd>90</Grd>
   </courseSelection>
   <courseSelection>
-    <Cno>0110</Cno>
-    <Sno>1</Sno>
+    <Cno>0103</Cno>
+    <Sno>01001</Sno>
+    <Grd>100</Grd>
+  </courseSelection>
+  <courseSelection>
+    <Cno>0108</Cno>
+    <Sno>01001</Sno>
     <Grd>0</Grd>
   </courseSelection>
 </courseSelections>
