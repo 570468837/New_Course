@@ -30,11 +30,12 @@ public class Test {
 //		cc.add(c3);
 //		cc.add(c2);
 //		cc.add(c1);
-		UserDataService uds = new UserDataServiceImpl() ;
-		StudentDataService sds = new StudentDataServiceImpl() ;
-		Student s = sds.find("131250011") ;
-		uds.register(new User("SY", "123",1,s)) ;
-		System.out.println("succeed");
+//		UserDataService uds = new UserDataServiceImpl() ;
+//		StudentDataService sds = new StudentDataServiceImpl() ;
+//		Student s = sds.find("131250011") ;
+//		uds.register(new User("SY", "123",1,s)) ;
+//		System.out.println("succeed");
+		
 	}
 	
 }

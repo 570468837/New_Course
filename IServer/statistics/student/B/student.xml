@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<students>
+  <student>
+    <id>02001</id>
+    <name>ZHOUZHOU</name>
+    <sex>女</sex>
+    <major>B</major>
+  </student>
+  <student>
+    <id>02002</id>
+    <name>YAOYAO</name>
+    <sex>女</sex>
+    <major>B</major>
+  </student>
+  <student>
+    <id>02003</id>
+    <name>MENGMENG</name>
+    <sex>女</sex>
+    <major>B</major>
+  </student>
+</students>
