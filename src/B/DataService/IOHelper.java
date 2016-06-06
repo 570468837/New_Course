@@ -103,7 +103,7 @@ public class IOHelper {
 		try {
 			input =  new BufferedInputStream(new FileInputStream(file)) ;
 			input.read(content) ;
-			fileInfo.setInformation(fileName.toUpperCase()+"S.xml", content);
+			fileInfo.setInformation("B_"+fileName.toUpperCase()+"S.xml", content);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
