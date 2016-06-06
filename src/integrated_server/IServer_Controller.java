@@ -19,7 +19,7 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 	}
 
 	@Override
-	public FileInformation getCoursesOfOtherFaculties(Faculty self) {
+	public FileInformation getSharedCourses(Faculty self) {
 		// TODO Auto-generated method stub
 		return null;
 	}
