@@ -14,16 +14,6 @@ public class IServer_Start {
 	
 	public static B_Interface BClient;
 
-	public IServer_Start(){
-		try {
-			BClient =(B_Interface) Naming.lookup("rmi://localhost:8882/B_Interface");
-			
-
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 	public void register(){
 		 try { 
