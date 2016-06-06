@@ -27,8 +27,8 @@ public class Course implements Serializable{
 	private String teacher ;//教师
 	private String classRoom ;//上课地点
 	private String credit ;//学分
-	private String hour ;//课时
-	private char ifShared ;//是否共享
+	private String hour = "0";//课时
+	private char ifShared = '1';//是否共享s
 	
 	private Set<StudentCourse> students_courses=new HashSet<StudentCourse>() ;
 	

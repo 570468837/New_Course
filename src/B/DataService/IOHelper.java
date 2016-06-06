@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +34,7 @@ public class IOHelper {
 		if(elementName.equals("sharedcourse"))
 			elementName = "course" ;
 		//获取ResultSet
-		Session session = HibernateUtils.getSession() ;;
+		Session session = HibernateUtils.getSession() ;
 		ResultSet result = (ResultSet) session.doReturningWork(new ReturningWork(){
 			@Override
 			public Object execute(Connection con) throws SQLException {
@@ -42,6 +43,7 @@ public class IOHelper {
 				return ps.executeQuery();
 			}
 		}) ;
+		
 		System.out.println("获得resultSet");
 		//生成Document
 		Document doc = null ;
@@ -60,8 +62,9 @@ public class IOHelper {
 					Element column = emp.addElement(columnNames[i]) ;
 					if(result.getObject(i+1)!=null)
 						column.setText(result.getObject(i+1)+"");
-					else
-						column.setText("");;
+					else{
+						column.setText("");
+					}
 				}
 			}
 			System.out.println("获得doc");

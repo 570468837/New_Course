@@ -19,13 +19,13 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import common.FileInformation;
 import B.B_Server.B_Interface;
+import B.B_Server.B_Server_Start;
 
 
 public class StatisticsFrame extends JFrame {
@@ -105,6 +105,13 @@ public class StatisticsFrame extends JFrame {
 	private void startRMI() {
 		// TODO Auto-generated method stub
 			BClient = IServer_Start.BClient;
+			try {
+				BClient = (B_Interface) Naming.lookup("rmi://localhost:8882/B_Interface");
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			refreshStudents();
 			refreshCourses();
 			refreshSelections();

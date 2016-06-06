@@ -19,7 +19,7 @@ public class StudentCourse implements Serializable{
 	private String id;
 	private Student student;
 	private Course course;
-	private String grade;
+	private String grade = "0";
 	
 	public String getId() {
 		return id;

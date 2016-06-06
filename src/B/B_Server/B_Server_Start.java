@@ -26,5 +26,6 @@ public class B_Server_Start {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("B服务器开启");
 	}
 }
