@@ -26,6 +26,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import common.FileInformation;
 import B.B_Server.B_Interface;
 import B.B_Server.B_Server_Start;
+import C.rmi.C_Interface;
 
 
 public class StatisticsFrame extends JFrame {
@@ -38,6 +39,7 @@ public class StatisticsFrame extends JFrame {
 	ArrayList<Selection> selections = new ArrayList<>();
 	
 	B_Interface BClient = null;
+	C_Interface CClient = null;
 	/**
 	 * Create the frame.
 	 */
@@ -104,9 +106,9 @@ public class StatisticsFrame extends JFrame {
 
 	private void startRMI() {
 		// TODO Auto-generated method stub
-			BClient = IServer_Start.BClient;
 			try {
 				BClient = (B_Interface) Naming.lookup("rmi://192.168.45.65:8882/B_Interface");
+				CClient = (C_Interface) Naming.lookup("rmi://192.168.45.178:8883/C_Interface");
 			} catch (MalformedURLException | RemoteException
 					| NotBoundException e) {
 				// TODO Auto-generated catch block
@@ -126,12 +128,16 @@ public class StatisticsFrame extends JFrame {
 		FileInformation original_student_file;
 		try {
 			original_student_file = BClient.getAllStudents();
-			System.out.println(original_student_file.getName());
 //			printXML(student_parentFolder, original_student_file);
-
 			students.addAll(XML_Helper.decodeStudents
 					(XML_Helper.TransformXML(original_student_file, xsl_parentFolder+"B/formatStudent.xsl", 
 							student_parentFolder+"B/", "student.xml")));
+			
+			original_student_file = CClient.getAllStudents();
+			students.addAll(XML_Helper.decodeStudents(XML_Helper.TransformXML(
+					original_student_file, xsl_parentFolder+"C/formatStudent.xsl", 
+					student_parentFolder+"C/", "student.xml")));
+			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -148,10 +154,14 @@ public class StatisticsFrame extends JFrame {
 		try {
 			original_course_file = BClient.getAllCourses();
 //			printXML(course_parentFolder, original_course_file);
-			
 			courses.addAll(XML_Helper.decodeCourses
 					(XML_Helper.TransformXML(original_course_file, xsl_parentFolder+"B/formatClass.xsl", 
 							course_parentFolder+"B/", "course.xml")));
+			
+			original_course_file = CClient.getAllCourses();
+			courses.addAll(XML_Helper.decodeCourses
+					(XML_Helper.TransformXML(original_course_file, xsl_parentFolder+"C/formatClass.xsl", 
+							course_parentFolder+"C/", "course.xml")));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -168,10 +178,15 @@ public class StatisticsFrame extends JFrame {
 		try {
 			original_selection_file = BClient.getAllSelections();
 //			printXML(selection_parentFolder, selection_file);
-			
 			selections.addAll(XML_Helper.decodeSelections
 					(XML_Helper.TransformXML(original_selection_file, xsl_parentFolder+"B/formatClassChoice.xsl", 
 							selection_parentFolder+"B/", "selection.xml")));
+			
+			original_selection_file = CClient.getAllSelections();
+			selections.addAll(XML_Helper.decodeSelections
+					(XML_Helper.TransformXML(original_selection_file, 
+							xsl_parentFolder+"C/formatClassChoice.xsl", 
+							selection_parentFolder+"C/", "selection.xml")));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
