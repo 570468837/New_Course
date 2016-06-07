@@ -21,6 +21,7 @@ public class CourseBL implements CourseBLService{
 	public CoursePO[] showAllCourse() {
 		// TODO Auto-generated method stub
 		CourseDataService cd;
+		
 		try {
 			cd=(CourseDataService) Naming.lookup("rmi://127.0.0.1:2017/Server");
 			return cd.selectAll();
@@ -38,6 +39,7 @@ public class CourseBL implements CourseBLService{
 		}
 		return null;
 	}
+	
 /*
  * 根据课程编号获取课程对象
  * */
