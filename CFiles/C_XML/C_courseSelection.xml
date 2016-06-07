@@ -4,12 +4,12 @@
   <courseSelection>
     <Cno>0101</Cno>
     <Sno>01001</Sno>
-    <Grd></Grd>
+    <Grd>0</Grd>
   </courseSelection>
   <courseSelection>
     <Cno>0101</Cno>
     <Sno>01002</Sno>
-    <Grd></Grd>
+    <Grd>0</Grd>
   </courseSelection>
   <courseSelection>
     <Cno>0102</Cno>
