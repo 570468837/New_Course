@@ -74,8 +74,17 @@ public class IOHelper {
 		}
 		
 		//生成xml文件
+		docToXml(doc, path+fileName.toUpperCase()+"S.xml");
+		
+	}
+	/**
+	 * 
+	 * @param doc
+	 * @param savePath 生成xml文件的保存路径，包括文件名
+	 */
+	public static void docToXml(Document doc,String savePath){
 		try {
-			Writer w = new FileWriter(path+fileName.toUpperCase()+"S.xml") ;
+			Writer w = new FileWriter(savePath) ;
 			OutputFormat opf = OutputFormat.createPrettyPrint() ;
 			opf.setEncoding("UTF-8");
 			XMLWriter xw = new XMLWriter(w,opf) ;

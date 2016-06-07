@@ -7,6 +7,11 @@ import B.Model.Course;
 public interface CourseBLService {
 	/**
 	 * 
+	 * @return 包括其他院系的共享课程
+	 */
+	public ArrayList<Course> getAllCourses() ;
+	/**
+	 * 
 	 * @return all local courses 
 	 */
 	public ArrayList<Course> getAllLocalCourse();

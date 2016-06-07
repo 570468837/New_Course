@@ -5,6 +5,20 @@ import B.Model.Student;
 
 public interface StudentBLService {
 	/**
+	 * 选本院系课程
+	 * @param s 
+	 * @param c
+	 * @return
+	 */
+	public boolean selectLocalCourse(Student s,Course c) ;
+	/**
+	 *  退本院系课程
+	 * @param s
+	 * @param c
+	 * @return
+	 */
+	public boolean quitLocalCourse(Student s,Course c) ;
+	/**
 	 * 
 	 * @param id
 	 * @return null if failed
