@@ -89,12 +89,12 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		String standard_xml_address = XML_Helper.TransformXML(fromFile, 
 				xsl_parentFolder+self.toString()+"/formatClassChoice.xsl", 
 				function_parentFolder+"select/", self.toString()+"_select_standard.xml");
-		//standardXM -> courses 一次选课只能选一门
-		ArrayList<Course> courses = XML_Helper.decodeCourses(function_parentFolder+
+		//standardXM -> selections 一次选课只能选一门
+		ArrayList<Selection> selections = XML_Helper.decodeSelections(function_parentFolder+
 				"select/"+self.toString()+"_select_standard.xml");
-		Faculty destination = Common.getFacultyById(courses.get(0).getId());
-		//courses -> destination XML
-		XML_Helper.outputCourses(courses, 
+		Faculty destination = Common.getFacultyById(selections.get(0).getCid());
+		//selections -> destination XML
+		XML_Helper.outputSelections(selections, 
 				function_parentFolder+"select/"+self.toString()+"_select_destination.xml");
 		//XML -> FileInfo
 		FileInformation temp = XML_Helper.getFileInformation(function_parentFolder+"select/", 
@@ -127,11 +127,11 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 				xsl_parentFolder+self.toString()+"/formatClassChoice.xsl", 
 				function_parentFolder+"quit/", self.toString()+"_quit_standard.xml");
 		//standardXM -> courses 一次选课只能选一门
-		ArrayList<Course> courses = XML_Helper.decodeCourses(function_parentFolder+
+		ArrayList<Selection> selections = XML_Helper.decodeSelections(function_parentFolder+
 				"quit/"+self.toString()+"_quit_standard.xml");
-		Faculty destination = Common.getFacultyById(courses.get(0).getId());
+		Faculty destination = Common.getFacultyById(selections.get(0).getCid());
 		//courses -> destination XML
-		XML_Helper.outputCourses(courses, 
+		XML_Helper.outputSelections(selections, 
 				function_parentFolder+"quit/"+self.toString()+"_quit_destination.xml");
 		//XML -> FileInfo
 		FileInformation temp = XML_Helper.getFileInformation(function_parentFolder+"quit/", 

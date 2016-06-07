@@ -127,26 +127,6 @@ public class XML_Helper {
 		  }
 		return result;
 	}
-	/**
-	 * 将FileInformation转成xml文件，存在parentPath文件夹下
-	 * @param parentPath 最后要加斜杠
-	 * @param fileinfo
-	 * @return 最终地址
-	 */
-	public String printXML(String parentPath, FileInformation fileinfo){
-		 BufferedOutputStream output;
-		try {
-			output = new BufferedOutputStream(new FileOutputStream(new File(parentPath+fileinfo.getName())));
-			output.write(fileinfo.getContent());
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return parentPath+fileinfo.getName();
-	}
 	
 	public static ArrayList<Selection> decodeSelections(String fileAddress){
 		ArrayList<Selection> result = new ArrayList<>();
@@ -168,6 +148,69 @@ public class XML_Helper {
 			result.add(new Selection(sid, cid, score));
 		  }
 		return result;
+	}
+	/**
+	 * selections -> XML
+	 * @param selections
+	 * @param outputAddress
+	 */
+	public static void outputSelections(ArrayList<Selection> selections, String outputAddress){
+		Document document = DocumentHelper.createDocument();	
+		//创建root 
+		Element root = document.addElement("selections");  
+		        //生成root的一个接点  
+		for(Selection s: selections){
+			Element courseElement = root.addElement("selection");
+			Element sid = courseElement.addElement("sid");
+			sid.setText(s.getSid());
+			Element cid = courseElement.addElement("cid");
+			cid.setText(s.getCid());
+			Element score = courseElement.addElement("score");
+			score.setText(s.getScore());
+		}
+		//输出
+		StringWriter stringWriter = new StringWriter();  
+	    //设置文件编码  
+		OutputFormat xmlFormat = new OutputFormat();  
+	    xmlFormat.setEncoding("UTF-8"); 
+	    // 设置换行 
+	    xmlFormat.setNewlines(true); 
+	    // 生成缩进 
+	    xmlFormat.setIndent(true); 
+	    // 使用4个空格进行缩进, 可以兼容文本编辑器 
+	    xmlFormat.setIndent("    "); 
+	        
+	    //创建写文件方法  
+	    XMLWriter xmlWriter;
+		try {
+			xmlWriter = new XMLWriter(new FileWriter(outputAddress),xmlFormat);
+			xmlWriter.write(document);  
+			xmlWriter.close(); 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+	}
+	
+	/**
+	 * 将FileInformation转成xml文件，存在parentPath文件夹下
+	 * @param parentPath 最后要加斜杠
+	 * @param fileinfo
+	 * @return 最终地址
+	 */
+	public String printXML(String parentPath, FileInformation fileinfo){
+		 BufferedOutputStream output;
+		try {
+			output = new BufferedOutputStream(new FileOutputStream(new File(parentPath+fileinfo.getName())));
+			output.write(fileinfo.getContent());
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return parentPath+fileinfo.getName();
 	}
 	
 	//下面是小宇的代码
@@ -308,11 +351,11 @@ public class XML_Helper {
 	
 	public static void main(String[] args){
 		XML_Helper x = new XML_Helper();
-		ArrayList<Course> result = new ArrayList<>();
-		result.add(new Course("1", "离散数学", "3", "陈道蓄", "102"));
-		result.add(new Course("2", "软工", "3", "刘钦", "103"));
-		result.add(new Course("3", "网络", "刘峰", "3", "104"));
-		x.outputCourses(result, "test.xml");
+//		ArrayList<Course> result = new ArrayList<>();
+//		result.add(new Course("1", "离散数学", "3", "陈道蓄", "102"));
+//		result.add(new Course("2", "软工", "3", "刘钦", "103"));
+//		result.add(new Course("3", "网络", "刘峰", "3", "104"));
+//		x.outputCourses(result, "test.xml");
 //		result = x.decodeCourses("test.xml");
 //		for(Course c:result){
 //			System.out.println(c.getId());
