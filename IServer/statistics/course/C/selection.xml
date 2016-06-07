@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<selections>
+  <selection>
+    <sid>01001</sid>
+    <cid>0101</cid>
+<<<<<<< HEAD
+    <score>0</score>
+=======
+    <score/>
+>>>>>>> 490b6de06e46a7def21394831c822210381e4b5e
+  </selection>
+  <selection>
+    <sid>01002</sid>
+    <cid>0101</cid>
+<<<<<<< HEAD
+    <score>0</score>
+=======
+    <score/>
+>>>>>>> 490b6de06e46a7def21394831c822210381e4b5e
+  </selection>
+  <selection>
+    <sid>01001</sid>
+    <cid>0102</cid>
+    <score>90</score>
+  </selection>
+  <selection>
+    <sid>01001</sid>
+    <cid>0103</cid>
+    <score>100</score>
+  </selection>
+  <selection>
+    <sid>01001</sid>
+    <cid>0108</cid>
+    <score>0</score>
+  </selection>
+</selections>
