@@ -83,12 +83,74 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 	@Override
 	public boolean selectCourse(FileInformation fromFile, Faculty self) throws RemoteException {
 		// TODO Auto-generated method stub
-		return false;
+		String function_parentFolder = "IServer/functions/";
+		String xsl_parentFolder = "IServer/xsl/";
+		// fromFile -> standardXML
+		String standard_xml_address = XML_Helper.TransformXML(fromFile, 
+				xsl_parentFolder+self.toString()+"/formatClassChoice.xsl", 
+				function_parentFolder+"select/", self.toString()+"_select_standard.xml");
+		//standardXM -> courses 一次选课只能选一门
+		ArrayList<Course> courses = XML_Helper.decodeCourses(function_parentFolder+
+				"select/"+self.toString()+"_select_standard.xml");
+		Faculty destination = Common.getFacultyById(courses.get(0).getId());
+		//courses -> destination XML
+		XML_Helper.outputCourses(courses, 
+				function_parentFolder+"select/"+self.toString()+"_select_destination.xml");
+		//XML -> FileInfo
+		FileInformation temp = XML_Helper.getFileInformation(function_parentFolder+"select/", 
+				self.toString()+"_select_destination.xml", 
+				function_parentFolder+"select/", self.toString()+"_select_temp.txt");
+		
+		boolean ifSuccess = false;
+		switch(destination){
+		
+		case B: 
+			ifSuccess = BClient.selectFromOtherFaculties(temp);
+			break;
+		case C:
+			ifSuccess = CClient.selectFromOtherFaculties(temp);
+			break;
+		default:
+			System.out.println("课程不属于任何院系");
+			break;
+		}
+		return ifSuccess;
 	}
 
 	@Override
 	public boolean quitCourse(FileInformation fromFile, Faculty self) throws RemoteException {
 		// TODO Auto-generated method stub
-		return false;
+		String function_parentFolder = "IServer/functions/";
+		String xsl_parentFolder = "IServer/xsl/";
+		// fromFile -> standardXML
+		String standard_xml_address = XML_Helper.TransformXML(fromFile, 
+				xsl_parentFolder+self.toString()+"/formatClassChoice.xsl", 
+				function_parentFolder+"quit/", self.toString()+"_quit_standard.xml");
+		//standardXM -> courses 一次选课只能选一门
+		ArrayList<Course> courses = XML_Helper.decodeCourses(function_parentFolder+
+				"quit/"+self.toString()+"_quit_standard.xml");
+		Faculty destination = Common.getFacultyById(courses.get(0).getId());
+		//courses -> destination XML
+		XML_Helper.outputCourses(courses, 
+				function_parentFolder+"quit/"+self.toString()+"_quit_destination.xml");
+		//XML -> FileInfo
+		FileInformation temp = XML_Helper.getFileInformation(function_parentFolder+"quit/", 
+				self.toString()+"_quit_destination.xml", 
+				function_parentFolder+"quit/", self.toString()+"_quit_temp.txt");
+		
+		boolean ifSuccess = false;
+		switch(destination){
+		
+		case B: 
+			ifSuccess = BClient.selectFromOtherFaculties(temp);
+			break;
+		case C:
+			ifSuccess = CClient.selectFromOtherFaculties(temp);
+			break;
+		default:
+			System.out.println("课程不属于任何院系");
+			break;
+		}
+		return ifSuccess;
 	}
 }
