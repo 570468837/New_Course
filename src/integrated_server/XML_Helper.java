@@ -1,10 +1,12 @@
 package integrated_server;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -125,6 +127,26 @@ public class XML_Helper {
 		  }
 		return result;
 	}
+	/**
+	 * 将FileInformation转成xml文件，存在parentPath文件夹下
+	 * @param parentPath 最后要加斜杠
+	 * @param fileinfo
+	 * @return 最终地址
+	 */
+	public String printXML(String parentPath, FileInformation fileinfo){
+		 BufferedOutputStream output;
+		try {
+			output = new BufferedOutputStream(new FileOutputStream(new File(parentPath+fileinfo.getName())));
+			output.write(fileinfo.getContent());
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return parentPath+fileinfo.getName();
+	}
 	
 	public static ArrayList<Selection> decodeSelections(String fileAddress){
 		ArrayList<Selection> result = new ArrayList<>();
@@ -149,6 +171,47 @@ public class XML_Helper {
 	}
 	
 	//下面是小宇的代码
+	/**
+	 * 将文件转成FileInformation类
+	 * @param parentPath
+	 * @param fileName
+	 * @return 转换后的类
+	 */
+	
+	public static FileInformation getFileInformation(String parentPath, String fileName, 
+			String outputFolder, String outputFileName) {
+		FileInformation fileInfo = new FileInformationSev() ;
+		
+		File file = new File(parentPath+fileName) ;
+		if(!file.exists()){
+			System.out.println("xml文件不存在");
+		}
+		
+		byte[] content = new byte[(int)file.length()] ;
+		
+		BufferedInputStream input = null ;
+		try {
+			input =  new BufferedInputStream(new FileInputStream(file)) ;
+			input.read(content) ;
+			fileInfo.setInformation(outputFolder+outputFileName, content);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			if(input!=null){
+				try {
+					input.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+			}
+		}
+		return fileInfo ;
+	}
 	/**
 	 * 将FileInformation类对象根据xsl文件转换成目标xml文件。
 	 * @param sourceFileInfo 将要转化的目标文件对象

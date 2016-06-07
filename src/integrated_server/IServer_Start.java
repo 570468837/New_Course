@@ -11,10 +11,6 @@ import B.B_Server.B_Interface;
 import C.rmi.C_Interface;
 
 public class IServer_Start {
-	
-	public static B_Interface BClient;
-
-	
 	public void register(){
 		 try { 
 			 //创建一个远程对象 
@@ -42,7 +38,6 @@ public class IServer_Start {
 	public static void main(String args[]) { 
 		IServer_Start IS = new IServer_Start();
 		IS.register();
-		System.out.println(BClient==null);
 	}
 	
 }
