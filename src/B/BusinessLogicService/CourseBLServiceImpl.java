@@ -60,8 +60,8 @@ public class CourseBLServiceImpl implements CourseBLService{
 		IInterface iController = IInterface.getInstance() ;
 		ArrayList<Course> result = this.getAllLocalCourse() ;
 		try {
-			FileInformation aSharedCourses = iController.IClient.getCoursesOfOtherFaculties(Faculty.A) ;
-			FileInformation cSharedCourses = iController.IClient.getCoursesOfOtherFaculties(Faculty.C) ;
+			FileInformation aSharedCourses = iController.IClient.getSharedCourses(Faculty.A) ;
+			FileInformation cSharedCourses = iController.IClient.getSharedCourses(Faculty.C) ;
 			Document aDoc = B_XML_Helper.BytesToDoc(aSharedCourses.getContent()) ;
 			Document cDoc = B_XML_Helper.BytesToDoc(cSharedCourses.getContent()) ;
 			

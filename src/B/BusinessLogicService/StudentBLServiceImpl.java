@@ -7,6 +7,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
+import common.Faculty;
 import common.FileInformation;
 import B.DataService.IOHelper;
 import B.DataService.StudentCourseDataService;
@@ -36,11 +37,16 @@ public class StudentBLServiceImpl implements StudentBLService{
 		if(courseId.startsWith("02")) //判断是否为本院系课程
 			result = selectLocalCourse(s, c) ;
 		else{
+			Faculty f = null ;
+			if(courseId.startsWith("01"))
+				f = Faculty.A ;
+			else
+				f = Faculty.C ;
 			IInterface iInterface = IInterface.getInstance() ;
 			selectionToXml(s, c,"./BFiles/B_XML/B_SELECTIONS.xml");
-			FileInformation fileInto = IOHelper.getFileInformation("./BFiles/B_XML/B_SELECTIONS.xml") ;
+			FileInformation fileInfo = IOHelper.getFileInformation("./BFiles/B_XML/B_SELECTIONS.xml") ;
 			try {
-				result = iInterface.IClient.selectCourse(fileInto) ;
+				result = iInterface.IClient.selectCourse(fileInfo, f) ;
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -68,11 +74,16 @@ public class StudentBLServiceImpl implements StudentBLService{
 		if(cid.startsWith("02"))
 			result = quitLocalCourse(s, c) ;
 		else{
+			Faculty f = null ;
+			if(cid.startsWith("01"))
+				f = Faculty.A ;
+			else
+				f = Faculty.C ;
 			selectionToXml(s, c, "./BFiles/B_XML/B_SELECTIONS.xml");
-			FileInformation fileInto = IOHelper.getFileInformation("./BFiles/B_XML/B_SELECTIONS.xml") ;
+			FileInformation fileInfo = IOHelper.getFileInformation("./BFiles/B_XML/B_SELECTIONS.xml") ;
 			IInterface iInterface = IInterface.getInstance() ;
 			try {
-				result = iInterface.IClient.quitCourse(fileInto) ;
+				result = iInterface.IClient.quitCourse(fileInfo,f) ;
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
