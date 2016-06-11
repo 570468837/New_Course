@@ -5,30 +5,18 @@
     <id>01001</id>
     <name>NANCY</name>
     <sex>F</sex>
-<<<<<<< HEAD
     <major>C</major>
-=======
-    <major>SE</major>
->>>>>>> 490b6de06e46a7def21394831c822210381e4b5e
   </student>
   <student>
     <id>01002</id>
     <name>LUCY</name>
     <sex>F</sex>
-<<<<<<< HEAD
     <major>C</major>
-=======
-    <major>SE</major>
->>>>>>> 490b6de06e46a7def21394831c822210381e4b5e
   </student>
   <student>
     <id>01003</id>
     <name>TOM</name>
     <sex>M</sex>
-<<<<<<< HEAD
     <major>C</major>
-=======
-    <major>SE</major>
->>>>>>> 490b6de06e46a7def21394831c822210381e4b5e
   </student>
 </students>

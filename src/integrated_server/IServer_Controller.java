@@ -22,7 +22,7 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 
 	public IServer_Controller() throws RemoteException{
 		try {
-			BClient = (B_Interface) Naming.lookup("rmi://localhost:8882/B_Interface");
+			BClient = (B_Interface) Naming.lookup("rmi://192.168.1.109:8882/B_Interface");
 			CClient = (C_Interface) Naming.lookup("rmi://localhost:8883/C_Interface");
 
 		} catch (MalformedURLException | NotBoundException e) {
@@ -47,12 +47,14 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		try {
 			course_file = BClient.getSharedCourses();
 			allSharedCourses.addAll(XML_Helper.decodeCourses(
-					XML_Helper.TransformXML(course_file, xsl_parentFolder+"B/formatStudent.xsl", 
+					XML_Helper.TransformXML(course_file, xsl_parentFolder+"B/formatClass.xsl", 
 							function_parentFolder+"shared/B/", "sharedCourses.xml")));
 			
 			course_file = CClient.getSharedCourses();
+			for(byte b: course_file.getContent())
+				System.out.print(b);
 			allSharedCourses.addAll(XML_Helper.decodeCourses(
-					XML_Helper.TransformXML(course_file, xsl_parentFolder+"C/formatStudent.xsl", 
+					XML_Helper.TransformXML(course_file, xsl_parentFolder+"C/formatClass.xsl", 
 							function_parentFolder+"shared/C/", "sharedCourses.xml")));
 			
 			for(Course c: allSharedCourses){

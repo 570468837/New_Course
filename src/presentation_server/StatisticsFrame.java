@@ -107,8 +107,8 @@ public class StatisticsFrame extends JFrame {
 	private void startRMI() {
 		// TODO Auto-generated method stub
 			try {
-				BClient = (B_Interface) Naming.lookup("rmi://192.168.45.65:8882/B_Interface");
-				CClient = (C_Interface) Naming.lookup("rmi://192.168.45.178:8883/C_Interface");
+				BClient = (B_Interface) Naming.lookup("rmi://192.168.1.109:8882/B_Interface");
+				CClient = (C_Interface) Naming.lookup("rmi://localhost:8883/C_Interface");
 			} catch (MalformedURLException | RemoteException
 					| NotBoundException e) {
 				// TODO Auto-generated catch block
