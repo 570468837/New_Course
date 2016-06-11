@@ -64,6 +64,23 @@ public class DatabaseToXML {
 	            	columnName[j-1] = rsmd.getColumnName(j);
 	            }
 	            Document doc = DocumentHelper.createDocument();
+	            if(tableName.equals("courseShare")){
+	            	Element root = doc.addElement("course"+"s");
+		            
+		            while(ret.next()){
+		            	Element emp = root.addElement("course");
+		            	for(int j=1;j<=count;j++){
+		            		Element column = emp.addElement(columnName[j-1]);
+		            		if(ret.getObject(j)!=null){
+		            			column.setText(ret.getObject(j)+"");
+		            		}else{
+		            			column.setText("");
+		            		}
+		            	}
+		            
+		            	
+		            }
+	            }else{
 	            Element root = doc.addElement(tableName+"s");
 	            
 	            while(ret.next()){
@@ -79,7 +96,7 @@ public class DatabaseToXML {
 	            
 	            	
 	            }
-	            
+	            }
 	            Writer w = new FileWriter("./CFiles/C_XML/C_"+tableName+".xml");	
 	            System.out.println("success");
 	            OutputFormat opf = OutputFormat.createPrettyPrint();

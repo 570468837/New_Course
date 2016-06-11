@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf8"?>
 
-<courseShares>
-  <courseShare>
+<courses>
+  <course>
     <Cno>0101</Cno>
     <Cnm>Compiling</Cnm>
     <Ctm>30</Ctm>
@@ -9,8 +9,8 @@
     <Tec>Peter</Tec>
     <Pla>101</Pla>
     <Share>1</Share>
-  </courseShare>
-  <courseShare>
+  </course>
+  <course>
     <Cno>0102</Cno>
     <Cnm>DataStruct</Cnm>
     <Ctm>30</Ctm>
@@ -18,8 +18,8 @@
     <Tec>Simon</Tec>
     <Pla>102</Pla>
     <Share>1</Share>
-  </courseShare>
-  <courseShare>
+  </course>
+  <course>
     <Cno>0103</Cno>
     <Cnm>c++</Cnm>
     <Ctm>20</Ctm>
@@ -27,8 +27,8 @@
     <Tec>Ella</Tec>
     <Pla>103</Pla>
     <Share>1</Share>
-  </courseShare>
-  <courseShare>
+  </course>
+  <course>
     <Cno>0106</Cno>
     <Cnm>Math1</Cnm>
     <Ctm>30</Ctm>
@@ -36,8 +36,8 @@
     <Tec>Andy</Tec>
     <Pla>106</Pla>
     <Share>1</Share>
-  </courseShare>
-  <courseShare>
+  </course>
+  <course>
     <Cno>0110</Cno>
     <Cnm>DiscreteM</Cnm>
     <Ctm>30</Ctm>
@@ -45,5 +45,5 @@
     <Tec>David</Tec>
     <Pla>110</Pla>
     <Share>1</Share>
-  </courseShare>
-</courseShares>
+  </course>
+</courses>
