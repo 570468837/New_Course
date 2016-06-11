@@ -8,10 +8,10 @@ import java.sql.SQLException;
  
 public class DBHelper {  
    public static final String url = "jdbc:mysql://localhost:3306/school?"
-           + "user=root&password=nju008&useUnicode=true&characterEncoding=UTF8&useSSL=true";  
+           + "user=root&password=1234&useUnicode=true&characterEncoding=UTF8&useSSL=true";  
    public static final String name = "com.mysql.jdbc.Driver";  
    public static final String user = "root";  
-   public static final String password = "nju008";  
+   public static final String password = "1234";  
  
    public Connection conn = null;  
    public PreparedStatement pst = null;  
