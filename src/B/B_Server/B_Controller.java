@@ -108,10 +108,11 @@ public class B_Controller extends UnicastRemoteObject implements B_Interface{
 	public static void main(String[] args) throws RemoteException{
 		B_Interface b = new B_Controller() ;
 //		FileInformation fileinfo = b.getSharedCourses() ;
-		b.getAllCourses();
-		b.getAllSelections() ;
-		b.getAllStudents() ;
-		b.getSharedCourses() ;
-		System.out.println("over");
+//		b.getAllCourses();
+//		b.getAllSelections() ;
+//		b.getAllStudents() ;
+		FileInformation f = b.getSharedCourses() ;
+		System.out.println(f.getContent().toString());
+//		System.out.println("over");
 	}
 }

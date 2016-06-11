@@ -109,7 +109,7 @@ public class SelectPanel extends JPanel {
 	private void getData() {
 		// TODO Auto-generated method stub
 		allCoursesData.clear();
-		ArrayList<Course> courses= courseBL.getAllLocalCourse() ;
+		ArrayList<Course> courses= courseBL.getAllCourses() ;
 		if(courses.size() == 0)
 			return;
 		for(int i=0;i<courses.size();i++){

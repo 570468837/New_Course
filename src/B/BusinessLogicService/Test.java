@@ -2,6 +2,8 @@ package B.BusinessLogicService;
 
 
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import B.Model.Course;
@@ -28,10 +30,16 @@ public class Test {
 //		Student s = ubl.loginValidity("SY","123");
 //		System.out.println(s.getName());
 //		System.exit(0);
-		CourseBLService cbl = new CourseBLServiceImpl() ;
-		ArrayList<Course> list = cbl.getAllLocalCourse();
-		for(Course c:list){
-			System.out.println(c.getName());
+//		CourseBLService cbl = new CourseBLServiceImpl() ;
+//		ArrayList<Course> list = cbl.getAllLocalCourse();
+//		for(Course c:list){
+//			System.out.println(c.getName());
+//		}
+		try {
+			System.out.println(InetAddress.getLocalHost());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
