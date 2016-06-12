@@ -42,7 +42,7 @@ public class Demo {
         }  
     } 
     //插入学生记录
-    public boolean insertStudent(StudentPO student){
+    public static boolean insertStudent(StudentPO student){
     	insql = "insert into student(Sno,Snm,Sex,Sde,Pwd) values(?,?,?,?,?)";
     	 db1 = new DBHelper(insql);
     	 
