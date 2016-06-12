@@ -44,7 +44,7 @@ public class CourseFrame extends JFrame {
 			System.out.println("包有问题");
 			}
 		UserBLService u = new UserBLServiceImpl() ;
-		CourseFrame frame = new CourseFrame(u.loginValidity("SY", "123"));
+		CourseFrame frame = new CourseFrame(u.loginValidity("ZHOUZHOU", "123"));
 	}
 
 	/**

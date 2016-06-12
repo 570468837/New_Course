@@ -37,16 +37,12 @@ public class StudentBLServiceImpl implements StudentBLService{
 		if(courseId.startsWith("02")) //判断是否为本院系课程
 			result = selectLocalCourse(s, c) ;
 		else{
-			Faculty f = null ;
-			if(courseId.startsWith("03"))
-				f = Faculty.A ;
-			else
-				f = Faculty.C ;
+			
 			IInterface iInterface = IInterface.getInstance() ;
 			selectionToXml(s, c,"./BFiles/B_XML/B_SELECTIONS.xml");
 			FileInformation fileInfo = IOHelper.getFileInformation("./BFiles/B_XML/B_SELECTIONS.xml") ;
 			try {
-				result = iInterface.IClient.selectCourse(fileInfo, f) ;
+				result = iInterface.IClient.selectCourse(fileInfo, Faculty.B) ;
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -74,16 +70,12 @@ public class StudentBLServiceImpl implements StudentBLService{
 		if(cid.startsWith("02"))
 			result = quitLocalCourse(s, c) ;
 		else{
-			Faculty f = null ;
-			if(cid.startsWith("01"))
-				f = Faculty.A ;
-			else
-				f = Faculty.C ;
+			
 			selectionToXml(s, c, "./BFiles/B_XML/B_SELECTIONS.xml");
 			FileInformation fileInfo = IOHelper.getFileInformation("./BFiles/B_XML/B_SELECTIONS.xml") ;
 			IInterface iInterface = IInterface.getInstance() ;
 			try {
-				result = iInterface.IClient.quitCourse(fileInfo,f) ;
+				result = iInterface.IClient.quitCourse(fileInfo,Faculty.B) ;
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
