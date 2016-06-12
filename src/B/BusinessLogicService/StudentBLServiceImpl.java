@@ -38,7 +38,7 @@ public class StudentBLServiceImpl implements StudentBLService{
 			result = selectLocalCourse(s, c) ;
 		else{
 			Faculty f = null ;
-			if(courseId.startsWith("01"))
+			if(courseId.startsWith("03"))
 				f = Faculty.A ;
 			else
 				f = Faculty.C ;
