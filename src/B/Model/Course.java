@@ -22,6 +22,15 @@ public class Course implements Serializable{
 		this.hour = hour;
 		this.ifShared = ifShared;
 	}
+	public Course(String id,String name,String teacher,String classRoom,String credit){
+		this.id=id ;
+		this.name = name ;
+		this.teacher = teacher ;
+		this.classRoom = classRoom ;
+		this.credit = credit ;
+		this.hour = "0" ;
+		this.ifShared = 1 ;
+	}
 	private String id ;//
 	private String name ;//课程名称
 	private String teacher ;//教师

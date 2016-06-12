@@ -60,14 +60,14 @@ public class CourseBLServiceImpl implements CourseBLService{
 		IInterface iController = IInterface.getInstance() ;
 		ArrayList<Course> result = this.getAllLocalCourse() ;
 		try {
-			FileInformation aSharedCourses = iController.IClient.getSharedCourses(Faculty.A) ;
-			FileInformation cSharedCourses = iController.IClient.getSharedCourses(Faculty.C) ;
-			Document aDoc = B_XML_Helper.BytesToDoc(aSharedCourses.getContent()) ;
-			Document cDoc = B_XML_Helper.BytesToDoc(cSharedCourses.getContent()) ;
+			FileInformation otherSharedCourses = iController.IClient.getSharedCourses(Faculty.B) ;
+//			FileInformation cSharedCourses = iController.IClient.getSharedCourses(Faculty.C) ;
+			Document otherDoc = B_XML_Helper.BytesToDoc(otherSharedCourses.getContent()) ;
+//			Document cDoc = B_XML_Helper.BytesToDoc(cSharedCourses.getContent()) ;
 			
 			//解析doc获取course对象
-			updateList(result, aDoc) ;
-			updateList(result, cDoc) ;
+			updateList(result, otherDoc) ;
+//			updateList(result, cDoc) ;
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,7 +84,7 @@ public class CourseBLServiceImpl implements CourseBLService{
 				Element tmp = j.next() ;
 				strs.add(tmp.getStringValue()) ;
 			}
-			Course course = new Course(strs.get(0),strs.get(1),strs.get(2),strs.get(3),strs.get(4), strs.get(5),strs.get(6).charAt(0)) ;
+			Course course = new Course(strs.get(0),strs.get(1),strs.get(2),strs.get(3),strs.get(4)) ;
 			list.add(course) ;
 		}
 		return list ;

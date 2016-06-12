@@ -10,7 +10,7 @@ import integrated_server.IServer_Interface;
 public class IInterface {
 	private static IInterface theInstance ;
 	public IServer_Interface IClient ;
-	private static String INTEGRAED_SERVER_IP = "192.168.1.105" ;
+	private static String INTEGRAED_SERVER_IP = "172.19.119.103" ;
 	private IInterface() {
 		// TODO Auto-generated constructor stub
 		initIClient();
