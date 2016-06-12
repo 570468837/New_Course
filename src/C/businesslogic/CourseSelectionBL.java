@@ -73,7 +73,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 			selectionToXml(s, c,"./CFiles/C_XML/C_courseSelection.xml");
 			FileInformation fileInfo = IOHelper.getFileInformation("./CFiles/C_XML/C_courseSelection.xml") ;
 			try {
-				result = iInterface.IClient.selectCourse(fileInfo, f) ;
+				result = iInterface.IClient.selectCourse(fileInfo, Faculty.C) ;
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -195,7 +195,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 			selectionToXml(s, c,"./CFiles/C_XML/C_courseSelection.xml");
 			FileInformation fileInfo = IOHelper.getFileInformation("./CFiles/C_XML/C_courseSelection.xml") ;
 			try {
-				result = iInterface.IClient.selectCourse(fileInfo, f) ;
+				result = iInterface.IClient.selectCourse(fileInfo, Faculty.C) ;
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

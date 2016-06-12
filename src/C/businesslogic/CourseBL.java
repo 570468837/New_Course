@@ -62,14 +62,13 @@ public class CourseBL implements CourseBLService{
 			result.add(this.showAllCourse()[i]);
 		}
 		try {
-			FileInformation aSharedCourses = iController.IClient.getSharedCourses(Faculty.A) ;
-			FileInformation bSharedCourses = iController.IClient.getSharedCourses(Faculty.B) ;
-			Document aDoc = B_XML_Helper.BytesToDoc(aSharedCourses.getContent()) ;
-			Document cDoc = B_XML_Helper.BytesToDoc(bSharedCourses.getContent()) ;
+			FileInformation SharedCourses = iController.IClient.getSharedCourses(Faculty.C) ;
+			
+			Document Doc = B_XML_Helper.BytesToDoc(SharedCourses.getContent()) ;
 			
 			//解析doc获取course对象
-			updateList(result, aDoc) ;
-			updateList(result, cDoc) ;
+			updateList(result, Doc) ;
+			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
