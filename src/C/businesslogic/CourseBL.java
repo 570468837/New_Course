@@ -21,6 +21,7 @@ import C.data.Demo;
 import C.dataservice.CourseDataService;
 import C.dataservice.StudentDataService;
 import C.po.CoursePO;
+import C.rmi.C_Interface;
 /*
  * 
  * 获取所有课程，返回的是CoursePO[]
@@ -87,7 +88,8 @@ public class CourseBL implements CourseBLService{
 			}
 			CoursePO course = new CoursePO(strs.get(0),strs.get(1),Integer.valueOf(strs.get(2)),Integer.valueOf(strs.get(3)),strs.get(4), strs.get(5),strs.get(6)) ;
 			list.add(course) ;
-			Demo.insertCourse(course);
+			Demo.insertCourse(course);//插入数据库
+			
 		}
 		return list ;
 		
