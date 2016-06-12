@@ -55,8 +55,6 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 							function_parentFolder+"shared/B/", "sharedCourses.xml")));
 			
 			course_file = CClient.getSharedCourses();
-			for(byte b: course_file.getContent())
-				System.out.print(b);
 			allSharedCourses.addAll(XML_Helper.decodeCourses(
 					XML_Helper.TransformXML(course_file, xsl_parentFolder+"C/formatClass.xsl", 
 							function_parentFolder+"shared/C/", "sharedCourses.xml")));

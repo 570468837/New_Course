@@ -12,6 +12,9 @@
 				<NAME>
 					<xsl:value-of select="name"></xsl:value-of>
 				</NAME>
+				<CREDIT>
+					<xsl:value-of select="score"></xsl:value-of>
+				</CREDIT>
 				<TEACHER>
 					<xsl:value-of select="teacher" />
 				</TEACHER>
