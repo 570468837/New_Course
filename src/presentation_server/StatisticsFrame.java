@@ -40,6 +40,10 @@ public class StatisticsFrame extends JFrame {
 	
 	B_Interface BClient = null;
 	C_Interface CClient = null;
+	
+	private static String A_Server_IP = "localhost";
+	private static String B_Server_IP = "172.19.110.162";
+	private static String C_Server_IP = "localhost";
 	/**
 	 * Create the frame.
 	 */
@@ -107,8 +111,8 @@ public class StatisticsFrame extends JFrame {
 	private void startRMI() {
 		// TODO Auto-generated method stub
 			try {
-				BClient = (B_Interface) Naming.lookup("rmi://192.168.1.109:8882/B_Interface");
-				CClient = (C_Interface) Naming.lookup("rmi://localhost:8883/C_Interface");
+				BClient = (B_Interface) Naming.lookup("rmi://" + B_Server_IP + ":8882/B_Interface");
+				CClient = (C_Interface) Naming.lookup("rmi://" + C_Server_IP + ":8883/C_Interface");
 			} catch (MalformedURLException | RemoteException
 					| NotBoundException e) {
 				// TODO Auto-generated catch block
