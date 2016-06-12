@@ -8,6 +8,8 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.hibernate.internal.util.xml.XMLHelper;
+
 import B.B_Server.B_Interface;
 import C.rmi.C_Interface;
 import common.Common;
@@ -109,10 +111,12 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		switch(destination){
 		
 		case B: 
-			ifSuccess = BClient.selectFromOtherFaculties(temp);
+			ifSuccess = BClient.selectFromOtherFaculties(temp,
+					produceDestinationStudentFile(studentFile, self, destination));
 			break;
 		case C:
-			ifSuccess = CClient.selectFromOtherFaculties(temp);
+			ifSuccess = CClient.selectFromOtherFaculties(temp,
+					produceDestinationStudentFile(studentFile, self, destination));
 			break;
 		default:
 			System.out.println("课程不属于任何院系");
@@ -146,10 +150,12 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		switch(destination){
 		
 		case B: 
-			ifSuccess = BClient.selectFromOtherFaculties(temp);
+			ifSuccess = BClient.selectFromOtherFaculties(temp, 
+					produceDestinationStudentFile(studentFile, self, destination));
 			break;
 		case C:
-			ifSuccess = CClient.selectFromOtherFaculties(temp);
+			ifSuccess = CClient.selectFromOtherFaculties(temp,
+					produceDestinationStudentFile(studentFile, self, destination));
 			break;
 		default:
 			System.out.println("课程不属于任何院系");
@@ -157,12 +163,28 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		}
 		return ifSuccess;
 	}
-	
+	/**
+	 * 将student转换为目标格式，辅助选课功能
+	 * @param origin
+	 * @param self
+	 * @param destination
+	 * @return
+	 */
 	private FileInformation produceDestinationStudentFile(FileInformation origin,Faculty self, Faculty destination){
 		String temp_parentFolder = "IServer/temp/";
 		String xsl_parentFolder = "IServer/xsl/";
+		//originXML -> standardXML
+		XML_Helper.TransformXML(origin, xsl_parentFolder+self.toString()+"/formatStudent.xsl", 
+				temp_parentFolder, self.toString() + "_standard_student.xml");
+		//standardXML -> destinationXML
+		XML_Helper.TransformXML(XML_Helper.getFileInformation(temp_parentFolder, 
+				self.toString() + "_standard_student.xml", temp_parentFolder, 
+				self.toString()+ "_standard_student.txt"), 
+				xsl_parentFolder+destination.toString()+"/studentTo"+destination.toString()+".xsl", 
+				temp_parentFolder, destination.toString()+"_destination_student.xml");
 		
-		
-		return null;
+		return XML_Helper.getFileInformation(temp_parentFolder, 
+				destination.toString()+"_destination_student.xml", 
+				temp_parentFolder, destination.toString()+"_destination_student.txt");
 	}
 }
