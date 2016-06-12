@@ -126,7 +126,7 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 	}
 
 	@Override
-	public boolean quitCourse(FileInformation fromFile, FileInformation studentFile, Faculty self) throws RemoteException {
+	public boolean quitCourse(FileInformation fromFile, Faculty self) throws RemoteException {
 		// TODO Auto-generated method stub
 		String function_parentFolder = "IServer/functions/";
 		String xsl_parentFolder = "IServer/xsl/";
@@ -150,12 +150,10 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		switch(destination){
 		
 		case B: 
-			ifSuccess = BClient.selectFromOtherFaculties(temp, 
-					produceDestinationStudentFile(studentFile, self, destination));
+			ifSuccess = BClient.selectFromOtherFaculties(temp);
 			break;
 		case C:
-			ifSuccess = CClient.selectFromOtherFaculties(temp,
-					produceDestinationStudentFile(studentFile, self, destination));
+			ifSuccess = CClient.selectFromOtherFaculties(temp);
 			break;
 		default:
 			System.out.println("课程不属于任何院系");
