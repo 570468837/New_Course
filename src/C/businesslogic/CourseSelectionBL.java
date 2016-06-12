@@ -5,6 +5,14 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
+import B.BusinessLogicService.IInterface;
+import B.DataService.IOHelper;
+import B.Model.Course;
+import B.Model.Student;
 import C.businesslogicservice.CourseSelectionBLService;
 import C.dataservice.CourseDataService;
 import C.dataservice.CourseSelectionDataService;
@@ -16,6 +24,8 @@ import C.po.StudentPO;
 import C.vo.AccountVO;
 import C.vo.CourseSelectionVO;
 import C.vo.CourseVO;
+import common.Faculty;
+import common.FileInformation;
 
 public class CourseSelectionBL implements CourseSelectionBLService{
 
@@ -23,7 +33,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 	/*
 	 * 学生选课操作   好吧我不知道为什么反正确实能选课，但是返回的布尔值就是不正确
 	 * */
-	public boolean courseSelect(StudentPO s, CoursePO c) {
+	public boolean courseSelectLocal(StudentPO s, CoursePO c) {
 		// TODO Auto-generated method stub
 		CourseSelectionDataService cs;
 		CourseSelectionVO courseSelectionVO = null;
@@ -48,7 +58,41 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 		}
 		return true;
 	}
-	
+	public boolean courseSelect(StudentPO s,CoursePO c){
+		boolean result = false;
+		String courseId = c.getCno();
+		if(courseId.startsWith("01")) //判断是否为本院系课程
+			result = courseSelectLocal(s, c) ;
+		else{
+			Faculty f = null ;
+			if(courseId.startsWith("02"))
+				f = Faculty.B ;
+			else
+				f = Faculty.A ;
+			IInterface iInterface = IInterface.getInstance() ;
+			selectionToXml(s, c,"./CFiles/C_XML/C_courseSelection.xml");
+			FileInformation fileInfo = IOHelper.getFileInformation("./CFiles/C_XML/C_courseSelection.xml") ;
+			try {
+				result = iInterface.IClient.selectCourse(fileInfo, f) ;
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return result ;
+	}
+	public  void selectionToXml(StudentPO s,CoursePO c,String savePath){
+		Document doc = DocumentHelper.createDocument() ;
+		Element root = doc.addElement("courseSelections") ;
+		Element selection = root.addElement("courseSelection") ;
+		Element sid = selection.addElement("Sno") ;
+		sid.setText(s.getSno());
+		Element cid = selection.addElement("Cno");
+		cid.setText(c.getCno());
+		Element grade = selection.addElement("Grd") ;
+		grade.setText("0");
+		IOHelper.docToXml(doc,savePath);
+	}
 	/*
 	 * 显示已选课程  
 	 * 输入studentpo 输出coursepo
@@ -89,7 +133,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 	 * 退课   啊啊啊啊啊啊啊啊啊不知道为什么在这里就是false 不是true   ！！！！！但是功能是能实现的
 	 *       可以在表中删除的！！！！！
 	 * */
-	public boolean courseQuit(StudentPO s, CoursePO c) throws RemoteException {
+	public boolean courseQuitLocal(StudentPO s, CoursePO c) throws RemoteException {
 		// TODO Auto-generated method stub
 		CourseSelectionDataService cs = null;
 		boolean result  = false;
@@ -135,6 +179,29 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public boolean courseQuit(StudentPO s, CoursePO c) throws RemoteException{
+		boolean result = false;
+		String courseId = c.getCno();
+		if(courseId.startsWith("01")) //判断是否为本院系课程
+			result = courseQuitLocal(s, c) ;
+		else{
+			Faculty f = null ;
+			if(courseId.startsWith("02"))
+				f = Faculty.B ;
+			else
+				f = Faculty.A ;
+			IInterface iInterface = IInterface.getInstance() ;
+			selectionToXml(s, c,"./CFiles/C_XML/C_courseSelection.xml");
+			FileInformation fileInfo = IOHelper.getFileInformation("./CFiles/C_XML/C_courseSelection.xml") ;
+			try {
+				result = iInterface.IClient.selectCourse(fileInfo, f) ;
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return result ;
 	}
 	
 	public static void main(String[] args) throws RemoteException {

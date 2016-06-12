@@ -14,8 +14,11 @@ public interface CourseSelectionBLService{
 	//
 
 	public CoursePO[] showSelectedCourse(StudentPO spo) throws RemoteException ;
-	public boolean courseQuit(StudentPO s,CoursePO c) throws RemoteException;
-	public boolean courseSelect(StudentPO s, CoursePO c);
+	public boolean courseQuitLocal(StudentPO s,CoursePO c) throws RemoteException;
+	public boolean courseSelectLocal(StudentPO s, CoursePO c);
 	public void courseSelectionXML() throws IOException;
+	public  void selectionToXml(StudentPO s,CoursePO c,String savePath);
+	public boolean courseSelect(StudentPO s,CoursePO c);
+	public boolean courseQuit(StudentPO s, CoursePO c) throws RemoteException;
 	
 }
