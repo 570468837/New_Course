@@ -1,6 +1,5 @@
 package B.DataService;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -31,6 +30,7 @@ public class CourseDataServiceImpl implements CourseDataService{
 		// TODO Auto-generated method stub
 		boolean result = true ;
 		try{
+//			System.out.println(course.getCredit());
 			session = HibernateUtils.getSession() ;
 			session.beginTransaction() ;
 			session.save(course) ;
@@ -93,7 +93,8 @@ public class CourseDataServiceImpl implements CourseDataService{
 	@Override
 	public void createSharedCoursesXMLFile() {
 		// TODO Auto-generated method stub
-		IOHelper.createXMLFile("select * from COURSES_TABLE where ifshared=1", "sharedcourse");
+		System.out.println("data层");
+		IOHelper.createXMLFile("select * from COURSES_TABLE where ifshared='1' and ID like '02%'", "sharedcourse");
 	}
 	public static void main(String[] args){
 		CourseDataServiceImpl cds = new CourseDataServiceImpl() ;
@@ -101,7 +102,8 @@ public class CourseDataServiceImpl implements CourseDataService{
 //		for(Course c:cs){
 //			System.out.println(c.getId());
 //		}
-		Course c = cds.find("0201") ;
-		cds.add(c) ;
+//		Course c = cds.find("0201") ;
+		cds.createSharedCoursesXMLFile();
+//		cds.add(c) ;
 	}
 }

@@ -37,6 +37,7 @@ public class B_Controller extends UnicastRemoteObject implements B_Interface{
 	@Override
 	public FileInformation getSharedCourses() {
 		// TODO Auto-generated method stub
+		System.out.println("B_Controller 里");
 		courseController.createSharedCoursesXMLFile();
 		return IOHelper.getFileInformation("sharedcourse");
 	}
@@ -78,7 +79,7 @@ public class B_Controller extends UnicastRemoteObject implements B_Interface{
 				Element tmp  = j.next() ;
 				strs.add(tmp.getStringValue()) ;
 			}
-			Student student = new Student(strs.get(0), strs.get(1), strs.get(2), strs.get(3), strs.get(4)) ;
+			Student student = new Student(strs.get(0), strs.get(1),  strs.get(2),  strs.get(3),"") ;
 			studentController.add(student) ;
 		}
 		
@@ -125,7 +126,7 @@ public class B_Controller extends UnicastRemoteObject implements B_Interface{
 //		b.getAllCourses();
 //		b.getAllSelections() ;
 //		b.getAllStudents() ;
-		FileInformation f = b.getSharedCourses() ;
+		FileInformation f = b.getSharedCourses();
 		System.out.println(f.getContent().toString());
 //		System.out.println("over");
 	}

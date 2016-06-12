@@ -37,7 +37,8 @@ public class StudentBLServiceImpl implements StudentBLService{
 		boolean result2 = true ;//选课信息存入其他课程所在院系数据库结果
 		String courseId = c.getId();
 		result1 = selectLocalCourse(s, c) ;
-		if(!courseId.substring(0, 2).equals("02")){ //判断是否为本院系课程
+		System.out.println("本地插入结果："+result1);
+		if(!courseId.substring(0, 2).equals("02")&&result1){ //判断是否为本院系课程且本院系已经选课成功
 			System.out.println("选其他院系课程");
 			IInterface iInterface = IInterface.getInstance() ;
 			selectionToXml(s, c,"./BFiles/B_XML/B_SELECTIONS.xml");
@@ -46,6 +47,7 @@ public class StudentBLServiceImpl implements StudentBLService{
 			FileInformation studentFileInfo = IOHelper.getFileInformation("student") ;
 			try {
 				result2 = iInterface.IClient.selectCourse(selectionFileInfo, studentFileInfo, Faculty.B) ;
+				System.out.println("其他院系插入结果："+result1);
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -85,22 +87,22 @@ public class StudentBLServiceImpl implements StudentBLService{
 	@Override
 	public boolean quitCourse(Student s, Course c) {
 		// TODO Auto-generated method stub
-		boolean result = false ;
+		boolean result1 = true ;
+		boolean result2 = true ;
 		String cid = c.getId() ;
-		if(cid.startsWith("02"))
-			result = quitLocalCourse(s, c) ;
-		else{
+		result1 = quitLocalCourse(s, c) ;
+		if(!cid.startsWith("02")){
 			selectionToXml(s, c, "./BFiles/B_XML/B_SELECTIONS.xml");
 			FileInformation fileInfo = IOHelper.getFileInformation("selection") ;
 			IInterface iInterface = IInterface.getInstance() ;
 			try {
-				result = iInterface.IClient.quitCourse(fileInfo,Faculty.B) ;
+				result2 = iInterface.IClient.quitCourse(fileInfo,Faculty.B) ;
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return result ;
+		return result1&&result2 ;
 	}
 	@Override
 	public void createAllStudentsXMLFile() {

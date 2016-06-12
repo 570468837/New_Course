@@ -39,6 +39,7 @@ public class IOHelper {
 			public Object execute(Connection con) throws SQLException {
 				// TODO Auto-generated method stub
 				PreparedStatement ps = con.prepareStatement(sql) ;
+				System.out.println(sql);
 				return ps.executeQuery();
 			}
 		}) ;
@@ -94,7 +95,7 @@ public class IOHelper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("生成xml文件");
+		System.out.println("生成xml文件："+savePath);
 	}
 	
 	public static FileInformation getFileInformation(String fileName) {
