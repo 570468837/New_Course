@@ -47,7 +47,9 @@ public class CourseData   extends UnicastRemoteObject implements CourseDataServi
     	return count;
     }
     
-
+    public void insertCourse(){
+    	
+    }
     public CoursePO[] selectAll()throws RemoteException{
     	int count = 0;
     	count = count();

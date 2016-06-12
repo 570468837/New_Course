@@ -21,6 +21,7 @@ import C.po.AccountPO;
 import C.po.CoursePO;
 import C.po.CourseSelectionPO;
 import C.po.StudentPO;
+import C.rmi.C_XML_Helper;
 import C.vo.AccountVO;
 import C.vo.CourseSelectionVO;
 import C.vo.CourseVO;
@@ -71,7 +72,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 				f = Faculty.A ;
 			IInterface iInterface = IInterface.getInstance() ;
 			selectionToXml(s, c,"./CFiles/C_XML/C_courseSelection.xml");
-			FileInformation fileInfo = IOHelper.getFileInformation("./CFiles/C_XML/C_courseSelection.xml") ;
+			FileInformation fileInfo = C_XML_Helper.xmlToFileInfo("./CFiles/C_XML/C_courseSelection.xml");
 			try {
 				result = iInterface.IClient.selectCourse(fileInfo, Faculty.C) ;
 			} catch (RemoteException e) {
@@ -91,7 +92,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 		cid.setText(c.getCno());
 		Element grade = selection.addElement("Grd") ;
 		grade.setText("0");
-		IOHelper.docToXml(doc,savePath);
+		C_XML_Helper.docToXml(doc,savePath);
 	}
 	/*
 	 * 显示已选课程  
@@ -193,7 +194,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 				f = Faculty.A ;
 			IInterface iInterface = IInterface.getInstance() ;
 			selectionToXml(s, c,"./CFiles/C_XML/C_courseSelection.xml");
-			FileInformation fileInfo = IOHelper.getFileInformation("./CFiles/C_XML/C_courseSelection.xml") ;
+			FileInformation fileInfo = C_XML_Helper.xmlToFileInfo("./CFiles/C_XML/C_courseSelection.xml");
 			try {
 				result = iInterface.IClient.selectCourse(fileInfo, Faculty.C) ;
 			} catch (RemoteException e) {

@@ -124,6 +124,22 @@ public class C_XML_Helper {
 		}  
         return result ;
 	}
+	public static void docToXml(Document doc,String savePath){
+		try {
+			Writer w = new FileWriter(savePath) ;
+			OutputFormat opf = OutputFormat.createPrettyPrint() ;
+			opf.setEncoding("UTF-8");
+			XMLWriter xw = new XMLWriter(w,opf) ;
+			xw.write(doc);
+			xw.close();
+			w.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("生成xml文件");
+	}
+	
 	public static void main(String[] args) throws RemoteException{
 //		FileInformation f = C_XML_Helper.xmlToFileInfo("./CFiles/C_XML/C_student.xml") ;
 //		boolean b = C_XML_Helper.TransformXML(f, "./CFiles/C_XSL/formatStudent.xsl", "./CFiles/United_XML","United_C_STUDENTS.xml") ;

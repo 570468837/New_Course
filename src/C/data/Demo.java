@@ -262,13 +262,13 @@ public class Demo {
     	System.out.println(demo.insertStudent(s));
     	AccountPO a = new AccountPO("2","2333",20160708);
 //    	System.out.println(demo.insertAccount(a));
-    	CoursePO c = new CoursePO("0110","DiscreteM",30,3,"David","110","1");
+    	CoursePO c = new CoursePO("0111","一二",90,3,"David","110","1");
 //    	System.out.println(demo.insertCourse(c));
     	CourseSelectionPO cs = new CourseSelectionPO("0101","12",90);
 //    	System.out.println(demo.insertCourseSelection(cs));
 //    	demo.selectall();
 //    	demo.selectCourse(a, c);
-//    	demo.insertCourse(c);
+    	demo.insertCourse(c);
 //    	demo.studentXML();
     	
     }
