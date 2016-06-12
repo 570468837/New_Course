@@ -1,25 +1,11 @@
-<?xml version="1.0" encoding="utf8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <students>
   <student>
     <Sno>01001</Sno>
-    <Snm>NANCY</Snm>
-    <Sex>F</Sex>
-    <Sde>C</Sde>
-    <Pwd>1234</Pwd>
-  </student>
-  <student>
-    <Sno>01002</Sno>
-    <Snm>LUCY</Snm>
-    <Sex>F</Sex>
-    <Sde>C</Sde>
-    <Pwd>1234</Pwd>
-  </student>
-  <student>
-    <Sno>01003</Sno>
-    <Snm>TOM</Snm>
-    <Sex>M</Sex>
-    <Sde>C</Sde>
-    <Pwd>1234</Pwd>
+    <Snm>盛宇</Snm>
+    <Sex>女</Sex>
+    <Sde>未知</Sde>
+    <Pwd>hhh</Pwd>
   </student>
 </students>

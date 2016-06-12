@@ -61,24 +61,27 @@ public class CourseBL implements CourseBLService{
 		// TODO Auto-generated method stub
 		IInterface iController = IInterface.getInstance() ;
 		ArrayList<CoursePO> result = new ArrayList<CoursePO>();
-		for(int i = 0;i<this.showAllCourse().length;i++ ){
-			result.add(this.showAllCourse()[i]);
-		}
+		ArrayList<CoursePO> temp = new ArrayList<CoursePO>();
 		try {
 			FileInformation SharedCourses = iController.IClient.getSharedCourses(Faculty.C) ;
 			
 			Document Doc = C_XML_Helper.BytesToDoc(SharedCourses.getContent()) ;
 			
 			//解析doc获取course对象
-			updateList(result, Doc) ;
+			updateList(temp, Doc) ;
 			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		for(int i = 0;i<this.showAllCourse().length;i++ ){
+			result.add(this.showAllCourse()[i]);
+		}
+		
 		return result ;
 	}
 	public ArrayList<CoursePO> updateList(ArrayList<CoursePO> list,Document doc){
+		CourseDataService cd = null;
 		Element root = doc.getRootElement() ;
 		for(Iterator<Element> i=root.elementIterator();i.hasNext();){
 			Element element = i.next() ;
@@ -87,9 +90,21 @@ public class CourseBL implements CourseBLService{
 				Element tmp = j.next() ;
 				strs.add(tmp.getStringValue()) ;
 			}
-			CoursePO course = new CoursePO(strs.get(0),strs.get(1),Integer.valueOf(strs.get(2)),Integer.valueOf(strs.get(3)),strs.get(4), strs.get(5),strs.get(6)) ;
+			CoursePO course = new CoursePO(strs.get(0),strs.get(1),0,Integer.valueOf(strs.get(2)),strs.get(3),strs.get(4),"0") ;
 			list.add(course) ;
-			Demo.insertCourse(course);//插入数据库
+			try {
+				cd=(CourseDataService) Naming.lookup("rmi://127.0.0.1:2017/Server");
+			} catch (MalformedURLException | RemoteException | NotBoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				cd.insertCourse(course);
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}//插入数据库
+			
 			
 		}
 		return list ;

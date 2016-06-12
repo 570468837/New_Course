@@ -88,7 +88,8 @@ public class SelectPanel extends JPanel {
 					return;
 				CoursePO coursePO = new CoursePO((String)table.getValueAt(rowIndex, 0), 
 						(String)table.getValueAt(rowIndex, 1), 0, 
-						Integer.parseInt((String)table.getValueAt(rowIndex, 2)), 
+//						Integer.parseInt((String)table.getValueAt(rowIndex, 2)), 
+						0,
 						(String)table.getValueAt(rowIndex, 3), 
 						(String)table.getValueAt(rowIndex, 4), "0");
 				

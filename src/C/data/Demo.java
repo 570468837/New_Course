@@ -12,6 +12,8 @@ import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+
 import C.po.AccountPO;
 import C.po.CoursePO;
 import C.po.CourseSelectionPO;
@@ -62,6 +64,8 @@ public class Demo {
 	    	 if(result>0){
 	    		 return true;
 	    	 }
+		} catch(MySQLIntegrityConstraintViolationException e){
+   		 System.out.println("重复插入");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -119,10 +123,13 @@ public class Demo {
 	    	 if(result>0){
 	    		 return true;
 	    	 }
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	 }catch(Exception e){
+    		 System.out.println("重复插入");
+    		 }
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
     	 return false;
       }
     
