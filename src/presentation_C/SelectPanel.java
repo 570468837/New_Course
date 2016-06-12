@@ -86,7 +86,12 @@ public class SelectPanel extends JPanel {
 				int rowIndex = table.getSelectedRow();
 				if(rowIndex >= allCoursesData.size())
 					return;
-				CoursePO coursePO = courseBL.showCourseById((String)table.getValueAt(rowIndex, 0));
+				CoursePO coursePO = new CoursePO((String)table.getValueAt(rowIndex, 0), 
+						(String)table.getValueAt(rowIndex, 1), 0, 
+						Integer.parseInt((String)table.getValueAt(rowIndex, 2)), 
+						(String)table.getValueAt(rowIndex, 3), 
+						(String)table.getValueAt(rowIndex, 4), "0");
+				
 				//如果是本院系的课
 				if(coursePO != null){
 					boolean ifSuccess = selectCourse(((CourseFrame)theFrame).getStudentPO(), coursePO);

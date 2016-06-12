@@ -96,7 +96,11 @@ public class QuitPanel extends JPanel {
 				int rowIndex = table.getSelectedRow();
 				if(rowIndex >= allSelectedCoursesData.size())
 					return;
-				CoursePO coursePO = courseBL.showCourseById((String)table.getValueAt(rowIndex, 0));
+				CoursePO coursePO = new CoursePO((String)table.getValueAt(rowIndex, 0), 
+						(String)table.getValueAt(rowIndex, 1), 0, 
+						Integer.parseInt((String)table.getValueAt(rowIndex, 2)), 
+						(String)table.getValueAt(rowIndex, 3), 
+						(String)table.getValueAt(rowIndex, 4), "0");
 				try{
 				if(coursePO != null){
 					boolean ifSuccess=false;

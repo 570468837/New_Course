@@ -88,7 +88,11 @@ public class QuitPanel extends JPanel {
 				int rowIndex = table.getSelectedRow();
 				if(rowIndex>=allSelectedCoursesData.size())
 					return;
-				Course coursePO = courseBL.getCourseById(((String)table.getValueAt(rowIndex, 0)));
+				Course coursePO = new Course((String)table.getValueAt(rowIndex, 0),
+						(String)table.getValueAt(rowIndex, 1),
+						(String)table.getValueAt(rowIndex, 3),
+						(String)table.getValueAt(rowIndex, 4),
+						(String)table.getValueAt(rowIndex, 2));
 				if(coursePO != null){
 					boolean ifSuccess=false;
 					ifSuccess = studentBL.quitCourse(((CourseFrame)theFrame).getStudentPO(), coursePO);
