@@ -28,17 +28,19 @@ public interface IServer_Interface extends Remote{
     /**
      * 
      * @param fromFile 一条选课记录（其他院系的课）
+     * @param studentFile 选课学生信息
      * @return	是否选课成功
      * @throws RemoteException
      */
-    public boolean selectCourse(FileInformation fromFile, Faculty self) throws RemoteException;
+    public boolean selectCourse(FileInformation fromFile, FileInformation studentFile, Faculty self) throws RemoteException;
     /**
      * 
      * @param fromFile 一条退课记录（其他院系的课）
-     * @return
+     * @param studentFile 退课学生信息
+     * @return 是够退课成功
      * @throws RemoteException
      */
-    public boolean quitCourse(FileInformation fromFile, Faculty self) throws RemoteException;
+    public boolean quitCourse(FileInformation fromFile, FileInformation studentFile, Faculty self) throws RemoteException;
     
 
 }

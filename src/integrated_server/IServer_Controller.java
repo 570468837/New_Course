@@ -85,7 +85,7 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 	}
 
 	@Override
-	public boolean selectCourse(FileInformation fromFile, Faculty self) throws RemoteException {
+	public boolean selectCourse(FileInformation fromFile, FileInformation studentFile, Faculty self) throws RemoteException {
 		// TODO Auto-generated method stub
 		String function_parentFolder = "IServer/functions/";
 		String xsl_parentFolder = "IServer/xsl/";
@@ -122,7 +122,7 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 	}
 
 	@Override
-	public boolean quitCourse(FileInformation fromFile, Faculty self) throws RemoteException {
+	public boolean quitCourse(FileInformation fromFile, FileInformation studentFile, Faculty self) throws RemoteException {
 		// TODO Auto-generated method stub
 		String function_parentFolder = "IServer/functions/";
 		String xsl_parentFolder = "IServer/xsl/";
