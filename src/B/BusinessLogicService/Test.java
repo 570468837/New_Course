@@ -4,9 +4,6 @@ package B.BusinessLogicService;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-
-import B.Model.Course;
 
 public class Test {
 	public static void main(String[] args){

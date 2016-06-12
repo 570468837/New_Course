@@ -31,13 +31,14 @@ public class StudentBLServiceImpl implements StudentBLService{
 	}
 	@Override
 	public boolean selectCourse(Student s, Course c) {
+		System.out.println("进入选择所以课程");
 		// TODO Auto-generated method stub
 		boolean result = false ;
 		String courseId = c.getId();
-		if(courseId.startsWith("02")) //判断是否为本院系课程
+		if(courseId.substring(0, 2).equals("02")) //判断是否为本院系课程
 			result = selectLocalCourse(s, c) ;
 		else{
-			
+			System.out.println("选其他院系课程");
 			IInterface iInterface = IInterface.getInstance() ;
 			selectionToXml(s, c,"./BFiles/B_XML/B_SELECTIONS.xml");
 			FileInformation fileInfo = IOHelper.getFileInformation("./BFiles/B_XML/B_SELECTIONS.xml") ;
@@ -96,6 +97,7 @@ public class StudentBLServiceImpl implements StudentBLService{
 	@Override
 	public boolean quitLocalCourse(Student s, Course c) {
 		// TODO Auto-generated method stub
+		System.out.println("进入选择本地课程");
 		return scDataControler.delete(s, c) ;
 	}
 	
