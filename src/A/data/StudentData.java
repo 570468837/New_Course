@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import A.dataservice.StudentDataService;
@@ -81,6 +82,31 @@ public class StudentData implements StudentDataService {
 			e.printStackTrace();
 		}
 			return po;
+	}
+
+	@Override
+	public boolean add(StudentPO spo) {
+		// TODO Auto-generated method stub
+		boolean result=false;
+		DBHelper dbh=new DBHelper();
+		Connection conn = dbh.getConnection();
+		
+		String id = spo.getSno();
+		String name = spo.getSnm();
+		String gender = spo.getSex();
+		String depart = spo.getSde();
+		
+		String sql = "insert into student values('"+id+"','"+name+"','"+gender+"','"+depart+"',NULL)";
+		try {
+			Statement select = conn.createStatement();
+			int count = select.executeUpdate(sql);
+			if(count==1)
+				result= true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }

@@ -11,17 +11,8 @@
     <IFSHARED>1</IFSHARED>
   </COURSE>
   <COURSE>
-    <ID>0205</ID>
-    <NAME>计算思维</NAME>
-    <TEACHER>Mr.Wang</TEACHER>
-    <CLASSROOM>classRoom2</CLASSROOM>
-    <CREDIT>2</CREDIT>
-    <HOUR>2</HOUR>
-    <IFSHARED>1</IFSHARED>
-  </COURSE>
-  <COURSE>
-    <ID>0204</ID>
-    <NAME>软件安全</NAME>
+    <ID>0202</ID>
+    <NAME>模式识别</NAME>
     <TEACHER>Mr.Wang</TEACHER>
     <CLASSROOM>classRoom2</CLASSROOM>
     <CREDIT>2</CREDIT>
@@ -38,8 +29,17 @@
     <IFSHARED>1</IFSHARED>
   </COURSE>
   <COURSE>
-    <ID>0202</ID>
-    <NAME>模式识别</NAME>
+    <ID>0204</ID>
+    <NAME>软件安全</NAME>
+    <TEACHER>Mr.Wang</TEACHER>
+    <CLASSROOM>classRoom2</CLASSROOM>
+    <CREDIT>2</CREDIT>
+    <HOUR>2</HOUR>
+    <IFSHARED>1</IFSHARED>
+  </COURSE>
+  <COURSE>
+    <ID>0205</ID>
+    <NAME>计算思维</NAME>
     <TEACHER>Mr.Wang</TEACHER>
     <CLASSROOM>classRoom2</CLASSROOM>
     <CREDIT>2</CREDIT>
