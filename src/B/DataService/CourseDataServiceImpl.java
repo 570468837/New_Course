@@ -1,5 +1,6 @@
 package B.DataService;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -16,6 +17,10 @@ import org.hibernate.Session;
 
 
 
+
+
+import org.hibernate.exception.ConstraintViolationException;
+
 import B.Model.Course;
 
 
@@ -30,6 +35,9 @@ public class CourseDataServiceImpl implements CourseDataService{
 			session.beginTransaction() ;
 			session.save(course) ;
 			session.getTransaction().commit(); 
+		}catch(ConstraintViolationException e){
+			System.out.println("重复插入");
+			result = false ;
 		}catch(Exception e){
 			e.printStackTrace();
 			session.getTransaction().rollback();
@@ -86,5 +94,14 @@ public class CourseDataServiceImpl implements CourseDataService{
 	public void createSharedCoursesXMLFile() {
 		// TODO Auto-generated method stub
 		IOHelper.createXMLFile("select * from COURSES_TABLE where ifshared=1", "sharedcourse");
+	}
+	public static void main(String[] args){
+		CourseDataServiceImpl cds = new CourseDataServiceImpl() ;
+//		List<Course> cs = cds.show() ;
+//		for(Course c:cs){
+//			System.out.println(c.getId());
+//		}
+		Course c = cds.find("0201") ;
+		cds.add(c) ;
 	}
 }

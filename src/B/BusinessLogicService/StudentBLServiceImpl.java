@@ -41,7 +41,7 @@ public class StudentBLServiceImpl implements StudentBLService{
 			System.out.println("选其他院系课程");
 			IInterface iInterface = IInterface.getInstance() ;
 			selectionToXml(s, c,"./BFiles/B_XML/B_SELECTIONS.xml");
-			FileInformation fileInfo = IOHelper.getFileInformation("./BFiles/B_XML/B_SELECTIONS.xml") ;
+			FileInformation fileInfo = IOHelper.getFileInformation("selection") ;
 			try {
 				result = iInterface.IClient.selectCourse(fileInfo, Faculty.B) ;
 			} catch (RemoteException e) {
@@ -63,6 +63,7 @@ public class StudentBLServiceImpl implements StudentBLService{
 		grade.setText("0");
 		IOHelper.docToXml(doc,savePath);
 	}
+//	private void 
 	@Override
 	public boolean quitCourse(Student s, Course c) {
 		// TODO Auto-generated method stub
@@ -73,7 +74,7 @@ public class StudentBLServiceImpl implements StudentBLService{
 		else{
 			
 			selectionToXml(s, c, "./BFiles/B_XML/B_SELECTIONS.xml");
-			FileInformation fileInfo = IOHelper.getFileInformation("./BFiles/B_XML/B_SELECTIONS.xml") ;
+			FileInformation fileInfo = IOHelper.getFileInformation("selection") ;
 			IInterface iInterface = IInterface.getInstance() ;
 			try {
 				result = iInterface.IClient.quitCourse(fileInfo,Faculty.B) ;

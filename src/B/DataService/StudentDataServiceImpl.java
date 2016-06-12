@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.exception.ConstraintViolationException;
 
 import B.Model.Student;
 
@@ -32,19 +33,23 @@ public class StudentDataServiceImpl implements StudentDataService{
 	@Override
 	public boolean add(Student student) {
 		// TODO Auto-generated method stub
+		boolean result = true ;
 		session = HibernateUtils.getSession() ;
 		session.beginTransaction() ;
 		try{
 			session.save(student) ;
 			session.getTransaction().commit();
+		}catch(ConstraintViolationException e){
+			System.out.println("重复插入");
+			result = false ;
 		}catch(Exception e){
 			e.printStackTrace();
 			session.getTransaction().rollback();
-			return false ;
+			result = false ;
 		}finally{
 			HibernateUtils.closSession(session);
 		}
-		return true;
+		return result ;
 	}
 
 	@SuppressWarnings("unchecked")

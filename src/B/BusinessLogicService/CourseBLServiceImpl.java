@@ -65,7 +65,7 @@ public class CourseBLServiceImpl implements CourseBLService{
 			Document otherDoc = B_XML_Helper.BytesToDoc(otherSharedCourses.getContent()) ;
 //			Document cDoc = B_XML_Helper.BytesToDoc(cSharedCourses.getContent()) ;
 			
-			//解析doc获取course对象
+			//解析doc获取course对象 顺便插入数据库
 			updateList(result, otherDoc) ;
 //			updateList(result, cDoc) ;
 		} catch (RemoteException e) {
@@ -86,6 +86,7 @@ public class CourseBLServiceImpl implements CourseBLService{
 			}
 			Course course = new Course(strs.get(0),strs.get(1),strs.get(2),strs.get(3),strs.get(4)) ;
 			list.add(course) ;
+			dataControler.add(course) ;
 		}
 		return list ;
 		
