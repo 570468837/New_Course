@@ -104,7 +104,7 @@ public class StudentData implements StudentDataService {
 				result= true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e);
 		}
 		return result;
 	}

@@ -58,7 +58,6 @@ public class CourseSelectionData implements CourseSelectionDataService {
     
     public boolean selectCourseOther(StudentPO s,CoursePO c){
     	boolean result = false;
-    	String courseId = c.getCno();
 		
 		IInterface iInterface = IInterface.getInstance() ;
 		selectionToXml(s, c,"./AFiles/A_XML/A_courseSelection.xml");
@@ -72,6 +71,10 @@ public class CourseSelectionData implements CourseSelectionDataService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//本地执行选其他院的课操作
+		if(result==true)
+			selectCourseLocal(s,c);
+		
 		return result;
     }
     
@@ -108,12 +111,7 @@ public class CourseSelectionData implements CourseSelectionDataService {
 		}
 		for(String s : cpo){
 			if(!s.equals(null))
-				try {
-					poList.add(cd.selectById(s));
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 
+				poList.add(cd.selectById(s)); 
 		}
 		
 		return poList;
@@ -167,6 +165,9 @@ public class CourseSelectionData implements CourseSelectionDataService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//退课也需要本地退选
+		if(result==true)
+				quitCourseLocal(s,c);
 		return result;
 	}
 	public  void studentToXml(StudentPO s,String savePath){

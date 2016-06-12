@@ -42,7 +42,7 @@ public class CourseData implements CourseDataService {
 	}
 
 	@Override
-	public CoursePO selectById(String cno) throws SQLException {
+	public CoursePO selectById(String cno) {
 		// TODO Auto-generated method stub
 		sql = "select * from course where 课程编号="+cno;
 		dbh=new DBHelper();
@@ -85,7 +85,7 @@ public class CourseData implements CourseDataService {
 				result= true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e);
 		}
 		return result;
 	}

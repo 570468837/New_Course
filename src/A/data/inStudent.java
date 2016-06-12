@@ -6,11 +6,11 @@ import java.sql.Statement;
 import java.text.DecimalFormat;
 
 public class inStudent {
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args)  {
 		DBHelper dbh=new DBHelper();
 		inStudent is = new inStudent();
 		Connection conn = dbh.getConnection();
-		Statement select = conn.createStatement();
+		int count=0;
 		int account = 3002;
 		int xuehao = 302;
 		String sql = "insert into student values('0000000','姚萌舟','女','dz',NULL)";
@@ -30,7 +30,15 @@ public class inStudent {
 //			sql = sql + ",('"+ xh + "','"+nam + "','"+sex + "','dz','" + account + "')";
 //		}
 	//	String sql = "insert into student(学号,姓名,性别,院系,关联账户) values ('120','舟舟','女','dz','03001')";
-		int count = select.executeUpdate(sql);
+		Statement select;
+		try {
+			select = conn.createStatement();
+			count = select.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+		}
+		
 		System.out.println(count);
 	}
 	
