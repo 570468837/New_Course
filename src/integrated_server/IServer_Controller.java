@@ -157,4 +157,12 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		}
 		return ifSuccess;
 	}
+	
+	private FileInformation produceDestinationStudentFile(FileInformation origin,Faculty self, Faculty destination){
+		String temp_parentFolder = "IServer/temp/";
+		String xsl_parentFolder = "IServer/xsl/";
+		
+		
+		return null;
+	}
 }
