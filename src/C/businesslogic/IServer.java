@@ -32,7 +32,7 @@ public class IServer extends UnicastRemoteObject implements IServer_Interface {
 	}
 
 	@Override
-	public boolean selectCourse(FileInformation fromFile, Faculty self) throws RemoteException {
+	public boolean selectCourse(FileInformation fromFile,FileInformation studentFile, Faculty self) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}

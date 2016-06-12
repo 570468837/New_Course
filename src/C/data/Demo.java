@@ -94,7 +94,7 @@ public class Demo {
     	 return false;
       }
     //插入课程记录
-    public boolean insertCourse(CoursePO course){
+    public static boolean insertCourse(CoursePO course){
     	insql = "insert into course(Cno,Cnm,Ctm,Cpt,Tec,Pla,Share) values(?,?,?,?,?,?,?)";
     	 db1 = new DBHelper(insql);
     	 

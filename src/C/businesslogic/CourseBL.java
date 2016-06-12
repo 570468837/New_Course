@@ -17,6 +17,7 @@ import B.B_Server.B_XML_Helper;
 import B.BusinessLogicService.IInterface;
 import B.Model.Course;
 import C.businesslogicservice.CourseBLService;
+import C.data.Demo;
 import C.dataservice.CourseDataService;
 import C.dataservice.StudentDataService;
 import C.po.CoursePO;
@@ -86,6 +87,7 @@ public class CourseBL implements CourseBLService{
 			}
 			CoursePO course = new CoursePO(strs.get(0),strs.get(1),Integer.valueOf(strs.get(2)),Integer.valueOf(strs.get(3)),strs.get(4), strs.get(5),strs.get(6)) ;
 			list.add(course) ;
+			Demo.insertCourse(course);
 		}
 		return list ;
 		

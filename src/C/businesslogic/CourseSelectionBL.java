@@ -60,10 +60,11 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 		return true;
 	}
 	public boolean courseSelect(StudentPO s,CoursePO c){
-		boolean result = false;
+		boolean result1 = false;
+		boolean result2 = false;
 		String courseId = c.getCno();
 		if(courseId.startsWith("01")) //判断是否为本院系课程
-			result = courseSelectLocal(s, c) ;
+			result1 = courseSelectLocal(s, c) ;
 		else{
 			Faculty f = null ;
 			if(courseId.startsWith("02"))
@@ -72,15 +73,35 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 				f = Faculty.A ;
 			IInterface iInterface = IInterface.getInstance() ;
 			selectionToXml(s, c,"./CFiles/C_XML/C_courseSelection.xml");
-			FileInformation fileInfo = C_XML_Helper.xmlToFileInfo("./CFiles/C_XML/C_courseSelection.xml");
+			studentToXml(s, "./CFiles/C_XML/C_student.xml");
+			FileInformation selectionfileInfo = C_XML_Helper.xmlToFileInfo("./CFiles/C_XML/C_courseSelection.xml");
+			FileInformation studentfileInfo = C_XML_Helper.xmlToFileInfo("./CFiles/C_XML/C_student.xml");
+
+			
 			try {
-				result = iInterface.IClient.selectCourse(fileInfo, Faculty.C) ;
+				result2 = iInterface.IClient.selectCourse(selectionfileInfo, studentfileInfo,Faculty.C) ;
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return result ;
+		return result1&&result2 ;
+	}
+	public  void studentToXml(StudentPO s,String savePath){
+		Document doc = DocumentHelper.createDocument() ;
+		Element root = doc.addElement("students") ;
+		Element student = root.addElement("student") ;
+		Element sid = student.addElement("Sno") ;
+		sid.setText(s.getSno());
+		Element snm = student.addElement("Snm") ;
+		snm.setText(s.getSnm());
+		Element sex = student.addElement("Sex");
+		sex.setText(s.getSex());
+		Element sde = student.addElement("Sde");
+		sde.setText(s.getSde());
+		Element pwd = student.addElement("Pwd");
+		pwd.setText(s.getPwd());
+		C_XML_Helper.docToXml(doc,savePath);
 	}
 	public  void selectionToXml(StudentPO s,CoursePO c,String savePath){
 		Document doc = DocumentHelper.createDocument() ;
@@ -196,7 +217,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 			selectionToXml(s, c,"./CFiles/C_XML/C_courseSelection.xml");
 			FileInformation fileInfo = C_XML_Helper.xmlToFileInfo("./CFiles/C_XML/C_courseSelection.xml");
 			try {
-				result = iInterface.IClient.selectCourse(fileInfo, Faculty.C) ;
+				result = iInterface.IClient.quitCourse(fileInfo, Faculty.C) ;
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
