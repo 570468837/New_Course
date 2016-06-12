@@ -64,11 +64,26 @@ public class B_Controller extends UnicastRemoteObject implements B_Interface{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean selectFromOtherFaculties(FileInformation file) {
+	public boolean selectFromOtherFaculties(FileInformation selectionFile,FileInformation studentFile) {
 		// TODO Auto-generated method stub
 		boolean result = false ;
-		Document doc = B_XML_Helper.BytesToDoc(file.getContent()) ;
-		Element root = doc.getRootElement() ;
+		
+		//解析选课学生信息，加入本地数据库
+		Document studentDoc = B_XML_Helper.BytesToDoc(studentFile.getContent()) ;
+		Element students = studentDoc.getRootElement() ;
+		for(Iterator<Element> i=students.elementIterator();i.hasNext();){
+			Element element = i.next() ;
+			Vector<String> strs = new Vector<String>() ;
+			for(Iterator<Element> j=element.elementIterator();j.hasNext();){
+				Element tmp  = j.next() ;
+				strs.add(tmp.getStringValue()) ;
+			}
+			Student student = new Student(strs.get(0), strs.get(1), strs.get(2), strs.get(3), strs.get(4)) ;
+			studentController.add(student) ;
+		}
+		
+		Document selectionDoc = B_XML_Helper.BytesToDoc(selectionFile.getContent()) ;
+		Element root = selectionDoc.getRootElement() ;
 		for(Iterator<Element> i =root.elementIterator();i.hasNext();){
 			Element element = i.next() ;
 			Vector<String> strs = new Vector<String>() ;
@@ -76,8 +91,7 @@ public class B_Controller extends UnicastRemoteObject implements B_Interface{
 				Element tmp = j.next() ;
 				strs.add(tmp.getStringValue()) ;
 			}
-			Student student = new Student() ;
-			student.setId(strs.get(0));
+			Student student = studentController.getStudentById(strs.get(0)) ;
 			Course course = courseController.getCourseById(strs.get(1)) ;
 			result = studentController.selectCourse(student, course) ;
 		}

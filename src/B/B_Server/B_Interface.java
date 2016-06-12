@@ -33,7 +33,7 @@ public interface B_Interface extends Remote{
 	 * @param file
 	 * @return 提供其他院系的学生选了本院系一门课的xml文件，执行选课任务(需要把选课信息添加到数据库中)，返回选课是否成功：
 	 */
-	public boolean selectFromOtherFaculties(FileInformation file)throws RemoteException;
+	public boolean selectFromOtherFaculties(FileInformation selectionFile,FileInformation studentFile)throws RemoteException;
 
 	/**
 	 * 

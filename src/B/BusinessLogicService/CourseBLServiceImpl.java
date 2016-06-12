@@ -65,7 +65,7 @@ public class CourseBLServiceImpl implements CourseBLService{
 			Document otherDoc = B_XML_Helper.BytesToDoc(otherSharedCourses.getContent()) ;
 //			Document cDoc = B_XML_Helper.BytesToDoc(cSharedCourses.getContent()) ;
 			
-			//解析doc获取course对象 顺便插入数据库
+			//解析doc获取course对象 顺便插入本地数据库
 			updateList(result, otherDoc) ;
 //			updateList(result, cDoc) ;
 		} catch (RemoteException e) {

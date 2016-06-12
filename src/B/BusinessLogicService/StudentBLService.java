@@ -42,4 +42,10 @@ public interface StudentBLService {
 	 * 返回所有学生的xml文件
 	 */
 	public void createAllStudentsXMLFile() ;
+	/**
+	 * 添加一个选则本院系课程的其他院系学生信息进入数据库
+	 * @param s
+	 * @return
+	 */
+	public boolean add(Student s);
 }
