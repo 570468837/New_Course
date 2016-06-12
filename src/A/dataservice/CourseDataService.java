@@ -10,5 +10,6 @@ public interface CourseDataService extends Remote {
 	
 	public ArrayList<CoursePO> selectAll()throws RemoteException, SQLException;
 	public CoursePO selectById(String cno)throws RemoteException, SQLException;
+	public boolean add(CoursePO cpo);
 	
 }

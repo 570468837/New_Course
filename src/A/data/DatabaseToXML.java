@@ -50,7 +50,7 @@ public class DatabaseToXML {
 	    	toXML(sql,tableName);	
 	    }
 	    public void courseShareXML() throws IOException {
-	    	sql = "select * from course where 共享=1";
+	    	sql = "select * from course where 共享=1 and 课程编号 like '03%'";
 	    	tableName = "courseShare";
 	    	toXML(sql,tableName);	
 	    }

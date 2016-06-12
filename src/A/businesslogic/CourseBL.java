@@ -38,4 +38,11 @@ public class CourseBL implements CourseBLService {
 		return null;
 	}
 
+	@Override
+	public boolean addCourse(CoursePO cpo) {
+		// TODO Auto-generated method stub
+		cds = new CourseData();
+		return cds.add(cpo);
+	}
+
 }

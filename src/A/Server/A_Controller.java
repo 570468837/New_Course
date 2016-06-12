@@ -98,7 +98,8 @@ public class A_Controller extends UnicastRemoteObject implements A_Interface{
 				Element tmp  = j.next() ;
 				strs.add(tmp.getStringValue()) ;
 			}
-			student = new StudentPO(strs.get(0),null,null,null,null) ;
+			student = new StudentPO(strs.get(0),strs.get(1),strs.get(2),strs.get(3),null) ;
+			studentController.addStudent(student);
 		}
 		
 		Document selectionDoc = A_XML_Helper.BytesToDoc(selectionFile.getContent()) ;
@@ -111,8 +112,9 @@ public class A_Controller extends UnicastRemoteObject implements A_Interface{
 				Element tmp = j.next() ;
 				strs.add(tmp.getStringValue()) ;
 			}
-			CoursePO course = new CoursePO(strs.get(1), null, 0, null, null, 0) ;
-			result = selectionController.courseSelect(student, course) ;
+			StudentPO spo = studentController.showStudentById(strs.get(0)) ;
+			CoursePO course = courseController.showCourseById(strs.get(1));
+			result = selectionController.courseSelect(spo, course) ;
 		}
 		return result ;
 	}
@@ -130,8 +132,8 @@ public class A_Controller extends UnicastRemoteObject implements A_Interface{
 				Element tmp = j.next() ;
 				strs.add(tmp.getStringValue()) ;
 			}
-			StudentPO student = new StudentPO(strs.get(0), null, null, null, null) ;
-			CoursePO course = new CoursePO(strs.get(1), null, 0, null, null, 0) ;
+			StudentPO student = studentController.showStudentById(strs.get(0));
+			CoursePO course = courseController.showCourseById(strs.get(1));
 			result = selectionController.courseQuit(student, course) ;
 		}
 		return result ;

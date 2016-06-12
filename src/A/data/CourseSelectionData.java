@@ -58,20 +58,16 @@ public class CourseSelectionData implements CourseSelectionDataService {
     
     public boolean selectCourseOther(StudentPO s,CoursePO c){
     	boolean result = false;
-    	Faculty f = null ;
     	String courseId = c.getCno();
-		if(courseId.startsWith("02"))
-			f = Faculty.B ;
-		else
-			f = Faculty.C ;
+		
 		IInterface iInterface = IInterface.getInstance() ;
 		selectionToXml(s, c,"./AFiles/A_XML/A_courseSelection.xml");
 		studentToXml(s, "./AFiles/A_XML/A_student.xml");
-		FileInformation selectionfileInfo = A_XML_Helper.xmlToFileInfo("./CFiles/C_XML/C_courseSelection.xml");
-		FileInformation studentfileInfo = A_XML_Helper.xmlToFileInfo("./CFiles/C_XML/C_student.xml");
+		FileInformation selectionfileInfo = A_XML_Helper.xmlToFileInfo("./AFiles/A_XML/A_courseSelection.xml");
+		FileInformation studentfileInfo = A_XML_Helper.xmlToFileInfo("./AFiles/A_XML/A_student.xml");
 
 		try {
-			result = iInterface.IClient.selectCourse(selectionfileInfo, studentfileInfo,f) ;
+			result = iInterface.IClient.selectCourse(selectionfileInfo, studentfileInfo,Faculty.A) ;
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -161,17 +157,12 @@ public class CourseSelectionData implements CourseSelectionDataService {
 	
 	public boolean quitCourseOther(StudentPO s, CoursePO c){
 		boolean result=false;
-		String courseId = c.getCno();
-		Faculty f = null ;
-		if(courseId.startsWith("02"))
-			f=Faculty.B;
-		else
-			f=Faculty.C;
+		
 		IInterface iInterface = IInterface.getInstance() ;
-		selectionToXml(s, c,"./CFiles/C_XML/C_courseSelection.xml");
-		FileInformation fileInfo = C_XML_Helper.xmlToFileInfo("./CFiles/C_XML/C_courseSelection.xml");
+		selectionToXml(s, c,"./AFiles/A_XML/A_courseSelection.xml");
+		FileInformation fileInfo = A_XML_Helper.xmlToFileInfo("./AFiles/A_XML/A_courseSelection.xml");
 		try {
-			result = iInterface.IClient.quitCourse(fileInfo, Faculty.C) ;
+			result = iInterface.IClient.quitCourse(fileInfo, Faculty.A) ;
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

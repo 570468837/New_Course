@@ -13,22 +13,22 @@ public class inStudent {
 		Statement select = conn.createStatement();
 		int account = 3002;
 		int xuehao = 302;
-		String sql = "insert into student values('0302','姚萌舟','女','dz','3002')";
-		for(int i=0;i<48;i++){
-			account+=1;
-			xuehao +=1;
-			DecimalFormat df = new DecimalFormat("0000");
-			String xh = df.format(xuehao);
-			int gender = (int)(Math.random()*2);
-			String nam = is.name(gender);
-			String sex;
-			System.out.println(account);
-			if(gender==0)
-				sex="女";
-			else 
-				sex="男";
-			sql = sql + ",('"+ xh + "','"+nam + "','"+sex + "','dz','" + account + "')";
-		}
+		String sql = "insert into student values('0000000','姚萌舟','女','dz',NULL)";
+//		for(int i=0;i<48;i++){
+//			account+=1;
+//			xuehao +=1;
+//			DecimalFormat df = new DecimalFormat("0000");
+//			String xh = df.format(xuehao);
+//			int gender = (int)(Math.random()*2);
+//			String nam = is.name(gender);
+//			String sex;
+//			System.out.println(account);
+//			if(gender==0)
+//				sex="女";
+//			else 
+//				sex="男";
+//			sql = sql + ",('"+ xh + "','"+nam + "','"+sex + "','dz','" + account + "')";
+//		}
 	//	String sql = "insert into student(学号,姓名,性别,院系,关联账户) values ('120','舟舟','女','dz','03001')";
 		int count = select.executeUpdate(sql);
 		System.out.println(count);

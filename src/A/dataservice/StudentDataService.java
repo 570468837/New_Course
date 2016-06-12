@@ -12,4 +12,5 @@ public interface StudentDataService extends Remote{
 	public ArrayList<StudentPO> selectAll()throws RemoteException;
 	public StudentPO selectById(String sno)throws RemoteException, SQLException;
 	public StudentPO selectByAcc(String acc) throws RemoteException,SQLException;
+	public boolean add(StudentPO spo);
 }

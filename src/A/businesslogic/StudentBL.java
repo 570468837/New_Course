@@ -37,4 +37,11 @@ public class StudentBL implements StudentBLService {
 		return null;
 	}
 
+	@Override
+	public boolean addStudent(StudentPO spo) {
+		// TODO Auto-generated method stub
+		sds = new StudentData();
+		return sds.add(spo);
+	}
+
 }
