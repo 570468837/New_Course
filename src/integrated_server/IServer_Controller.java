@@ -150,10 +150,10 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		switch(destination){
 		
 		case B: 
-			ifSuccess = BClient.selectFromOtherFaculties(temp);
+			ifSuccess = BClient.quitFromOtherFaculties(temp);
 			break;
 		case C:
-			ifSuccess = CClient.selectFromOtherFaculties(temp);
+			ifSuccess = CClient.quitFromOtherFaculties(temp);
 			break;
 		default:
 			System.out.println("课程不属于任何院系");
