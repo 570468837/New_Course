@@ -83,7 +83,7 @@ public class SelectPanel extends JPanel {
 					return;
 				CoursePO coursePO = new CoursePO((String)table.getValueAt(rowIndex, 0), 
 						(String)table.getValueAt(rowIndex, 1), 
-						Integer.parseInt((String)table.getValueAt(rowIndex, 2)), 
+						(Integer)table.getValueAt(rowIndex, 2), 
 						(String)table.getValueAt(rowIndex, 3), 
 						(String)table.getValueAt(rowIndex, 4), 0);
 				//如果是本院系的课
