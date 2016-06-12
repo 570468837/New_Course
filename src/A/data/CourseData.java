@@ -20,7 +20,7 @@ public class CourseData implements CourseDataService {
     PreparedStatement ps=null;
     ArrayList<CoursePO> poList = new ArrayList<CoursePO>();
 	@Override
-	public ArrayList<CoursePO> selectAll() throws RemoteException {
+	public ArrayList<CoursePO> selectAll() {
 		// TODO Auto-generated method stub
 		sql = "select * from course";
 		dbh=new DBHelper();
@@ -42,7 +42,7 @@ public class CourseData implements CourseDataService {
 	}
 
 	@Override
-	public CoursePO selectById(String cno) throws RemoteException, SQLException {
+	public CoursePO selectById(String cno) throws SQLException {
 		// TODO Auto-generated method stub
 		sql = "select * from course where 课程编号="+cno;
 		dbh=new DBHelper();
