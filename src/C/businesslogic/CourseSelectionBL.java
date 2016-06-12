@@ -9,10 +9,8 @@ import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
-import B.BusinessLogicService.IInterface;
-import B.DataService.IOHelper;
-import B.Model.Course;
-import B.Model.Student;
+import C.businesslogic.IInterface;
+
 import C.businesslogicservice.CourseSelectionBLService;
 import C.dataservice.CourseDataService;
 import C.dataservice.CourseSelectionDataService;

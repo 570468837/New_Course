@@ -13,15 +13,16 @@ import java.util.Vector;
 import org.dom4j.Document;
 import org.dom4j.Element;
 
-import B.B_Server.B_XML_Helper;
-import B.BusinessLogicService.IInterface;
-import B.Model.Course;
+
+import C.businesslogic.IInterface;
+
 import C.businesslogicservice.CourseBLService;
 import C.data.Demo;
 import C.dataservice.CourseDataService;
 import C.dataservice.StudentDataService;
 import C.po.CoursePO;
 import C.rmi.C_Interface;
+import C.rmi.C_XML_Helper;
 /*
  * 
  * 获取所有课程，返回的是CoursePO[]
@@ -66,7 +67,7 @@ public class CourseBL implements CourseBLService{
 		try {
 			FileInformation SharedCourses = iController.IClient.getSharedCourses(Faculty.C) ;
 			
-			Document Doc = B_XML_Helper.BytesToDoc(SharedCourses.getContent()) ;
+			Document Doc = C_XML_Helper.BytesToDoc(SharedCourses.getContent()) ;
 			
 			//解析doc获取course对象
 			updateList(result, Doc) ;
