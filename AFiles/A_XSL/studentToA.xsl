@@ -3,23 +3,23 @@
 	<xsl:template match="students">
 		<!-- TODO: Auto-generated template -->
 		<xsl:apply-templates></xsl:apply-templates>
-		<student>
+		<students>
 			<xsl:for-each select="student">
 			<student>
-				<Ñ§ºÅ>
+				<Ñ§ï¿½ï¿½>
 					<xsl:value-of select="id"></xsl:value-of>
-				</Ñ§ºÅ>
-				<ÐÕÃû>
+				</Ñ§ï¿½ï¿½>
+				<ï¿½ï¿½ï¿½ï¿½>
 					<xsl:value-of select="name"></xsl:value-of>	
-				</ÐÕÃû>
-				<ÐÔ±ð>
+				</ï¿½ï¿½ï¿½ï¿½>
+				<ï¿½Ô±ï¿½>
 					<xsl:value-of select="sex"/>
-				</ÐÔ±ð>
+				</ï¿½Ô±ï¿½>
 				<ÔºÏµ>
 					<xsl:value-of select="major"/>
 				</ÔºÏµ>
 			</student>
 			</xsl:for-each>
-		</student>
+		</students>
 	</xsl:template>
 </xsl:stylesheet>

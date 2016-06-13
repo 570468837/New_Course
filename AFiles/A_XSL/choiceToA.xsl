@@ -3,20 +3,20 @@
 	<xsl:template match="selections">
 		<!-- TODO: Auto-generated template -->
 		<xsl:apply-templates></xsl:apply-templates>
-		<selection>
+		<selections>
 			<xsl:for-each select="selection">
 			<selection>
-				<Ñ§Éú±àºÅ>
+				<Ñ§ï¿½ï¿½ï¿½ï¿½>
 					<xsl:value-of select="sid"></xsl:value-of>
-				</Ñ§Éú±àºÅ>
-				<¿Î³Ì±àºÅ>
+				</Ñ§ï¿½ï¿½ï¿½ï¿½>
+				<ï¿½Î³Ì±ï¿½ï¿½>
 					<xsl:value-of select="cid" />
-				</¿Î³Ì±àºÅ>
-				<³É¼¨>
+				</ï¿½Î³Ì±ï¿½ï¿½>
+				<ï¿½É¼ï¿½>
 					<xsl:value-of select="score"/>
-				</³É¼¨>
+				</ï¿½É¼ï¿½>
 			</selection>
 			</xsl:for-each>
-		</selection>
+		</selections>
 	</xsl:template>
 </xsl:stylesheet>

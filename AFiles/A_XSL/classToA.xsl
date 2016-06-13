@@ -3,26 +3,26 @@
 	<xsl:template match="courses">
 		<!-- TODO: Auto-generated template -->
 		<xsl:apply-templates></xsl:apply-templates>
-		<course>
+		<courses>
 		<xsl:for-each select="course">
 			<course>
-				<¿Î³Ì±àºÅ>
+				<ï¿½Î³Ì±ï¿½ï¿½>
 					<xsl:value-of select="id" />
-				</¿Î³Ì±àºÅ>
-				<¿Î³ÌÃû³Æ>
+				</ï¿½Î³Ì±ï¿½ï¿½>
+				<ï¿½Î³ï¿½ï¿½ï¿½ï¿½>
 					<xsl:value-of select="name"></xsl:value-of>
-				</¿Î³ÌÃû³Æ>
-				<Ñ§·Ö>
+				</ï¿½Î³ï¿½ï¿½ï¿½ï¿½>
+				<Ñ§ï¿½ï¿½>
 					<xsl:value-of select="score"></xsl:value-of>
-				</Ñ§·Ö>
-				<ÊÚ¿ÎÀÏÊ¦>
+				</Ñ§ï¿½ï¿½>
+				<ï¿½Ú¿ï¿½ï¿½ï¿½Ê¦>
 					<xsl:value-of select="teacher" />
-				</ÊÚ¿ÎÀÏÊ¦>
-				<ÊÚ¿ÎµØµã>
+				</ï¿½Ú¿ï¿½ï¿½ï¿½Ê¦>
+				<ï¿½Ú¿ÎµØµï¿½>
 					<xsl:value-of select="location"/>	
-				</ÊÚ¿ÎÀÏÊ¦>
+				</ï¿½Ú¿ï¿½ï¿½ï¿½Ê¦>
 			</course>	
 		</xsl:for-each>
-		</course>
+		</courses>
 	</xsl:template>
 </xsl:stylesheet>
