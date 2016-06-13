@@ -10,10 +10,14 @@ public class inStudent {
 		DBHelper dbh=new DBHelper();
 		inStudent is = new inStudent();
 		Connection conn = dbh.getConnection();
-		int count=0;
-		int account = 3002;
-		int xuehao = 302;
-		String sql = "insert into student values('0000000','姚萌舟','女','dz',NULL)";
+		for(int i =1;i<=10;i++){
+		int xhon = 3000 + i;
+		int xhgn = 300 + i;
+		
+		String xuehao = "0"+Integer.toString(xhon);
+		String xuehaogai = "0"+Integer.toString(xhgn);
+		String sql = "update course set 课程编号 = '"+xuehaogai +"'where 课程编号 ='"+xuehao +"'";
+		
 //		for(int i=0;i<48;i++){
 //			account+=1;
 //			xuehao +=1;
@@ -33,13 +37,13 @@ public class inStudent {
 		Statement select;
 		try {
 			select = conn.createStatement();
-			count = select.executeUpdate(sql);
+			int count = select.executeUpdate(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e);
 		}
+		}
 		
-		System.out.println(count);
 	}
 	
 	String[] lastName = {"赵","钱","孙","李","周","吴","郑","王","尧","姚"};
