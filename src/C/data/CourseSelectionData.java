@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+
 import C.dataservice.CourseSelectionDataService;
 import C.dataservice.UserDataService;
 import C.po.AccountPO;
@@ -314,6 +316,35 @@ public class CourseSelectionData  extends UnicastRemoteObject implements CourseS
 		dtx = new DatabaseToXML();
 		dtx.courseSelectionXML();
 	}
+	 //插入学生记录
+    public  boolean insertStudent(StudentPO student)throws RemoteException {
+    	insql = "insert into student(Sno,Snm,Sex,Sde,Pwd) values(?,?,?,?,?)";
+    	 db1 = new DBHelper(insql);
+    	 
+    	 String sno=student.getSno();
+    	 String snm = student.getSnm();
+    	 String sex = student.getSex();
+    	 String sde = student.getSde();
+    	 String pwd = student.getPwd();
+    	 
+    	 try {
+			db1.pst.setString(1, sno);
+			db1.pst.setString(2, snm);
+			db1.pst.setString(3, sex);
+	    	db1.pst.setString(4, sde);
+	    	db1.pst.setString(5, pwd);
+	    	 int result = db1.pst.executeUpdate();
+	    	 if(result>0){
+	    		 return true;
+	    	 }
+		} catch(MySQLIntegrityConstraintViolationException e){
+   		 System.out.println("重复插入");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	 return false;
+      }
 	public static void main(String[] args) {
 		try {
 			CourseSelectionData cs = new CourseSelectionData();

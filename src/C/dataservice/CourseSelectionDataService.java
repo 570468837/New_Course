@@ -25,4 +25,6 @@ public interface CourseSelectionDataService extends Remote {
 	 public int countCS() throws RemoteException;
 	 public int countA() throws RemoteException;
 	 public void createCourseSelectionXML() throws IOException;
+	 //插入学生记录
+	    public  boolean insertStudent(StudentPO student)throws RemoteException ;
 }

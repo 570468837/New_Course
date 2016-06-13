@@ -28,6 +28,19 @@ import common.FileInformation;
 
 public class CourseSelectionBL implements CourseSelectionBLService{
 
+	 //插入学生记录
+    public  void insertStudent(StudentPO student){
+    	CourseSelectionDataService cs;
+		try {
+			cs=(CourseSelectionDataService) Naming.lookup("rmi://127.0.0.1:2016/Server");
+			cs.insertStudent(student);
+		
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+    }
 	@Override
 	/*
 	 * 学生选课操作   好吧我不知道为什么反正确实能选课，但是返回的布尔值就是不正确
