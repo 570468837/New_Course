@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<students>
+  <student>
+    <id>01001</id>
+    <name>盛宇</name>
+    <sex>女</sex>
+    <major>未知</major>
+  </student>
+</students>

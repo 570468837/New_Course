@@ -17,14 +17,14 @@ import common.Faculty;
 import common.FileInformation;
 
 public class IServer_Controller extends UnicastRemoteObject implements IServer_Interface{
-	ArrayList<Course> allSharedCourses = new ArrayList<>();
+	
 
 	B_Interface BClient = null; 
 	C_Interface CClient = null;
 	
 	private static String A_Server_IP = "localhost";
-	private static String B_Server_IP = "172.19.110.162";
-	private static String C_Server_IP = "localhost";
+	private static String B_Server_IP = "192.168.45.65";
+	private static String C_Server_IP = "192.168.45.178";
 
 	public IServer_Controller() throws RemoteException{
 		try {
@@ -46,6 +46,7 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 	@Override
 	public FileInformation getSharedCourses(Faculty self) {
 		// TODO Auto-generated method stub
+		ArrayList<Course> allSharedCourses = new ArrayList<>();
 		ArrayList<Course> result = new ArrayList<>();
 		String function_parentFolder = "IServer/functions/";
 		String xsl_parentFolder = "IServer/xsl/";
