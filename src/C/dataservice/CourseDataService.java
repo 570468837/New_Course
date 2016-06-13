@@ -15,4 +15,5 @@ public interface CourseDataService extends Remote {
 	public int count() throws RemoteException;
 	public void createCourseXML() throws IOException;
 	public void createSharesCourseXML() throws IOException;
+	public  boolean insertCourse(CoursePO course)throws RemoteException;
 }

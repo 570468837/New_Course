@@ -29,7 +29,7 @@ public class Course implements Serializable{
 		this.classRoom = classRoom ;
 		this.credit = credit ;
 		this.hour = "0" ;
-		this.ifShared = 1 ;
+		this.ifShared = '1' ;
 	}
 	private String id ;//
 	private String name ;//课程名称
@@ -37,7 +37,7 @@ public class Course implements Serializable{
 	private String classRoom ;//上课地点
 	private String credit ;//学分
 	private String hour = "0";//课时
-	private char ifShared = '1';//是否共享s
+	private char ifShared = '1';//是否共享
 	
 	private Set<StudentCourse> students_courses=new HashSet<StudentCourse>() ;
 	

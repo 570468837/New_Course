@@ -28,14 +28,9 @@ public class CourseSelectionBL implements CourseSelectionBLService {
 	public boolean courseSelect(StudentPO s, CoursePO c) {
 		// TODO Auto-generated method stub
 		csd = new CourseSelectionData();
-		try {
-			return csd.selectCourse(s, c);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
+		return csd.selectCourse(s, c);
 	}
-
+	
+	
 
 }

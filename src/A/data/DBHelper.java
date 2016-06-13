@@ -10,7 +10,7 @@ public class DBHelper {
 	
 	  String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";  //加载JDBC驱动
 	  String dbURL = "jdbc:sqlserver://127.0.0.1:1433;databaseName=电子学院";  //连接服务器和数据库test
-	  String userName = "sa";  //默认用户名
+	  String userName = "nan";  //默认用户名
 	  String userPwd = "0";  //密码
 	  
 	  try {

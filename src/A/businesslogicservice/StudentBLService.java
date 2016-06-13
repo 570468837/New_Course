@@ -11,4 +11,5 @@ public interface StudentBLService{
 	//学生统计
 	public ArrayList<StudentPO> showAllStudent();
 	public StudentPO showStudentById(String studentId);
+	public boolean addStudent(StudentPO spo);
 }

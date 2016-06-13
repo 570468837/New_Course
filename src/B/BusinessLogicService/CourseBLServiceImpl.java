@@ -58,24 +58,23 @@ public class CourseBLServiceImpl implements CourseBLService{
 	public ArrayList<Course> getAllCourses() {
 		// TODO Auto-generated method stub
 		IInterface iController = IInterface.getInstance() ;
-		ArrayList<Course> result = this.getAllLocalCourse() ;
+		
 		try {
 			FileInformation otherSharedCourses = iController.IClient.getSharedCourses(Faculty.B) ;
 //			FileInformation cSharedCourses = iController.IClient.getSharedCourses(Faculty.C) ;
 			Document otherDoc = B_XML_Helper.BytesToDoc(otherSharedCourses.getContent()) ;
 //			Document cDoc = B_XML_Helper.BytesToDoc(cSharedCourses.getContent()) ;
-			
 			//解析doc获取course对象 顺便插入本地数据库
-			updateList(result, otherDoc) ;
+			insetOtherCoursesIntoLocalDB(otherDoc) ;
 //			updateList(result, cDoc) ;
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return result ;
+		return this.getAllLocalCourse() ;
 	}
 	@SuppressWarnings("unchecked")
-	private ArrayList<Course> updateList(ArrayList<Course> list,Document doc){
+	private void insetOtherCoursesIntoLocalDB(Document doc){
 		Element root = doc.getRootElement() ;
 		for(Iterator<Element> i=root.elementIterator();i.hasNext();){
 			Element element = i.next() ;
@@ -84,11 +83,12 @@ public class CourseBLServiceImpl implements CourseBLService{
 				Element tmp = j.next() ;
 				strs.add(tmp.getStringValue()) ;
 			}
-			Course course = new Course(strs.get(0),strs.get(1),strs.get(2),strs.get(3),strs.get(4)) ;
-			list.add(course) ;
+			Course course = new Course(strs.get(0), strs.get(1), strs.get(3), strs.get(4), strs.get(2)) ;
 			dataControler.add(course) ;
 		}
-		return list ;
-		
+	}
+	public static void main(String[] args){
+		CourseBLServiceImpl c = new CourseBLServiceImpl() ;
+		c.getAllCourses();
 	}
 }

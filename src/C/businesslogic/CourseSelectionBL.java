@@ -9,10 +9,8 @@ import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
-import B.BusinessLogicService.IInterface;
-import B.DataService.IOHelper;
-import B.Model.Course;
-import B.Model.Student;
+import C.businesslogic.IInterface;
+
 import C.businesslogicservice.CourseSelectionBLService;
 import C.dataservice.CourseDataService;
 import C.dataservice.CourseSelectionDataService;
@@ -63,8 +61,11 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 		boolean result1 = false;
 		boolean result2 = false;
 		String courseId = c.getCno();
-		if(courseId.startsWith("01")) //判断是否为本院系课程
-			result1 = courseSelectLocal(s, c) ;
+		result1 = courseSelectLocal(s, c) ;
+		if(courseId.startsWith("01")){ //判断是否为本院系课程
+			System.out.println("是本院系");
+			return result1;
+		}
 		else{
 			Faculty f = null ;
 			if(courseId.startsWith("02"))
@@ -85,7 +86,7 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 				e.printStackTrace();
 			}
 		}
-		return result1&&result2 ;
+		return result2 ;
 	}
 	public  void studentToXml(StudentPO s,String savePath){
 		Document doc = DocumentHelper.createDocument() ;
@@ -205,8 +206,9 @@ public class CourseSelectionBL implements CourseSelectionBLService{
 	public boolean courseQuit(StudentPO s, CoursePO c) throws RemoteException{
 		boolean result = false;
 		String courseId = c.getCno();
+		result = courseQuitLocal(s, c) ;
 		if(courseId.startsWith("01")) //判断是否为本院系课程
-			result = courseQuitLocal(s, c) ;
+			System.out.println("本院系");
 		else{
 			Faculty f = null ;
 			if(courseId.startsWith("02"))

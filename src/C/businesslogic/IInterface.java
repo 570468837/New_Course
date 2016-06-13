@@ -1,4 +1,4 @@
-package B.BusinessLogicService;
+package C.businesslogic;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

@@ -1,29 +1,9 @@
-<?xml version="1.0" encoding="utf8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <courseSelections>
   <courseSelection>
-    <Cno>0101</Cno>
     <Sno>01001</Sno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>0101</Cno>
-    <Sno>01002</Sno>
-    <Grd>0</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>0102</Cno>
-    <Sno>01001</Sno>
-    <Grd>90</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>0103</Cno>
-    <Sno>01001</Sno>
-    <Grd>100</Grd>
-  </courseSelection>
-  <courseSelection>
-    <Cno>0108</Cno>
-    <Sno>01001</Sno>
+    <Cno>0204</Cno>
     <Grd>0</Grd>
   </courseSelection>
 </courseSelections>

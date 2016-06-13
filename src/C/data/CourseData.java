@@ -47,9 +47,42 @@ public class CourseData   extends UnicastRemoteObject implements CourseDataServi
     	return count;
     }
     
-    public void insertCourse(){
-    	
-    }
+    //插入课程记录
+    public  boolean insertCourse(CoursePO course)throws RemoteException{
+    	insql = "insert into course(Cno,Cnm,Ctm,Cpt,Tec,Pla,Share) values(?,?,?,?,?,?,?)";
+    	 db1 = new DBHelper(insql);
+    	 
+    	 String cno = course.getCno();
+    	 String cnm = course.getCnm();
+    	 int ctm = course.getCtm();
+    	 int cpt = course.getCpt();
+    	 String tec = course.getTec();
+    	 String pla = course.getPla();
+    	 String share = course.getShare();
+    	 
+    
+    	 try {
+			db1.pst.setString(1, cno);
+			db1.pst.setString(2, cnm);
+			db1.pst.setInt(3, ctm);
+	    	db1.pst.setInt(4, cpt);
+	    	db1.pst.setString(5, tec);
+	    	db1.pst.setString(6, pla);
+	    	db1.pst.setString(7, share);
+	    	 int result = db1.pst.executeUpdate();
+	    	 if(result>0){
+	    		 return true;
+	    	 }
+    	 }catch(Exception e){
+    		 System.out.println("重复插入");
+    		 }
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+    	 return false;
+      }
+    
     public CoursePO[] selectAll()throws RemoteException{
     	int count = 0;
     	count = count();

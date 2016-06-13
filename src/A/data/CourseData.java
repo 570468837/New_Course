@@ -20,7 +20,7 @@ public class CourseData implements CourseDataService {
     PreparedStatement ps=null;
     ArrayList<CoursePO> poList = new ArrayList<CoursePO>();
 	@Override
-	public ArrayList<CoursePO> selectAll() throws RemoteException {
+	public ArrayList<CoursePO> selectAll() {
 		// TODO Auto-generated method stub
 		sql = "select * from course";
 		dbh=new DBHelper();
@@ -42,7 +42,7 @@ public class CourseData implements CourseDataService {
 	}
 
 	@Override
-	public CoursePO selectById(String cno) throws RemoteException, SQLException {
+	public CoursePO selectById(String cno) {
 		// TODO Auto-generated method stub
 		sql = "select * from course where 课程编号="+cno;
 		dbh=new DBHelper();
@@ -61,6 +61,33 @@ public class CourseData implements CourseDataService {
 			e.printStackTrace();
 		}
 		return po;
+	}
+
+	@Override
+	public boolean add(CoursePO cpo) {
+		// TODO Auto-generated method stub
+		boolean result=false;
+		DBHelper dbh=new DBHelper();
+		Connection conn = dbh.getConnection();
+		
+		String id = cpo.getCno();
+		String name = cpo.getCnm();
+		int point = cpo.getCpt();
+		String teacher = cpo.getTec();
+		String place = cpo.getPla();
+		int share = 1;
+		
+		String sql = "insert into course values('"+id+"','"+name+"','"+point+"','"+teacher+"','"+place+"','"+share+"')";
+		try {
+			Statement select = conn.createStatement();
+			int count = select.executeUpdate(sql);
+			if(count==1)
+				result= true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+		}
+		return result;
 	}
 
 }
