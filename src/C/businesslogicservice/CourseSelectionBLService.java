@@ -20,5 +20,5 @@ public interface CourseSelectionBLService{
 	public  void selectionToXml(StudentPO s,CoursePO c,String savePath);
 	public boolean courseSelect(StudentPO s,CoursePO c);
 	public boolean courseQuit(StudentPO s, CoursePO c) throws RemoteException;
-	
+	public  void insertStudent(StudentPO student);
 }
