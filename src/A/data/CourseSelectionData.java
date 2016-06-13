@@ -174,25 +174,25 @@ public class CourseSelectionData implements CourseSelectionDataService {
 		Document doc = DocumentHelper.createDocument() ;
 		Element root = doc.addElement("students") ;
 		Element student = root.addElement("student") ;
-		Element sid = student.addElement("Sno") ;
+		Element sid = student.addElement("学号") ;
 		sid.setText(s.getSno());
-		Element snm = student.addElement("Snm") ;
+		Element snm = student.addElement("姓名") ;
 		snm.setText(s.getSnm());
-		Element sex = student.addElement("Sex");
+		Element sex = student.addElement("性别");
 		sex.setText(s.getSex());
-		Element sde = student.addElement("Sde");
+		Element sde = student.addElement("院系");
 		sde.setText(s.getSde());
 		A_XML_Helper.docToXml(doc,savePath);
 	}
 	public  void selectionToXml(StudentPO s,CoursePO c,String savePath){
 		Document doc = DocumentHelper.createDocument() ;
-		Element root = doc.addElement("courseSelections") ;
-		Element selection = root.addElement("courseSelection") ;
-		Element sid = selection.addElement("Sno") ;
+		Element root = doc.addElement("selections") ;
+		Element selection = root.addElement("selection") ;
+		Element sid = selection.addElement("学生编号") ;
 		sid.setText(s.getSno());
-		Element cid = selection.addElement("Cno");
+		Element cid = selection.addElement("课程编号");
 		cid.setText(c.getCno());
-		Element grade = selection.addElement("Grd") ;
+		Element grade = selection.addElement("成绩") ;
 		grade.setText("0");
 		A_XML_Helper.docToXml(doc,savePath);
 	}

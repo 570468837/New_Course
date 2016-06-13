@@ -150,8 +150,8 @@ public class A_XML_Helper {
 //		FileInformation f = C_XML_Helper.xmlToFileInfo("./CFiles/United_XML/United_C_COURSES.xml") ;
 //		boolean b = C_XML_Helper.TransformXML(f, "./CFiles/C_XSL/classToC.xsl", "./CFiles/C_XML","C_course.xml") ;
 //		System.out.println(b);
-		FileInformation f = A_XML_Helper.xmlToFileInfo("./CFiles/United_XML/United_C_SELECTIONS.xml") ;
-		boolean b = A_XML_Helper.TransformXML(f, "./CFiles/C_XSL/choiceToC.xsl", "./CFiles/C_XML","C_courseSelection.xml") ;
+		FileInformation f = A_XML_Helper.xmlToFileInfo("./AFiles/A_XML/A_courseSelection.xml") ;
+		boolean b = A_XML_Helper.TransformXML(f, "./AFiles/A_XSL/formatClassChoice.xsl", "./AFiles/A_XML","A_courseSelection.xml") ;
 		System.out.println(b);
 		
 	}
