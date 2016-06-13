@@ -103,7 +103,7 @@ public class C_Controller extends UnicastRemoteObject implements C_Interface{
 						strs.add(tmp.getStringValue()) ;
 					}
 					StudentPO student = new StudentPO(strs.get(0), strs.get(1), strs.get(2), strs.get(3),"") ;
-					Demo.insertStudent(student);
+					Demo.insertStudent(student);//加入数据库
 				}
 		Document doc = C_XML_Helper.BytesToDoc(file.getContent()) ;
 		Element root = doc.getRootElement() ;

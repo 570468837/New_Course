@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 import org.hibernate.internal.util.xml.XMLHelper;
 
+import A.Server.A_Interface;
 import B.B_Server.B_Interface;
 import C.rmi.C_Interface;
 import common.Common;
@@ -17,17 +18,17 @@ import common.Faculty;
 import common.FileInformation;
 
 public class IServer_Controller extends UnicastRemoteObject implements IServer_Interface{
-	ArrayList<Course> allSharedCourses = new ArrayList<>();
-
+	A_Interface AClient = null;
 	B_Interface BClient = null; 
 	C_Interface CClient = null;
 	
 	private static String A_Server_IP = "localhost";
 	private static String B_Server_IP = "172.19.110.162";
-	private static String C_Server_IP = "localhost";
+	private static String C_Server_IP = "172.19.102.217";
 
 	public IServer_Controller() throws RemoteException{
 		try {
+			AClient = (A_Interface) Naming.lookup("rmi://" + A_Server_IP + ":8881/A_Interface");
 			BClient = (B_Interface) Naming.lookup("rmi://" + B_Server_IP + ":8882/B_Interface");
 			CClient = (C_Interface) Naming.lookup("rmi://" + C_Server_IP + ":8883/C_Interface");
 
@@ -45,12 +46,19 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 
 	@Override
 	public FileInformation getSharedCourses(Faculty self) {
+		System.out.println(self.toString()+"在请求共享课程");
 		// TODO Auto-generated method stub
+		ArrayList<Course> allSharedCourses = new ArrayList<>();
 		ArrayList<Course> result = new ArrayList<>();
 		String function_parentFolder = "IServer/functions/";
 		String xsl_parentFolder = "IServer/xsl/";
 		FileInformation course_file = null, resultFileInfo = null;
 		try {
+			course_file = AClient.getSharedCourses();
+			allSharedCourses.addAll(XML_Helper.decodeCourses(
+					XML_Helper.TransformXML(course_file, xsl_parentFolder+"A/formatClass.xsl", 
+							function_parentFolder+"shared/A/", "sharedCourses.xml")));
+			
 			course_file = BClient.getSharedCourses();
 			allSharedCourses.addAll(XML_Helper.decodeCourses(
 					XML_Helper.TransformXML(course_file, xsl_parentFolder+"B/formatClass.xsl", 
@@ -89,6 +97,7 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 	@Override
 	public boolean selectCourse(FileInformation fromFile, FileInformation studentFile, Faculty self) throws RemoteException {
 		// TODO Auto-generated method stub
+		System.out.println(self.toString()+"院的学生在远程选课");
 		String function_parentFolder = "IServer/functions/";
 		String xsl_parentFolder = "IServer/xsl/";
 		// fromFile -> standardXML
@@ -109,7 +118,10 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		
 		boolean ifSuccess = false;
 		switch(destination){
-		
+		case A:
+			ifSuccess = AClient.selectFromOtherFaculties(temp,
+					produceDestinationStudentFile(studentFile, self, destination));
+			break;
 		case B: 
 			ifSuccess = BClient.selectFromOtherFaculties(temp,
 					produceDestinationStudentFile(studentFile, self, destination));
@@ -128,6 +140,7 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 	@Override
 	public boolean quitCourse(FileInformation fromFile, Faculty self) throws RemoteException {
 		// TODO Auto-generated method stub
+		System.out.println(self.toString()+"院的学生在远程退课");
 		String function_parentFolder = "IServer/functions/";
 		String xsl_parentFolder = "IServer/xsl/";
 		// fromFile -> standardXML
@@ -148,7 +161,9 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		
 		boolean ifSuccess = false;
 		switch(destination){
-		
+		case A:
+			ifSuccess = AClient.quitFromOtherFaculties(temp);
+			break;
 		case B: 
 			ifSuccess = BClient.quitFromOtherFaculties(temp);
 			break;

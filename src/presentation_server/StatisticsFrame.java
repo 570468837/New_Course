@@ -24,6 +24,7 @@ import javax.swing.UIManager;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import common.FileInformation;
+import A.Server.A_Interface;
 import B.B_Server.B_Interface;
 import B.B_Server.B_Server_Start;
 import C.rmi.C_Interface;
@@ -38,12 +39,13 @@ public class StatisticsFrame extends JFrame {
 	ArrayList<Course> courses = new ArrayList<>();
 	ArrayList<Selection> selections = new ArrayList<>();
 	
+	A_Interface AClient = null;
 	B_Interface BClient = null;
 	C_Interface CClient = null;
 	
 	private static String A_Server_IP = "localhost";
-	private static String B_Server_IP = "172.19.110.162";
-	private static String C_Server_IP = "localhost";
+	private static String B_Server_IP = "192.168.45.65";
+	private static String C_Server_IP = "192.168.45.178";
 	/**
 	 * Create the frame.
 	 */
@@ -111,6 +113,7 @@ public class StatisticsFrame extends JFrame {
 	private void startRMI() {
 		// TODO Auto-generated method stub
 			try {
+				AClient = (A_Interface) Naming.lookup("rmi://" + A_Server_IP + ":8881/A_Interface");
 				BClient = (B_Interface) Naming.lookup("rmi://" + B_Server_IP + ":8882/B_Interface");
 				CClient = (C_Interface) Naming.lookup("rmi://" + C_Server_IP + ":8883/C_Interface");
 			} catch (MalformedURLException | RemoteException
@@ -131,6 +134,12 @@ public class StatisticsFrame extends JFrame {
 		String xsl_parentFolder = "IServer/xsl/";
 		FileInformation original_student_file;
 		try {
+			original_student_file = AClient.getAllStudents();
+//			printXML(student_parentFolder, original_student_file);
+			students.addAll(XML_Helper.decodeStudents
+					(XML_Helper.TransformXML(original_student_file, xsl_parentFolder+"A/formatStudent.xsl", 
+							student_parentFolder+"A/", "student.xml")));
+			
 			original_student_file = BClient.getAllStudents();
 //			printXML(student_parentFolder, original_student_file);
 			students.addAll(XML_Helper.decodeStudents
@@ -141,7 +150,6 @@ public class StatisticsFrame extends JFrame {
 			students.addAll(XML_Helper.decodeStudents(XML_Helper.TransformXML(
 					original_student_file, xsl_parentFolder+"C/formatStudent.xsl", 
 					student_parentFolder+"C/", "student.xml")));
-			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -156,6 +164,12 @@ public class StatisticsFrame extends JFrame {
 		String xsl_parentFolder = "IServer/xsl/";
 		FileInformation original_course_file;
 		try {
+			original_course_file = AClient.getAllCourses();
+//			printXML(course_parentFolder, original_course_file);
+			courses.addAll(XML_Helper.decodeCourses
+					(XML_Helper.TransformXML(original_course_file, xsl_parentFolder+"A/formatClass.xsl", 
+							course_parentFolder+"A/", "course.xml")));
+			
 			original_course_file = BClient.getAllCourses();
 //			printXML(course_parentFolder, original_course_file);
 			courses.addAll(XML_Helper.decodeCourses
@@ -180,6 +194,12 @@ public class StatisticsFrame extends JFrame {
 		String xsl_parentFolder = "IServer/xsl/";
 		FileInformation original_selection_file;
 		try {
+			original_selection_file = AClient.getAllSelections();
+//			printXML(selection_parentFolder, selection_file);
+			selections.addAll(XML_Helper.decodeSelections
+					(XML_Helper.TransformXML(original_selection_file, xsl_parentFolder+"A/formatClassChoice.xsl", 
+							selection_parentFolder+"A/", "selection.xml")));
+			
 			original_selection_file = BClient.getAllSelections();
 //			printXML(selection_parentFolder, selection_file);
 			selections.addAll(XML_Helper.decodeSelections

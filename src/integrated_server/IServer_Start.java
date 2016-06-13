@@ -22,7 +22,7 @@ public class IServer_Start {
 			 //绑定的URL标准格式为：rmi://host:port/name(其中协议名可以省略，下面两种写法都是正确的） 
 			 Naming.bind("rmi://localhost:8880/I_Interface",rhello); 
 
-			 System.out.println(">>>>>INFO:远程IHello对象绑定成功！"); 
+			 System.out.println(">>>>>INFO:集成服务器绑定成功！"); 
 	        	} catch (RemoteException e) { 
 	        		System.out.println("创建远程对象发生异常！"); 
 	        		e.printStackTrace(); 

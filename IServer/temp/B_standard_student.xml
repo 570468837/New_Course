@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<students>
+  <student>
+    <id>02001</id>
+    <name>ZHOUZHOU</name>
+    <sex>女</sex>
+    <major>B</major>
+  </student>
+</students>
