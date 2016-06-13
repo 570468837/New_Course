@@ -54,7 +54,7 @@ public class A_Controller extends UnicastRemoteObject implements A_Interface{
 	@Override
 	public FileInformation getAllCourses() throws RemoteException {
 		try {
-			dtxml.courseXML();;
+			dtxml.courseXML();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,7 +65,7 @@ public class A_Controller extends UnicastRemoteObject implements A_Interface{
 	@Override
 	public FileInformation getAllStudents() throws RemoteException {
 		try {
-			dtxml.studentXML();;
+			dtxml.studentXML();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,7 +76,7 @@ public class A_Controller extends UnicastRemoteObject implements A_Interface{
 	@Override
 	public FileInformation getAllSelections() throws RemoteException {
 		try {
-			dtxml.courseSelectionXML();;
+			dtxml.courseSelectionXML();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

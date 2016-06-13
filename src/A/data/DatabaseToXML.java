@@ -68,7 +68,7 @@ public class DatabaseToXML {
 	            	columnName[j-1] = rsmd.getColumnName(j);
 	            }
 	            Document doc = DocumentHelper.createDocument();
-	            if(tableName.equals("selection")){
+	            if(tableName.equals("courseShare")){
 	            	Element root = doc.addElement("course"+"s");
 		            
 		            while(ret.next()){
