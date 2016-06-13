@@ -4,26 +4,76 @@
   <selection>
     <sid>01001</sid>
     <cid>0101</cid>
-    <score>0</score>
+    <score>80</score>
+  </selection>
+  <selection>
+    <sid>01001</sid>
+    <cid>0107</cid>
+    <score>100</score>
   </selection>
   <selection>
     <sid>01002</sid>
-    <cid>0101</cid>
+    <cid>0109</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>01001</sid>
+    <cid>0105</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>01001</sid>
+    <cid>0109</cid>
     <score>0</score>
   </selection>
   <selection>
     <sid>01001</sid>
     <cid>0102</cid>
-    <score>90</score>
+    <score>0</score>
   </selection>
   <selection>
-    <sid>01001</sid>
+    <sid>02001</sid>
+    <cid>0101</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>02001</sid>
     <cid>0103</cid>
-    <score>100</score>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>02001</sid>
+    <cid>0106</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>02001</sid>
+    <cid>0110</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>02001</sid>
+    <cid>0102</cid>
+    <score>0</score>
   </selection>
   <selection>
     <sid>01001</sid>
-    <cid>0108</cid>
+    <cid>0104</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>01001</sid>
+    <cid>0202</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>01001</sid>
+    <cid>0203</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>01001</sid>
+    <cid>0205</cid>
     <score>0</score>
   </selection>
 </selections>

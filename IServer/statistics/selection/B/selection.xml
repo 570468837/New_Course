@@ -2,6 +2,11 @@
 
 <selections>
   <selection>
+    <sid>02001</sid>
+    <cid>0103</cid>
+    <score>0</score>
+  </selection>
+  <selection>
     <sid>02002</sid>
     <cid>0205</cid>
     <score>0</score>
@@ -18,7 +23,12 @@
   </selection>
   <selection>
     <sid>02001</sid>
-    <cid>0209</cid>
+    <cid>0101</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>01001</sid>
+    <cid>0202</cid>
     <score>0</score>
   </selection>
   <selection>
@@ -27,8 +37,8 @@
     <score>0</score>
   </selection>
   <selection>
-    <sid>02001</sid>
-    <cid>0201</cid>
+    <sid>01001</sid>
+    <cid>0203</cid>
     <score>0</score>
   </selection>
   <selection>
@@ -48,6 +58,31 @@
   </selection>
   <selection>
     <sid>02003</sid>
+    <cid>0204</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>02001</sid>
+    <cid>0102</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>02001</sid>
+    <cid>0207</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>02001</sid>
+    <cid>0106</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>02001</sid>
+    <cid>0110</cid>
+    <score>0</score>
+  </selection>
+  <selection>
+    <sid>02001</sid>
     <cid>0204</cid>
     <score>0</score>
   </selection>

@@ -10,6 +10,8 @@ import java.util.HashMap;
 
 import org.hibernate.internal.util.xml.XMLHelper;
 
+import com.fasterxml.classmate.AnnotationOverrides.StdBuilder;
+
 import A.Server.A_Interface;
 import B.B_Server.B_Interface;
 import C.rmi.C_Interface;
@@ -22,9 +24,9 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 	B_Interface BClient = null; 
 	C_Interface CClient = null;
 	
-	private static String A_Server_IP = "localhost";
-	private static String B_Server_IP = "172.19.110.162";
-	private static String C_Server_IP = "172.19.102.217";
+	private static String A_Server_IP = "192.168.45.194";
+	private static String B_Server_IP = "192.168.45.65";
+	private static String C_Server_IP = "192.168.45.178";
 
 	public IServer_Controller() throws RemoteException{
 		try {
@@ -101,6 +103,7 @@ public class IServer_Controller extends UnicastRemoteObject implements IServer_I
 		String function_parentFolder = "IServer/functions/";
 		String xsl_parentFolder = "IServer/xsl/";
 		// fromFile -> standardXML
+
 		String standard_xml_address = XML_Helper.TransformXML(fromFile, 
 				xsl_parentFolder+self.toString()+"/formatClassChoice.xsl", 
 				function_parentFolder+"select/", self.toString()+"_select_standard.xml");

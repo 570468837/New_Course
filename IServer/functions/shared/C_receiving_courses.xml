@@ -2,6 +2,41 @@
 
 <courses>
   <course>
+    <Cno>0301</Cno>
+    <Cnm>大学物理I</Cnm>
+    <Cpt>3</Cpt>
+    <Tec>韩平</Tec>
+    <Pla>107</Pla>
+  </course>
+  <course>
+    <Cno>0302</Cno>
+    <Cnm>电路分析</Cnm>
+    <Cpt>2</Cpt>
+    <Tec>高晓松</Tec>
+    <Pla>202</Pla>
+  </course>
+  <course>
+    <Cno>0304</Cno>
+    <Cnm>电路实验</Cnm>
+    <Cpt>4</Cpt>
+    <Tec>余华</Tec>
+    <Pla>210</Pla>
+  </course>
+  <course>
+    <Cno>0306</Cno>
+    <Cnm>信号与系统</Cnm>
+    <Cpt>3</Cpt>
+    <Tec>杨萌</Tec>
+    <Pla>107</Pla>
+  </course>
+  <course>
+    <Cno>0308</Cno>
+    <Cnm>高频电路</Cnm>
+    <Cpt>3</Cpt>
+    <Tec>杜雨涵</Tec>
+    <Pla>202</Pla>
+  </course>
+  <course>
     <Cno>0201</Cno>
     <Cnm>组合数学</Cnm>
     <Cpt>2</Cpt>

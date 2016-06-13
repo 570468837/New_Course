@@ -2,6 +2,41 @@
 
 <courses>
     <course>
+        <id>03001</id>
+        <name>大学物理I</name>
+        <score>3</score>
+        <teacher>韩平</teacher>
+        <location>107</location>
+    </course>
+    <course>
+        <id>03002</id>
+        <name>电路分析</name>
+        <score>2</score>
+        <teacher>高晓松</teacher>
+        <location>202</location>
+    </course>
+    <course>
+        <id>03004</id>
+        <name>电路实验</name>
+        <score>4</score>
+        <teacher>余华</teacher>
+        <location>210</location>
+    </course>
+    <course>
+        <id>03006</id>
+        <name>信号与系统</name>
+        <score>3</score>
+        <teacher>杨萌</teacher>
+        <location>107</location>
+    </course>
+    <course>
+        <id>03008</id>
+        <name>高频电路</name>
+        <score>3</score>
+        <teacher>杜雨涵</teacher>
+        <location>202</location>
+    </course>
+    <course>
         <id>0101</id>
         <name>Compiling</name>
         <score>3</score>

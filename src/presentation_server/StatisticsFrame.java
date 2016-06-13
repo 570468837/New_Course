@@ -43,7 +43,7 @@ public class StatisticsFrame extends JFrame {
 	B_Interface BClient = null;
 	C_Interface CClient = null;
 	
-	private static String A_Server_IP = "localhost";
+	private static String A_Server_IP = "192.168.45.194";
 	private static String B_Server_IP = "192.168.45.65";
 	private static String C_Server_IP = "192.168.45.178";
 	/**
