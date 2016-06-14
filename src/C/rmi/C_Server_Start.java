@@ -13,6 +13,7 @@ public class C_Server_Start {
 			LocateRegistry.createRegistry(8883) ;//创建注册表
 			
 			Naming.bind("rmi://localhost:8883/C_Interface",CCL);
+			System.out.println("c_server start");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			System.out.println("创建远程对象异常");

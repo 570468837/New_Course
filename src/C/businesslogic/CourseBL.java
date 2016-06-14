@@ -77,7 +77,9 @@ public class CourseBL implements CourseBLService{
 		for(int i = 0;i<this.showAllCourse().length;i++ ){
 			result.add(this.showAllCourse()[i]);
 		}
-		
+		for (int i = 0;i<result.size();i++){
+			System.out.println(result.get(i).getCnm());
+		}
 		return result ;
 	}
 	public ArrayList<CoursePO> updateList(ArrayList<CoursePO> list,Document doc){

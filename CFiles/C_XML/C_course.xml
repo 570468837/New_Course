@@ -38,6 +38,15 @@
     <Share>0</Share>
   </course>
   <course>
+    <Cno>0105</Cno>
+    <Cnm>Java</Cnm>
+    <Ctm>30</Ctm>
+    <Cpt>3</Cpt>
+    <Tec>Lucy</Tec>
+    <Pla>105</Pla>
+    <Share>0</Share>
+  </course>
+  <course>
     <Cno>0106</Cno>
     <Cnm>Math1</Cnm>
     <Ctm>30</Ctm>
@@ -81,5 +90,50 @@
     <Tec>David</Tec>
     <Pla>110</Pla>
     <Share>1</Share>
+  </course>
+  <course>
+    <Cno>0201</Cno>
+    <Cnm>组合数学</Cnm>
+    <Ctm>0</Ctm>
+    <Cpt>2</Cpt>
+    <Tec>Mr.Li</Tec>
+    <Pla>classRoom1</Pla>
+    <Share>0</Share>
+  </course>
+  <course>
+    <Cno>0202</Cno>
+    <Cnm>模式识别</Cnm>
+    <Ctm>0</Ctm>
+    <Cpt>2</Cpt>
+    <Tec>Mr.Wang</Tec>
+    <Pla>classRoom2</Pla>
+    <Share>0</Share>
+  </course>
+  <course>
+    <Cno>0203</Cno>
+    <Cnm>随机算法</Cnm>
+    <Ctm>0</Ctm>
+    <Cpt>2</Cpt>
+    <Tec>Mr.Wang</Tec>
+    <Pla>classRoom2</Pla>
+    <Share>0</Share>
+  </course>
+  <course>
+    <Cno>0204</Cno>
+    <Cnm>软件安全</Cnm>
+    <Ctm>0</Ctm>
+    <Cpt>2</Cpt>
+    <Tec>Mr.Wang</Tec>
+    <Pla>classRoom2</Pla>
+    <Share>0</Share>
+  </course>
+  <course>
+    <Cno>0205</Cno>
+    <Cnm>计算思维</Cnm>
+    <Ctm>0</Ctm>
+    <Cpt>2</Cpt>
+    <Tec>Mr.Wang</Tec>
+    <Pla>classRoom2</Pla>
+    <Share>0</Share>
   </course>
 </courses>
